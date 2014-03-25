@@ -1,0 +1,153 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>IIS处理模型及ASP.NET页面生命周期--个人知识管理</title>
+<meta name="Keywords" content="IIS,ASP.NET,生命周期,html,css,javascript,web,js,Web前端,iPhone, Mobile, Android" />
+<meta name="Description" content="IIS处理模型及ASP.NET页面生命周期,关注移动及互联网开发" />
+<meta name="Author" content="XeonWell, email:admin_xw81_com" />
+<meta name="language" content="Chinese" />
+<meta name="Robots" content="index,follow" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="icon" href="/i/xiong.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/i/xiong.ico" type="image/x-icon" />
+<link href="/css/fw.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="alternate" type="application/rss+xml" title="个人知识管理" href="http://feeds.feedburner.com/xeonwell" />
+<!--[if lte IE 8]><link href="/css/ie-fix.css" rel="stylesheet" type="text/css" media="all" />
+<script src="/js/ie-html5.js" type="text/javascript" /></script><![endif]-->
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shThemeDefault.css"/>
+</head>
+
+<body>
+<div id="bodyWrapper">
+	<header id="header" class="clearfix">
+		<h1><a href="/" title="个人知识管理">个人知识管理</a></h1>
+		<ul id="menu" class="resetList"><li><a href="/" title="个人知识管理">Home</a></li><li><a href="/Html/Article/Mobile/" title="Mobile" accesskey="1"><strong>Mobile</strong></a></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS" accesskey="2"><strong>(X)Html/CSS</strong></a></li><li><a href="/Html/Article/javascript/" title="Javascript" accesskey="3"><strong>Javascript</strong></a></li><li><a href="/Html/Article/asp/" title="ASP" accesskey="4"><strong>ASP</strong></a></li><li><a href="/Html/Article/cs/" title="C#" accesskey="5" id="curNav"><strong>C#</strong></a></li><li><a href="/Html/Article/system/" title="System" accesskey="6"><strong>System</strong></a></li><li><a href="/Html/Article/b1og/" title="Blog" accesskey="7"><strong>Blog</strong></a></li></ul>
+		<div id="searchDiv">
+			<form id="searchForm" action="/Search/" method="get">
+			<p><label for="searchStr">输入搜索字符串</label><input type="text" class="searchStr" name="searchStr" id="searchStr" value="" size="19" alt="输入搜索字符串" /><input type="submit" value="Search" class="search" alt="search" /></p>
+			</form>
+		</div>
+	</header>
+	<div id="content" class="clearfix">
+		<div id="leftWrapper">
+			<div id="artCategory" class="listDiv roundedCorners">
+				<h3 class="listTitle">文章分类</h3>
+				<ul class="uList"><li><a href="/Html/Article/Mobile/" title="Mobile">Mobile</a><ul><li><a href="/Html/Article/iPhone/" title="iPhone">iPhone</a></li></ul></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS">(X)Html/CSS</a></li><li><a href="/Html/Article/javascript/" title="Javascript">Javascript</a><ul><li><a href="/Html/Article/jquery/" title="jQuery">jQuery</a></li></ul></li><li><a href="/Html/Article/asp/" title="ASP">ASP</a></li><li><a href="/Html/Article/cs/" title="C#">C#</a></li><li><a href="/Html/Article/system/" title="System">System</a><ul><li><a href="/Html/Article/nginx/" title="Nginx">Nginx</a></li><li><a href="/Html/Article/IIS/" title="IIS">IIS</a></li><li><a href="/Html/Article/database/" title="Database">Database</a></li><li><a href="/Html/Article/mail/" title="Mail">Mail</a></li></ul></li><li><a href="/Html/Article/b1og/" title="Blog">Blog</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners" id="tagCloud">
+				<h3 class="listTitle">Tag Cloud</h3>
+				<div class="tagList"><a href="/Tag/?Article/html5" title="html5">html5</a>, <a href="/Tag/?Article/iPhone" title="iPhone">iPhone</a>, <a href="/Tag/?Article/canvas" title="canvas">canvas</a>, <a href="/Tag/?Article/JavaScript" title="JavaScript">JavaScript</a>, <a href="/Tag/?Article/css3" title="css3">css3</a>, <a href="/Tag/?Article/css" title="css">css</a>, <a href="/Tag/?Article/Nginx" title="Nginx">Nginx</a>, <a href="/Tag/?Article/Cheat Sheet" title="Cheat Sheet">Cheat Sheet</a>, <a href="/Tag/?Article/jQuery" title="jQuery">jQuery</a>, <a href="/Tag/?Article/XCode" title="XCode">XCode</a>, <a href="/Tag/?Article/iis" title="iis">iis</a>, <a href="/Tag/?Article/wap" title="wap">wap</a>, <a href="/Tag/?Article/HTTP" title="HTTP">HTTP</a>, <a href="/Tag/?Article/Android" title="Android">Android</a>, <a href="/Tag/?Article/CSS Hack" title="CSS Hack">CSS Hack</a>, <a href="/Tag/?Article/xhtml" title="xhtml">xhtml</a>, <a href="/Tag/?Article/Doctype" title="Doctype">Doctype</a>, <a href="/Tag/?Article/Help Sheet" title="Help Sheet">Help Sheet</a>, <a href="/Tag/?Article/DNS" title="DNS">DNS</a>, <a href="/Tag/?Article/iPad" title="iPad">iPad</a>, <a href="/Tag/?Article/浮动" title="浮动">浮动</a>, <a href="/Tag/?Article/win2000" title="win2000">win2000</a>, <a href="/Tag/?Article/ubuntu" title="ubuntu">ubuntu</a>, <a href="/Tag/?Article/EditPlus" title="EditPlus">EditPlus</a>, <a href="/Tag/?Article/chrome" title="chrome">chrome</a>, <a href="/Tag/?Article/清除浮动" title="清除浮动">清除浮动</a>, <a href="/Tag/?Article/clearfix" title="clearfix">clearfix</a>, <a href="/Tag/?Article/DOM" title="DOM">DOM</a>, <a href="/Tag/?Article/跨浏览器" title="跨浏览器">跨浏览器</a>, <a href="/Tag/?Article/手机" title="手机">手机</a>, <a href="/Tag/?Article/3G" title="3G">3G</a>, <a href="/Tag/?Article/Visual Cheat Sheet" title="Visual Cheat Sheet">Visual Cheat Sheet</a>, <a href="/Tag/?Article/SDK" title="SDK">SDK</a>, <a href="/Tag/?Article/cocos2d" title="cocos2d">cocos2d</a>, <a href="/Tag/?Article/vibrate" title="vibrate">vibrate</a>, <a href="/Tag/?Article/imagetoolbar" title="imagetoolbar">imagetoolbar</a>, <a href="/Tag/?Article/galleryImg" title="galleryImg">galleryImg</a>, <a href="/Tag/?Article/google" title="google">google</a>, <a href="/Tag/?Article/asp" title="asp">asp</a>, <a href="/Tag/?Article/fckeditor" title="fckeditor">fckeditor</a>, <a href="/Tag/?Article/asp.net" title="asp.net">asp.net</a>, <a href="/Tag/?Article/Outlook Express" title="Outlook Express">Outlook Express</a>, <a href="/Tag/?Article/SqlPlus" title="SqlPlus">SqlPlus</a>, <a href="/Tag/?Article/Gzip" title="Gzip">Gzip</a>, <a href="/Tag/?Article/win2003" title="win2003">win2003</a>, <a href="/Tag/?Article/虚拟主机" title="虚拟主机">虚拟主机</a>, <a href="/Tag/?Article/泛域名" title="泛域名">泛域名</a>, <a href="/Tag/?Article/devcon" title="devcon">devcon</a>, <a href="/Tag/?Article/VSS" title="VSS">VSS</a>, <a href="/Tag/?Article/strict" title="strict">strict</a>, <a href="/">个人知识管理</a></div>
+			</div>
+			<div id="hotList" class="listDiv roundedCorners">
+				<h3 class="listTitle">热门文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/asp/ASP-isblank.html" title="ASP判断是否为空">ASP判断是否为空</a></li><li><a href="/Html/Article/iPhone/cocos2d-for-iPhone-guide.html" title="cocos2d for iPhone教程">cocos2d for iPhone教程</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-1.html" title="canvas JavaScript API学习（一）">canvas JavaScript API学习（一）</a></li><li><a href="/Html/Article/system/dev-enable-disable-netcard.html" title="通过devcon在命令行下启用/禁用网卡">通过devcon在命令行下启用/禁用网卡</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-3.html" title="canvas JavaScript API学习（三）">canvas JavaScript API学习（三）</a></li><li><a href="/Html/Article/b1og/editplus-stx-html5-css3-js-jquery.html" title="EditPlus的js(含jquery),HTML5,CSS3语法高亮文件">EditPlus的js(含jquery),HTML5,CSS3语法高亮文件</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-2.html" title="canvas JavaScript API学习（二）">canvas JavaScript API学习（二）</a></li><li><a href="/Html/Article/iPhone/iPhone-scale-image.html" title="iPhone中缩放图片">iPhone中缩放图片</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners">
+				<h3 class="listTitle">随机推荐</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/system/ubuntu-apt-sources.html" title="ubuntu 9.10 国内apt源">ubuntu 9.10 国内apt源</a></li><li><a href="/Html/Article/javascript/js-clear-file-input.html" title="使用JavaScript清空上传控件input type=&quot;file&quot;">使用JavaScript清空上传控件input type=&quot;file&quot;</a></li><li><a href="/Html/Article/html-css/html5-cheat-sheet-veign.html" title="Html5 Cheat Sheet">Html5 Cheat Sheet</a></li><li><a href="/Html/Article/nginx/open-nginx-gzip-compress.html" title="打开Nginx的gzip压缩">打开Nginx的gzip压缩</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-2.html" title="canvas JavaScript API学习（二）">canvas JavaScript API学习（二）</a></li><li><a href="/Html/Article/Mobile/wap-website-features-principle.html" title="3G时代手机网站的特点和开发原则">3G时代手机网站的特点和开发原则</a></li><li><a href="/Html/Article/html-css/HTML5-CSS-Reset-Style.html" title="HTML5 CSS Reset Style">HTML5 CSS Reset Style</a></li><li><a href="/Html/Article/jquery/jQuery-Visual-Cheat-Sheet-1-4-2.html" title="jQuery 1.4.2 Visual Cheat Sheet">jQuery 1.4.2 Visual Cheat Sheet</a></li><li><a href="/Html/Article/system/winxp-optimize.html" title="全面优化winxp以及winxp的一些技巧">全面优化winxp以及winxp的一些技巧</a></li><li><a href="/Html/Article/system/CDN-tech-intro.html" title="CDN技术介绍">CDN技术介绍</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">参考手册</h3>
+				<ul class="uList ellipsis"><li><a href="/works/css20/Index.html" title="CSS2.0中文参考手册">CSS2.0中文参考手册</a></li><li><a href="/works/DHTMLref/Index.html" title="DHTML中文参考手册">DHTML中文参考手册</a></li><li><a href="/works/css3/Index.html" title="CSS3.0中文参考手册">CSS3.0中文参考手册</a></li><li><a href="/works/VBscript/Index.html" title="VBScript 语言参考">VBScript 语言参考</a></li><li><a href="/works/ado/index.html" title="ADO中文参考手册">ADO中文参考手册</a></li><li><a href="http://www.junchenwu.com/WAI/wai-pageauth.html" title="Web内容可访问性指南 1.0">Web内容可访问性指南 1.0</a></li><li><a href="http://www.w3school.com.cn/html5/index.asp" title="HTML 5 参考手册">HTML 5 参考手册</a></li><li><a href="/works/Ext_3.0_cn/index.html" title="Ext 3.0 中文参考手册">Ext 3.0 中文参考手册</a></li><li><a href="http://www.findmebyip.com/litmus" title="HTML5和CSS3兼容性参考">HTML5和CSS3兼容性参考</a></li><li><a href="http://www.cocos2d-iphone.org/api-ref/" title="cocos2d for iPhone API Reference">cocos2d for iPhone API Reference</a></li><li><a href="/ref/GNUstep_Reference" title="GNUstep Reference">GNUstep Reference</a></li><li><a href="/ref/zh-google-cpp-styleguide/index.html" title="Google C++ 编程规范">Google C++ 编程规范</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">实用工具</h3>
+				<ul class="uList ellipsis"><li><a href="/WebTools/wannianli/" title="万年历查询">万年历</a></li><li><a href="http://www.connectionstrings.com/" title="数据库连接字符串">Connection Strings</a></li><li><a href="http://css3please.com/" title="cross browser css3 rule generator">CSS3规则生成器</a></li><li><a href="http://centricle.com/ref/css/filters/" title="CSS Hack表">CSS Hack表</a></li><li><a href="http://tools.chinaz.com/" title="站长工具">站长工具</a></li><li><a href="http://www.useragentstring.com/" title="User Agent Strings">User Agent Strings</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">友情链接</h3>
+				<ul class="uList ellipsis"><li><a href="http://www.xw81.com/" title="XeonWell Studio">XeonWell Studio</a></li><li><a href="http://www.5dmail.net" title="国内最大的邮件技术资讯基地">邮件技术资讯网</a></li></ul>
+			</div>
+		</div>
+		<div id="rightWrapper">
+			<div id="oriList" class="listDiv roundedCorners">
+				<h3 class="listTitle">原创文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/html-css/apple-touch-icon.html" title="在apple设备上显示网站图标">在apple设备上显示网站图标</a></li><li><a href="/Html/Article/iPhone/iPhone-iPad-check.html" title="判断用户的是iPhone还是iPad">判断用户的是iPhone还是iPad</a></li><li><a href="/Html/Article/iPhone/iPhone-vibrate.html" title="代码实现iPhone震动">代码实现iPhone震动</a></li><li><a href="/Html/Article/iPhone/cocos2d-for-iPhone-guide.html" title="cocos2d for iPhone教程">cocos2d for iPhone教程</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/iPhone-DebugLog.html" title="控制Log的输出">控制Log的输出</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/iPhone/iPhone-SDK-Version-Check-1.html" title="iPhone版本判断">iPhone版本判断</a></li><li><a href="/Html/Article/system/VMware-custom-start.html" title="VMware的自定义启动">VMware的自定义启动</a></li><li><a href="/Html/Article/iPhone/backup-XCode-Key-Bindings.html" title="备份XCode键盘快捷键和颜色文字">备份XCode键盘快捷键和颜色文字</a></li><li><a href="/Html/Article/iPhone/error-communicating-with-the-iTunes-Store.html" title="error communicating with the iTunes Store">error communicating with the iTunes Store</a></li><li><a href="/Html/Article/b1og/liquid-particles.html" title="HTML5 canvas效果Liquid Particles">HTML5 canvas效果Liquid Particles</a></li><li><a href="/Html/Article/b1og/apple-html5-showcase.html" title="apple的html5 Showcase">apple的html5 Showcase</a></li><li><a href="/Html/Article/b1og/html5test-browser-scores.html" title="html5test.com测试你的浏览器支持多少html5特性">html5test.com测试你的浏览器支持多少html5特性</a></li><li><a href="/Html/Article/b1og/netbalancer-hanzify.html" title="网络限速软件NetBalancer">网络限速软件NetBalancer</a></li><li><a href="/Html/Article/html-css/first-letter-in-browsers.html" title="first-letter在各浏览器中的表现">first-letter在各浏览器中的表现</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/b1og/css3-button-maker.html" title="CSS3 Button Maker">CSS3 Button Maker</a></li><li><a href="/Html/Article/b1og/editplus-stx-html5-css3-js-jquery.html" title="EditPlus的js(含jquery),HTML5,CSS3语法高亮文件">EditPlus的js(含jquery),HTML5,CSS3语法高亮文件</a></li><li><a href="/Html/Article/html-css/raquo-laquo-rsaquo-lsaquo.html" title="raquo laquo rsaquo lsaquo">raquo laquo rsaquo lsaquo</a></li></ul>
+			</div>
+		</div>
+		<div id="centerWrapper" class="roundedCorners clearfix">
+			<nav class="nav"><a href="/" title="个人知识管理">Home</a>  &nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="/Html/Article/cs/" title="C#">C#</a></nav>
+			<article class="article">
+				<header><h1 class="artTitle hei">IIS处理模型及ASP.NET页面生命周期</h1></header>
+				<div class="artContent">
+					<p>&nbsp;本文是基于IIS6的处理模型。</p>
+<p>当一个客户端页面访问IIS试图获取一些信息的时候，发生了什么事情？一个请求在通过了HTTP管道后又发生了什么？本文主要是描述这两个过程，即IIS处理asp.net请求和asp.net的页面生命周期。欢迎大家积极拍砖，共同学习，共同进步。</p>
+<p>首先我们要弄清楚两个非常重要的概念：<br />
+1， <strong>worker process(w3wp.exe)</strong>. worker process管理所有的来自客户端的请求并给出响应。它是IIS下asp.net应用程序的核心。<br />
+2，<strong> application pool</strong>. 它是worker process的容器，IIS5及之前的IIS版本均没有application pool的概念。每一个application  pool对应着一个worker process，在IIS Metabase中维护着Application Pool和worker process的Mapping。这就避免了IIS5中出现的worker process（IIS5中是aspnet_wp.exe，同一时间只能运行一个该进程)崩溃，application全崩溃的局面。</p>
+<p>客户端向IIS发出一个资源请求后发生了如下事情：</p>
+<p><strong>1， server接受该请求</strong><br />
+IIS6通过内核模式（Kernel mode）中的HTTP.SYS来分发各个Request到application pool。 这并不是随机的过程，在application pool创建的时候就已经注册到了HTTP.SYS,所以当请求来到时HTTP.SYS会直接发送到相应的application pool。 接下来在IIS的用户模式（User mode)中，Web Admin Services (WAS) 做了从HTTP.SYS中得到Request并分发到application pool的工作。application pool直接把request传递给worker process。<br />
+<strong>2， 请求传递到worker process后，worker process初始化加载ASP.NET ISAPI(Internet Server Application<br />
+Program Interface)，ASP.NET ISAPI进而加载CLR创建托管环境。</strong><br />
+(注：ISAPI只是一个接口，起到一个代理的作用，主要能力就是根据Request URL的后缀来寻找该后缀的处理程序）<br />
+ASP.NET ISAPI定义在aspnet_isapi.dll中，它本身运行在一个非托管的环境中。ASP.NET ISAPI开始一个HttpRuntime, HttpRuntime调用ProcessRequest方法来开始处理请求。ProcessRequest根据ISAPI传进来的iWRType来创建不同的HttpWorkerRequest，从而屏蔽了不同IIS的差异。接下来ProcessRequest方法创建了HttpContext，我们使用HTTPContext.Current来访问它。在HttpRuntime使用HttpApplicationFactory创建了HttpApplication对象（IHttpHandler）以后，所有的请求都会在通过httpmodule后找到相应的Httphandler进行处理。在HttpApplicationFactory创建HttpApplication之前，会查找config（web.config和Machine.config）文件中注册的所有的HttpModule，并根据配置信息加载相应的Assembly，通过Reflection创建对应的HttpModule，并将这些Module加到HttpApplication 的_moduleCollection Filed中。我们对一个Application的请求最终会落到一个HttpApplication对象上。当一个请求到来时，ASP.NET会在Httplication Pool中查找未被使用的HttpApplication对象。<br />
+<strong>3， 请求通过HTTP管道后，每个请求都发向相关的各自的httphandler，IIS请求处理过程结束。</strong><br />
+HttpHandler是HTTP管道的终点，它为每个request生成输出。System.Web.UI.Page就是这样一个典型的Httphandler，当我们请求一个aspx页面，这个HttpHandler就生成html发送回客户端。看Page类的签名：<br />
+public class Page : TemplateControl, IHttpHandler<br />
+{<br />
+}<br />
+可以看到，Page类就是一个HttpHandler。<br />
+综上整个过程就是：当客户端向服务器发送资源请求时，请求首先到达IIS的HTTP.SYS。然后HTTP.SYS发送请求道对应的Application Pool。 然后Application Pool发送请求到Worker Process（W3WP.exe）中加载ISAPI Extension，ISAPI创建一个HttpRuntime对象来通过HttpModule和HttpHandler处理请求。 然后页面生命周期就开始了。</p>
+<p>4， 页面生命周期开始<br />
+页面生命周期的主要阶段包括：<br />
+<strong>页面初始化（Init）</strong>: 服务器创建服务器控件的实例<br />
+<strong>加载(load):</strong> 控件实例被加载到它定义的页面对象中<br />
+<strong>预输出:（PreRender)</strong> 对控件的更改被更新，准备输出。<br />
+<strong>保存(SaveViewState)</strong>: 控件的状态信息被保存。输出页面(Render):服务器为控件创建html标记。<br />
+<strong>处理(Dispose)</strong>: 主要做的工作就是dispose, 关闭数据库连接，文件资源的释放等。<br />
+<strong>卸载(Unload)</strong>：销毁服务器控件的实例</p>
+<p>页面生命周期的主要事件：<br />
+<strong>PreInit:</strong></p>
+<ol>
+    <li>检查IsPostBack 属性</li>
+    <li>动态设置Master Page</li>
+    <li>动态设置Theme</li>
+    <li>设置控件的默认值(UniqueId等）</li>
+    <li>重新创建动态控件（初始化控件），初始化控件的值</li>
+</ol>
+<p><strong>Init: </strong>这个时间发生在所有的控件被初始化，所有的皮肤设置被应用以后。它用来读取或者初始化控件属性。它能够用来注册一些aspx页面中没有指出的控件的事件。<br />
+<strong>InitComplete:</strong> Use this event for processing tasks that require all initialization to be complete.<br />
+<strong>PreLoad: </strong>加载页面的ViewState和所有的控件，然后处理所有的包含在Request实例中的postback数据。<br />
+<strong>Load: </strong>这个事件可能是大家最熟悉的了。需要注意的是，Page对象会递归的调用子控件的onload事件直到页面和所有的子控件被加载完成。这个事件主要用来设置控件属性的值，建立数据库连接（通常不这么做）。<br />
+<strong>Control events: </strong>这个就不多说了，主要是处理控件的事件，例如click。这也就让我们明白了每次我们click一个Button的时候，实际上是要先去执行load事件然后才执行click事件的，一般我们用!IsPostBack来判断一下从而避免执行不必要的加载逻辑。<br />
+<strong>LoadComplete: </strong>页面所有的控件都被加载以后执行，暂时没有想到用来干什么。。。<br />
+<strong>PreRender:</strong> 在HTML被生成之前这是最后一个事件。每一个页面中的控件都有PreRender的过程。在这里对将要输出的HTML结果进行最后一次修改。<br />
+<strong>SaveStateComplete: </strong>在这个时间发生之前，已经保存了所有控件和页面的，任何对page或者控件的改动都不会产生左右。暂时没想到用来干啥。<br />
+<strong>Render: </strong>它不是一个事件而是一个方法。工作就是把HTML写回客户端浏览器。<br />
+<strong>UnLoad:</strong> 页面中的每一个控件都会发生这件事。在控件中，使用这个事件来做清理工作，例如关闭数据库连接等。对与页面本身也是做清理工作，例如关闭打开的文件和数据库连接，或者结束日志或者其它指定的工作。</p>
+<p>需要说明的是，每次Request都会创建一个全新的Page类的实例，所以在页面中的自己定义的字段是不能在两次request中传递值的，需要使用viewstate来存储。<br />
+5， HttpHandler根据页面生命周期中事件的处理把结果发回IIS,IIS再把结果发回客户端浏览器。<br />
+值得注意的是，在这个过程中请求会再次通过HttpModule(注册一个EndRequest事件）。</p>
+<p>至此，整个Request结束。</p>
+<p>原文地址:&nbsp;<a href="http://www.cnblogs.com/GodSpeed/archive/2010/06/13/1757441.html">IIS处理模型及ASP.NET页面生命周期</a></p>
+				</div>
+				<footer>
+					<p class="tagList">Tags: <a href="/Tag/?Article/asp.net">asp.net</a> , <a href="/Tag/?Article/iis">iis</a> , <a href="/Tag/?Article/生命周期">生命周期</a> </p>
+					<!-- AddThis Button BEGIN --><div class="addthis_toolbox addthis_32x32_style addthis_default_style"><a class="addthis_button_facebook"></a><a class="addthis_button_twitter"></a><a class="addthis_button_plurk"></a><a class="addthis_button_funp"></a><a class="addthis_button_digg"></a><a class="addthis_button_xanga"></a><a class="addthis_button_blogger"></a><a class="addthis_button_googlereader"></a><a class="addthis_button_googlebuzz"></a><a class="addthis_button_email"></a><a class="addthis_button_compact"></a></div><!-- AddThis Button END -->
+					<ul>
+						<li>上篇文章: <a href="/Html/Article/cs/Microsoft-URLRewriter.html">使用Mircosoft URLRewriter实现URL重写，伪静态</a></li>
+						<li>下篇文章: <a href="javascript:void(0);">没有了</a></li>
+					</ul>
+					<p>可能感兴趣的文章:</p>
+					<ul class="rndArtList"><li><a href="/Html/Article/nginx/nginx-virtual-host1.html" title="为nginx设置默认虚拟主机（空主机头，默认主机头）">为nginx设置默认虚拟主机（空主机头，默认主机头）</a></li><li><a href="/Html/Article/html-css/CSS3-Help-Sheet.html" title="CSS3 Help Sheet">CSS3 Help Sheet</a></li><li><a href="/Html/Article/asp/disable-filesystemobject.html" title="如何禁止使用FileSystemObject">如何禁止使用FileSystemObject</a></li><li><a href="/Html/Article/html-css/css-fix-float-clear.html" title="子元素浮动后,父元素高度自动增加">子元素浮动后,父元素高度自动增加</a></li><li><a href="/Html/Article/b1og/WebKit-Native-Asynchronous-Script-Loading.html" title="WebKit原生支持异步载入脚本">WebKit原生支持异步载入脚本</a></li></ul>
+				</footer>
+			</article>
+		</div>
+	</div>
+	<footer id="footer"><p>&copy; 2010-2011 XeonWell. 以上文摘,&nbsp;仅供个人收藏和参考&nbsp;<a href="http://www.miibeian.gov.cn">粤ICP备10095269号-1</a>&nbsp;</p>
+<p><a title="Valid XHTML 1.0 Strict" href="http://validator.w3.org/">HTML5</a> | <a title="Valid CSS" href="http://jigsaw.w3.org/css-validator/">Valid CSS 1/2/3</a> | <a title="508 Standards, Section" href="http://www.contentquality.com/mynewtester/cynthia.exe?url1=http%3A%2F%2Fwww.xw.hb.cn%2F">508</a> | <a title="WAI" href="http://www.contentquality.com/mynewtester/cynthia.exe?rptmode=2&amp;url1=http%3A%2F%2Fwww.xw.hb.cn%2F">WAI</a>&nbsp;| <a href="/rss/">RSS</a> | <a href="/rss/?type=atom">Atom</a> | <a href="/google-site.xml">SiteMap</a></p></footer>
+	<div id="jsDiv">
+		<script type="text/javascript" src="/Js/jquery.js"></script>
+		<script type="text/javascript" src="/Js/common.js"></script>
+		<!--[if lte IE 6]><script type="text/javascript" src="/Js/ie-fix.js"></script><![endif]-->
+		<script type="text/javascript" src="/js/article.js"></script>
+		<script type="text/javascript" src="/Click.Asp?id=159"></script>
+		<!-- AddThis Button BEGIN --><script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xeonwell"></script><!-- AddThis Button END -->
+	</div>
+	<div class="nd"><p><a href="/">个人知识管理</a></p><script type="text/javascript" src="/Js/stat.js"></script></div>
+</div>
+</body>
+</html>

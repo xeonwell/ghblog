@@ -1,0 +1,131 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>子元素浮动后,父元素高度自动增加--个人知识管理</title>
+<meta name="Keywords" content="float,clear,html,css,javascript,web,js,Web前端,iPhone, Mobile, Android" />
+<meta name="Description" content="子元素浮动后,父元素高度自动增加,关注移动及互联网开发" />
+<meta name="Author" content="XeonWell, email:admin_xw81_com" />
+<meta name="language" content="Chinese" />
+<meta name="Robots" content="index,follow" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="icon" href="/i/xiong.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/i/xiong.ico" type="image/x-icon" />
+<link href="/css/fw.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="alternate" type="application/rss+xml" title="个人知识管理" href="http://feeds.feedburner.com/xeonwell" />
+<!--[if lte IE 8]><link href="/css/ie-fix.css" rel="stylesheet" type="text/css" media="all" />
+<script src="/js/ie-html5.js" type="text/javascript" /></script><![endif]-->
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shThemeDefault.css"/>
+</head>
+
+<body>
+<div id="bodyWrapper">
+	<header id="header" class="clearfix">
+		<h1><a href="/" title="个人知识管理">个人知识管理</a></h1>
+		<ul id="menu" class="resetList"><li><a href="/" title="个人知识管理">Home</a></li><li><a href="/Html/Article/Mobile/" title="Mobile" accesskey="1"><strong>Mobile</strong></a></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS" accesskey="2" id="curNav"><strong>(X)Html/CSS</strong></a></li><li><a href="/Html/Article/javascript/" title="Javascript" accesskey="3"><strong>Javascript</strong></a></li><li><a href="/Html/Article/asp/" title="ASP" accesskey="4"><strong>ASP</strong></a></li><li><a href="/Html/Article/cs/" title="C#" accesskey="5"><strong>C#</strong></a></li><li><a href="/Html/Article/system/" title="System" accesskey="6"><strong>System</strong></a></li><li><a href="/Html/Article/b1og/" title="Blog" accesskey="7"><strong>Blog</strong></a></li></ul>
+		<div id="searchDiv">
+			<form id="searchForm" action="/Search/" method="get">
+			<p><label for="searchStr">输入搜索字符串</label><input type="text" class="searchStr" name="searchStr" id="searchStr" value="" size="19" alt="输入搜索字符串" /><input type="submit" value="Search" class="search" alt="search" /></p>
+			</form>
+		</div>
+	</header>
+	<div id="content" class="clearfix">
+		<div id="leftWrapper">
+			<div id="artCategory" class="listDiv roundedCorners">
+				<h3 class="listTitle">文章分类</h3>
+				<ul class="uList"><li><a href="/Html/Article/Mobile/" title="Mobile">Mobile</a><ul><li><a href="/Html/Article/iPhone/" title="iPhone">iPhone</a></li></ul></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS">(X)Html/CSS</a></li><li><a href="/Html/Article/javascript/" title="Javascript">Javascript</a><ul><li><a href="/Html/Article/jquery/" title="jQuery">jQuery</a></li></ul></li><li><a href="/Html/Article/asp/" title="ASP">ASP</a></li><li><a href="/Html/Article/cs/" title="C#">C#</a></li><li><a href="/Html/Article/system/" title="System">System</a><ul><li><a href="/Html/Article/nginx/" title="Nginx">Nginx</a></li><li><a href="/Html/Article/IIS/" title="IIS">IIS</a></li><li><a href="/Html/Article/database/" title="Database">Database</a></li><li><a href="/Html/Article/mail/" title="Mail">Mail</a></li></ul></li><li><a href="/Html/Article/b1og/" title="Blog">Blog</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners" id="tagCloud">
+				<h3 class="listTitle">Tag Cloud</h3>
+				<div class="tagList"><a href="/Tag/?Article/html5" title="html5">html5</a>, <a href="/Tag/?Article/iPhone" title="iPhone">iPhone</a>, <a href="/Tag/?Article/canvas" title="canvas">canvas</a>, <a href="/Tag/?Article/JavaScript" title="JavaScript">JavaScript</a>, <a href="/Tag/?Article/css3" title="css3">css3</a>, <a href="/Tag/?Article/css" title="css">css</a>, <a href="/Tag/?Article/Nginx" title="Nginx">Nginx</a>, <a href="/Tag/?Article/Cheat Sheet" title="Cheat Sheet">Cheat Sheet</a>, <a href="/Tag/?Article/jQuery" title="jQuery">jQuery</a>, <a href="/Tag/?Article/XCode" title="XCode">XCode</a>, <a href="/Tag/?Article/iis" title="iis">iis</a>, <a href="/Tag/?Article/wap" title="wap">wap</a>, <a href="/Tag/?Article/HTTP" title="HTTP">HTTP</a>, <a href="/Tag/?Article/Android" title="Android">Android</a>, <a href="/Tag/?Article/CSS Hack" title="CSS Hack">CSS Hack</a>, <a href="/Tag/?Article/xhtml" title="xhtml">xhtml</a>, <a href="/Tag/?Article/Doctype" title="Doctype">Doctype</a>, <a href="/Tag/?Article/Help Sheet" title="Help Sheet">Help Sheet</a>, <a href="/Tag/?Article/DNS" title="DNS">DNS</a>, <a href="/Tag/?Article/iPad" title="iPad">iPad</a>, <a href="/Tag/?Article/浮动" title="浮动">浮动</a>, <a href="/Tag/?Article/win2000" title="win2000">win2000</a>, <a href="/Tag/?Article/ubuntu" title="ubuntu">ubuntu</a>, <a href="/Tag/?Article/EditPlus" title="EditPlus">EditPlus</a>, <a href="/Tag/?Article/chrome" title="chrome">chrome</a>, <a href="/Tag/?Article/清除浮动" title="清除浮动">清除浮动</a>, <a href="/Tag/?Article/clearfix" title="clearfix">clearfix</a>, <a href="/Tag/?Article/DOM" title="DOM">DOM</a>, <a href="/Tag/?Article/跨浏览器" title="跨浏览器">跨浏览器</a>, <a href="/Tag/?Article/手机" title="手机">手机</a>, <a href="/Tag/?Article/3G" title="3G">3G</a>, <a href="/Tag/?Article/Visual Cheat Sheet" title="Visual Cheat Sheet">Visual Cheat Sheet</a>, <a href="/Tag/?Article/SDK" title="SDK">SDK</a>, <a href="/Tag/?Article/cocos2d" title="cocos2d">cocos2d</a>, <a href="/Tag/?Article/vibrate" title="vibrate">vibrate</a>, <a href="/Tag/?Article/imagetoolbar" title="imagetoolbar">imagetoolbar</a>, <a href="/Tag/?Article/galleryImg" title="galleryImg">galleryImg</a>, <a href="/Tag/?Article/google" title="google">google</a>, <a href="/Tag/?Article/asp" title="asp">asp</a>, <a href="/Tag/?Article/fckeditor" title="fckeditor">fckeditor</a>, <a href="/Tag/?Article/asp.net" title="asp.net">asp.net</a>, <a href="/Tag/?Article/Outlook Express" title="Outlook Express">Outlook Express</a>, <a href="/Tag/?Article/SqlPlus" title="SqlPlus">SqlPlus</a>, <a href="/Tag/?Article/Gzip" title="Gzip">Gzip</a>, <a href="/Tag/?Article/win2003" title="win2003">win2003</a>, <a href="/Tag/?Article/虚拟主机" title="虚拟主机">虚拟主机</a>, <a href="/Tag/?Article/泛域名" title="泛域名">泛域名</a>, <a href="/Tag/?Article/devcon" title="devcon">devcon</a>, <a href="/Tag/?Article/VSS" title="VSS">VSS</a>, <a href="/Tag/?Article/strict" title="strict">strict</a>, <a href="/">个人知识管理</a></div>
+			</div>
+			<div id="hotList" class="listDiv roundedCorners">
+				<h3 class="listTitle">热门文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/asp/ASP-isblank.html" title="ASP判断是否为空">ASP判断是否为空</a></li><li><a href="/Html/Article/iPhone/cocos2d-for-iPhone-guide.html" title="cocos2d for iPhone教程">cocos2d for iPhone教程</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-1.html" title="canvas JavaScript API学习（一）">canvas JavaScript API学习（一）</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/system/dev-enable-disable-netcard.html" title="通过devcon在命令行下启用/禁用网卡">通过devcon在命令行下启用/禁用网卡</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-3.html" title="canvas JavaScript API学习（三）">canvas JavaScript API学习（三）</a></li><li><a href="/Html/Article/b1og/editplus-stx-html5-css3-js-jquery.html" title="EditPlus的js(含jquery),HTML5,CSS3语法高亮文件">EditPlus的js(含jquery),HTML5,CSS3语法高亮文件</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-2.html" title="canvas JavaScript API学习（二）">canvas JavaScript API学习（二）</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/iPhone/iPhone-scale-image.html" title="iPhone中缩放图片">iPhone中缩放图片</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners">
+				<h3 class="listTitle">随机推荐</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/html-css/DOM-storage-intro.html" title="DOM Storage全解析">DOM Storage全解析</a></li><li><a href="/Html/Article/nginx/nginx-brandwidth-limit.html" title="Nginx简单的防盗链和带宽限制">Nginx简单的防盗链和带宽限制</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-5.html" title="canvas JavaScript API学习（五）">canvas JavaScript API学习（五）</a></li><li><a href="/Html/Article/system/CDN-tech-intro.html" title="CDN技术介绍">CDN技术介绍</a></li><li><a href="/Html/Article/system/session-principle-1.html" title="session机制详解">session机制详解</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-4.html" title="canvas JavaScript API学习（四）">canvas JavaScript API学习（四）</a></li><li><a href="/Html/Article/javascript/JavaScript-Performance-Optimization.html" title="javascript代码性能优化">javascript代码性能优化</a></li><li><a href="/Html/Article/cs/159.html" title="IIS处理模型及ASP.NET页面生命周期">IIS处理模型及ASP.NET页面生命周期</a></li><li><a href="/Html/Article/nginx/nginx-virtual-host1.html" title="为nginx设置默认虚拟主机（空主机头，默认主机头）">为nginx设置默认虚拟主机（空主机头，默认主机头）</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-3.html" title="canvas JavaScript API学习（三）">canvas JavaScript API学习（三）</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">参考手册</h3>
+				<ul class="uList ellipsis"><li><a href="/works/css20/Index.html" title="CSS2.0中文参考手册">CSS2.0中文参考手册</a></li><li><a href="/works/DHTMLref/Index.html" title="DHTML中文参考手册">DHTML中文参考手册</a></li><li><a href="/works/css3/Index.html" title="CSS3.0中文参考手册">CSS3.0中文参考手册</a></li><li><a href="/works/VBscript/Index.html" title="VBScript 语言参考">VBScript 语言参考</a></li><li><a href="/works/ado/index.html" title="ADO中文参考手册">ADO中文参考手册</a></li><li><a href="http://www.junchenwu.com/WAI/wai-pageauth.html" title="Web内容可访问性指南 1.0">Web内容可访问性指南 1.0</a></li><li><a href="http://www.w3school.com.cn/html5/index.asp" title="HTML 5 参考手册">HTML 5 参考手册</a></li><li><a href="/works/Ext_3.0_cn/index.html" title="Ext 3.0 中文参考手册">Ext 3.0 中文参考手册</a></li><li><a href="http://www.findmebyip.com/litmus" title="HTML5和CSS3兼容性参考">HTML5和CSS3兼容性参考</a></li><li><a href="http://www.cocos2d-iphone.org/api-ref/" title="cocos2d for iPhone API Reference">cocos2d for iPhone API Reference</a></li><li><a href="/ref/GNUstep_Reference" title="GNUstep Reference">GNUstep Reference</a></li><li><a href="/ref/zh-google-cpp-styleguide/index.html" title="Google C++ 编程规范">Google C++ 编程规范</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">实用工具</h3>
+				<ul class="uList ellipsis"><li><a href="/WebTools/wannianli/" title="万年历查询">万年历</a></li><li><a href="http://www.connectionstrings.com/" title="数据库连接字符串">Connection Strings</a></li><li><a href="http://css3please.com/" title="cross browser css3 rule generator">CSS3规则生成器</a></li><li><a href="http://centricle.com/ref/css/filters/" title="CSS Hack表">CSS Hack表</a></li><li><a href="http://tools.chinaz.com/" title="站长工具">站长工具</a></li><li><a href="http://www.useragentstring.com/" title="User Agent Strings">User Agent Strings</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">友情链接</h3>
+				<ul class="uList ellipsis"><li><a href="http://www.xw81.com/" title="XeonWell Studio">XeonWell Studio</a></li><li><a href="http://www.5dmail.net" title="国内最大的邮件技术资讯基地">邮件技术资讯网</a></li></ul>
+			</div>
+		</div>
+		<div id="rightWrapper">
+			<div id="oriList" class="listDiv roundedCorners">
+				<h3 class="listTitle">原创文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/html-css/apple-touch-icon.html" title="在apple设备上显示网站图标">在apple设备上显示网站图标</a></li><li><a href="/Html/Article/iPhone/iPhone-iPad-check.html" title="判断用户的是iPhone还是iPad">判断用户的是iPhone还是iPad</a></li><li><a href="/Html/Article/iPhone/iPhone-vibrate.html" title="代码实现iPhone震动">代码实现iPhone震动</a></li><li><a href="/Html/Article/iPhone/cocos2d-for-iPhone-guide.html" title="cocos2d for iPhone教程">cocos2d for iPhone教程</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/iPhone-DebugLog.html" title="控制Log的输出">控制Log的输出</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/iPhone/iPhone-SDK-Version-Check-1.html" title="iPhone版本判断">iPhone版本判断</a></li><li><a href="/Html/Article/system/VMware-custom-start.html" title="VMware的自定义启动">VMware的自定义启动</a></li><li><a href="/Html/Article/iPhone/backup-XCode-Key-Bindings.html" title="备份XCode键盘快捷键和颜色文字">备份XCode键盘快捷键和颜色文字</a></li><li><a href="/Html/Article/iPhone/error-communicating-with-the-iTunes-Store.html" title="error communicating with the iTunes Store">error communicating with the iTunes Store</a></li><li><a href="/Html/Article/b1og/liquid-particles.html" title="HTML5 canvas效果Liquid Particles">HTML5 canvas效果Liquid Particles</a></li><li><a href="/Html/Article/b1og/apple-html5-showcase.html" title="apple的html5 Showcase">apple的html5 Showcase</a></li><li><a href="/Html/Article/b1og/html5test-browser-scores.html" title="html5test.com测试你的浏览器支持多少html5特性">html5test.com测试你的浏览器支持多少html5特性</a></li><li><a href="/Html/Article/b1og/netbalancer-hanzify.html" title="网络限速软件NetBalancer">网络限速软件NetBalancer</a></li><li><a href="/Html/Article/html-css/first-letter-in-browsers.html" title="first-letter在各浏览器中的表现">first-letter在各浏览器中的表现</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/b1og/css3-button-maker.html" title="CSS3 Button Maker">CSS3 Button Maker</a></li><li><a href="/Html/Article/b1og/editplus-stx-html5-css3-js-jquery.html" title="EditPlus的js(含jquery),HTML5,CSS3语法高亮文件">EditPlus的js(含jquery),HTML5,CSS3语法高亮文件</a></li><li><a href="/Html/Article/html-css/raquo-laquo-rsaquo-lsaquo.html" title="raquo laquo rsaquo lsaquo">raquo laquo rsaquo lsaquo</a></li></ul>
+			</div>
+		</div>
+		<div id="centerWrapper" class="roundedCorners clearfix">
+			<nav class="nav"><a href="/" title="个人知识管理">Home</a>  &nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="/Html/Article/html-css/" title="(X)Html/CSS">(X)Html/CSS</a></nav>
+			<article class="article">
+				<header><h1 class="artTitle hei">子元素浮动后,父元素高度自动增加</h1></header>
+				<div class="artContent">
+					<p>#father:after{ content:&quot;.&quot;; height:0; visibility:hidden; display:block; clear:both; }</p>
+<p>清除&quot;闭合(清除)浮动&quot;的方法，主要是一下四种：</p>
+<p>1.&nbsp;&nbsp;&nbsp; 额外标签法</p>
+<p>这种方法就是向父容器的末尾再插入一个额外的标签，并令其清除浮动（clear）以撑大父容器。这种方法浏览器兼容性好，没有什么问题，缺点就是需要额外的（而且通常是无语义的）标签。<br />
+我个人不喜欢这种方法，但是它确实是W3C推荐的方法</p>
+<p>&nbsp;程序代码<br />
+&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;</p>
+<p>或者使用<br />
+&nbsp;程序代码<br />
+&lt;br style=&quot;clear:both;&quot; /&gt;</p>
+<p><br />
+2.&nbsp;&nbsp;&nbsp; 使用after伪类</p>
+<p>这种方法就是对父容器使用after伪类和内容声明在指定的现在内容末尾添加新的内容。经常的做法就是添加一个&quot;点&quot;，因为它比较小不太引人注意。然后我们再利用它来清除浮动（闭合浮动元素），并隐藏这个内容。<br />
+这种方法兼容性一般，但经过各种 hack 也可以应付不同浏览器了，同时又可以保证html 比较干净，所以用得还是比较多的。</p>
+<p>&nbsp;程序代码</p>
+<p>#outer:after{&nbsp; <br />
+&nbsp;&nbsp;&nbsp; content:&quot;.&quot;;&nbsp; <br />
+&nbsp;&nbsp;&nbsp; height:0;&nbsp; <br />
+&nbsp;&nbsp;&nbsp; visibility:hidden;&nbsp; <br />
+&nbsp;&nbsp;&nbsp; display:block;&nbsp; <br />
+&nbsp;&nbsp;&nbsp; clear:both;&nbsp; <br />
+}</p>
+<p><br />
+3.&nbsp;&nbsp;&nbsp; 设置overflow为hidden或者auto</p>
+<p>这种做法就是将父容器的overflow设为hidden或auot就可以在标准兼容浏览器中闭合浮动元素.<br />
+不过使用overflow的时候，可能会对页面表现带来影响，而且这种影响是不确定的，你最好是能在多个浏览器上测试你的页面</p>
+<p>4.&nbsp;&nbsp;&nbsp; 浮动外部元素，float-in-float</p>
+<p>这种做法就是让父容器也浮动，这利用到了浮动元素的一个特性--浮动元素会闭合浮动元素。这种方式在 IE/Win 和标准兼容浏览器中都有较好的效果，但缺点也很明显--父容器未必想浮动就浮动的了，毕竟浮动是一种比较特殊的行为，有时布局不允许其浮动也很正常。<br />
+个人不是很赞成这种做法，但是从dudo最后的总结总可以看出，他好像很赞成这种做法</p>
+				</div>
+				<footer>
+					<p class="tagList">Tags: <a href="/Tag/?Article/浮动">浮动</a> </p>
+					<!-- AddThis Button BEGIN --><div class="addthis_toolbox addthis_32x32_style addthis_default_style"><a class="addthis_button_facebook"></a><a class="addthis_button_twitter"></a><a class="addthis_button_plurk"></a><a class="addthis_button_funp"></a><a class="addthis_button_digg"></a><a class="addthis_button_xanga"></a><a class="addthis_button_blogger"></a><a class="addthis_button_googlereader"></a><a class="addthis_button_googlebuzz"></a><a class="addthis_button_email"></a><a class="addthis_button_compact"></a></div><!-- AddThis Button END -->
+					<ul>
+						<li>上篇文章: <a href="/Html/Article/html-css/CSS-hack-browser.html">CSS hack浏览器兼容一览表</a></li>
+						<li>下篇文章: <a href="/Html/Article/html-css/ClearFix-float.html">Clear Fix浮动问题修复</a></li>
+					</ul>
+					<p>可能感兴趣的文章:</p>
+					<ul class="rndArtList"><li><a href="/Html/Article/b1og/browser-engine-intro.html" title="主流浏览器内核概览">主流浏览器内核概览</a></li><li><a href="/Html/Article/Mobile/Build-Android-development-environment.html" title="搭建Android2.1开发环境">搭建Android2.1开发环境</a></li><li><a href="/Html/Article/html-css/css-hack-and-Backward-compatibility.html" title="说说CSS Hack 和向后兼容">说说CSS Hack 和向后兼容</a></li><li><a href="/Html/Article/iPhone/basic-knowledge-IPhone-development.html" title="iPhone开发的基础知识">iPhone开发的基础知识</a></li><li><a href="/Html/Article/html-css/hide-imagetoolbar.html" title="设置图片上的工具栏不显示">设置图片上的工具栏不显示</a></li></ul>
+				</footer>
+			</article>
+		</div>
+	</div>
+	<footer id="footer"><p>&copy; 2010-2011 XeonWell. 以上文摘,&nbsp;仅供个人收藏和参考&nbsp;<a href="http://www.miibeian.gov.cn">粤ICP备10095269号-1</a>&nbsp;</p>
+<p><a title="Valid XHTML 1.0 Strict" href="http://validator.w3.org/">HTML5</a> | <a title="Valid CSS" href="http://jigsaw.w3.org/css-validator/">Valid CSS 1/2/3</a> | <a title="508 Standards, Section" href="http://www.contentquality.com/mynewtester/cynthia.exe?url1=http%3A%2F%2Fwww.xw.hb.cn%2F">508</a> | <a title="WAI" href="http://www.contentquality.com/mynewtester/cynthia.exe?rptmode=2&amp;url1=http%3A%2F%2Fwww.xw.hb.cn%2F">WAI</a>&nbsp;| <a href="/rss/">RSS</a> | <a href="/rss/?type=atom">Atom</a> | <a href="/google-site.xml">SiteMap</a></p></footer>
+	<div id="jsDiv">
+		<script type="text/javascript" src="/Js/jquery.js"></script>
+		<script type="text/javascript" src="/Js/common.js"></script>
+		<!--[if lte IE 6]><script type="text/javascript" src="/Js/ie-fix.js"></script><![endif]-->
+		<script type="text/javascript" src="/js/article.js"></script>
+		<script type="text/javascript" src="/Click.Asp?id=21"></script>
+		<!-- AddThis Button BEGIN --><script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xeonwell"></script><!-- AddThis Button END -->
+	</div>
+	<div class="nd"><p><a href="/">个人知识管理</a></p><script type="text/javascript" src="/Js/stat.js"></script></div>
+</div>
+</body>
+</html>

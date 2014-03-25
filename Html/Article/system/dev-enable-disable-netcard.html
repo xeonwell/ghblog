@@ -1,0 +1,209 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>通过devcon在命令行下启用/禁用网卡--个人知识管理</title>
+<meta name="Keywords" content="devcon,网卡,,html,css,javascript,web,js,Web前端,iPhone, Mobile, Android" />
+<meta name="Description" content="通过devcon在命令行下启用/禁用网卡,关注移动及互联网开发" />
+<meta name="Author" content="XeonWell, email:admin_xw81_com" />
+<meta name="language" content="Chinese" />
+<meta name="Robots" content="index,follow" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="icon" href="/i/xiong.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/i/xiong.ico" type="image/x-icon" />
+<link href="/css/fw.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="alternate" type="application/rss+xml" title="个人知识管理" href="http://feeds.feedburner.com/xeonwell" />
+<!--[if lte IE 8]><link href="/css/ie-fix.css" rel="stylesheet" type="text/css" media="all" />
+<script src="/js/ie-html5.js" type="text/javascript" /></script><![endif]-->
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shThemeDefault.css"/>
+</head>
+
+<body>
+<div id="bodyWrapper">
+	<header id="header" class="clearfix">
+		<h1><a href="/" title="个人知识管理">个人知识管理</a></h1>
+		<ul id="menu" class="resetList"><li><a href="/" title="个人知识管理">Home</a></li><li><a href="/Html/Article/Mobile/" title="Mobile" accesskey="1"><strong>Mobile</strong></a></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS" accesskey="2"><strong>(X)Html/CSS</strong></a></li><li><a href="/Html/Article/javascript/" title="Javascript" accesskey="3"><strong>Javascript</strong></a></li><li><a href="/Html/Article/asp/" title="ASP" accesskey="4"><strong>ASP</strong></a></li><li><a href="/Html/Article/cs/" title="C#" accesskey="5"><strong>C#</strong></a></li><li><a href="/Html/Article/system/" title="System" accesskey="6" id="curNav"><strong>System</strong></a></li><li><a href="/Html/Article/b1og/" title="Blog" accesskey="7"><strong>Blog</strong></a></li></ul>
+		<div id="searchDiv">
+			<form id="searchForm" action="/Search/" method="get">
+			<p><label for="searchStr">输入搜索字符串</label><input type="text" class="searchStr" name="searchStr" id="searchStr" value="" size="19" alt="输入搜索字符串" /><input type="submit" value="Search" class="search" alt="search" /></p>
+			</form>
+		</div>
+	</header>
+	<div id="content" class="clearfix">
+		<div id="leftWrapper">
+			<div id="artCategory" class="listDiv roundedCorners">
+				<h3 class="listTitle">文章分类</h3>
+				<ul class="uList"><li><a href="/Html/Article/Mobile/" title="Mobile">Mobile</a><ul><li><a href="/Html/Article/iPhone/" title="iPhone">iPhone</a></li></ul></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS">(X)Html/CSS</a></li><li><a href="/Html/Article/javascript/" title="Javascript">Javascript</a><ul><li><a href="/Html/Article/jquery/" title="jQuery">jQuery</a></li></ul></li><li><a href="/Html/Article/asp/" title="ASP">ASP</a></li><li><a href="/Html/Article/cs/" title="C#">C#</a></li><li><a href="/Html/Article/system/" title="System">System</a><ul><li><a href="/Html/Article/nginx/" title="Nginx">Nginx</a></li><li><a href="/Html/Article/IIS/" title="IIS">IIS</a></li><li><a href="/Html/Article/database/" title="Database">Database</a></li><li><a href="/Html/Article/mail/" title="Mail">Mail</a></li></ul></li><li><a href="/Html/Article/b1og/" title="Blog">Blog</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners" id="tagCloud">
+				<h3 class="listTitle">Tag Cloud</h3>
+				<div class="tagList"><a href="/Tag/?Article/html5" title="html5">html5</a>, <a href="/Tag/?Article/iPhone" title="iPhone">iPhone</a>, <a href="/Tag/?Article/canvas" title="canvas">canvas</a>, <a href="/Tag/?Article/JavaScript" title="JavaScript">JavaScript</a>, <a href="/Tag/?Article/css3" title="css3">css3</a>, <a href="/Tag/?Article/css" title="css">css</a>, <a href="/Tag/?Article/Nginx" title="Nginx">Nginx</a>, <a href="/Tag/?Article/Cheat Sheet" title="Cheat Sheet">Cheat Sheet</a>, <a href="/Tag/?Article/jQuery" title="jQuery">jQuery</a>, <a href="/Tag/?Article/XCode" title="XCode">XCode</a>, <a href="/Tag/?Article/iis" title="iis">iis</a>, <a href="/Tag/?Article/wap" title="wap">wap</a>, <a href="/Tag/?Article/HTTP" title="HTTP">HTTP</a>, <a href="/Tag/?Article/Android" title="Android">Android</a>, <a href="/Tag/?Article/CSS Hack" title="CSS Hack">CSS Hack</a>, <a href="/Tag/?Article/xhtml" title="xhtml">xhtml</a>, <a href="/Tag/?Article/Doctype" title="Doctype">Doctype</a>, <a href="/Tag/?Article/Help Sheet" title="Help Sheet">Help Sheet</a>, <a href="/Tag/?Article/DNS" title="DNS">DNS</a>, <a href="/Tag/?Article/iPad" title="iPad">iPad</a>, <a href="/Tag/?Article/浮动" title="浮动">浮动</a>, <a href="/Tag/?Article/win2000" title="win2000">win2000</a>, <a href="/Tag/?Article/ubuntu" title="ubuntu">ubuntu</a>, <a href="/Tag/?Article/EditPlus" title="EditPlus">EditPlus</a>, <a href="/Tag/?Article/chrome" title="chrome">chrome</a>, <a href="/Tag/?Article/清除浮动" title="清除浮动">清除浮动</a>, <a href="/Tag/?Article/clearfix" title="clearfix">clearfix</a>, <a href="/Tag/?Article/DOM" title="DOM">DOM</a>, <a href="/Tag/?Article/跨浏览器" title="跨浏览器">跨浏览器</a>, <a href="/Tag/?Article/手机" title="手机">手机</a>, <a href="/Tag/?Article/3G" title="3G">3G</a>, <a href="/Tag/?Article/Visual Cheat Sheet" title="Visual Cheat Sheet">Visual Cheat Sheet</a>, <a href="/Tag/?Article/SDK" title="SDK">SDK</a>, <a href="/Tag/?Article/cocos2d" title="cocos2d">cocos2d</a>, <a href="/Tag/?Article/vibrate" title="vibrate">vibrate</a>, <a href="/Tag/?Article/imagetoolbar" title="imagetoolbar">imagetoolbar</a>, <a href="/Tag/?Article/galleryImg" title="galleryImg">galleryImg</a>, <a href="/Tag/?Article/google" title="google">google</a>, <a href="/Tag/?Article/asp" title="asp">asp</a>, <a href="/Tag/?Article/fckeditor" title="fckeditor">fckeditor</a>, <a href="/Tag/?Article/asp.net" title="asp.net">asp.net</a>, <a href="/Tag/?Article/Outlook Express" title="Outlook Express">Outlook Express</a>, <a href="/Tag/?Article/SqlPlus" title="SqlPlus">SqlPlus</a>, <a href="/Tag/?Article/Gzip" title="Gzip">Gzip</a>, <a href="/Tag/?Article/win2003" title="win2003">win2003</a>, <a href="/Tag/?Article/虚拟主机" title="虚拟主机">虚拟主机</a>, <a href="/Tag/?Article/泛域名" title="泛域名">泛域名</a>, <a href="/Tag/?Article/devcon" title="devcon">devcon</a>, <a href="/Tag/?Article/VSS" title="VSS">VSS</a>, <a href="/Tag/?Article/strict" title="strict">strict</a>, <a href="/">个人知识管理</a></div>
+			</div>
+			<div id="hotList" class="listDiv roundedCorners">
+				<h3 class="listTitle">热门文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/asp/ASP-isblank.html" title="ASP判断是否为空">ASP判断是否为空</a></li><li><a href="/Html/Article/iPhone/cocos2d-for-iPhone-guide.html" title="cocos2d for iPhone教程">cocos2d for iPhone教程</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-1.html" title="canvas JavaScript API学习（一）">canvas JavaScript API学习（一）</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/system/dev-enable-disable-netcard.html" title="通过devcon在命令行下启用/禁用网卡">通过devcon在命令行下启用/禁用网卡</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-3.html" title="canvas JavaScript API学习（三）">canvas JavaScript API学习（三）</a></li><li><a href="/Html/Article/b1og/editplus-stx-html5-css3-js-jquery.html" title="EditPlus的js(含jquery),HTML5,CSS3语法高亮文件">EditPlus的js(含jquery),HTML5,CSS3语法高亮文件</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-2.html" title="canvas JavaScript API学习（二）">canvas JavaScript API学习（二）</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/iPhone/iPhone-scale-image.html" title="iPhone中缩放图片">iPhone中缩放图片</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners">
+				<h3 class="listTitle">随机推荐</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/javascript/JavaScript-Performance-Optimization.html" title="javascript代码性能优化">javascript代码性能优化</a></li><li><a href="/Html/Article/html-css/css-reset-collection.html" title="几个CSS Reset和讲解">几个CSS Reset和讲解</a></li><li><a href="/Html/Article/nginx/nginx-virtual-host1.html" title="为nginx设置默认虚拟主机（空主机头，默认主机头）">为nginx设置默认虚拟主机（空主机头，默认主机头）</a></li><li><a href="/Html/Article/system/access-batch-modify-fieldsname.html" title="access批量修改表字段名">access批量修改表字段名</a></li><li><a href="/Html/Article/Mobile/Build-Android-development-environment.html" title="搭建Android2.1开发环境">搭建Android2.1开发环境</a></li><li><a href="/works/oracle/Orcl_installation_Guide.html" title="Oracle10g For Windows安装手册">Oracle10g For Windows安装手册</a></li><li><a href="/Html/Article/javascript/js-sbc-dbc-convert.html" title="JavaScript 全半角转换">JavaScript 全半角转换</a></li><li><a href="/Html/Article/IIS/IIRF-isapi-rewrite-filter.html" title="IIRF(Ionic&#39;s Isapi Rewrite Filter)入门，在IIS上重写Url">IIRF(Ionic&#39;s Isapi Rewrite Filter)入门，在IIS上重写Url</a></li><li><a href="/Html/Article/nginx/nginx-proxy-iis-X-Forwarded-For.html" title="nginx反向代理后,让IIS Log中记录真实客户IP">nginx反向代理后,让IIS Log中记录真实客户IP</a></li><li><a href="/Html/Article/system/browser-connections-number-per-server.html" title="当前主流浏览器并行连接数（同域名）">当前主流浏览器并行连接数（同域名）</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">参考手册</h3>
+				<ul class="uList ellipsis"><li><a href="/works/css20/Index.html" title="CSS2.0中文参考手册">CSS2.0中文参考手册</a></li><li><a href="/works/DHTMLref/Index.html" title="DHTML中文参考手册">DHTML中文参考手册</a></li><li><a href="/works/css3/Index.html" title="CSS3.0中文参考手册">CSS3.0中文参考手册</a></li><li><a href="/works/VBscript/Index.html" title="VBScript 语言参考">VBScript 语言参考</a></li><li><a href="/works/ado/index.html" title="ADO中文参考手册">ADO中文参考手册</a></li><li><a href="http://www.junchenwu.com/WAI/wai-pageauth.html" title="Web内容可访问性指南 1.0">Web内容可访问性指南 1.0</a></li><li><a href="http://www.w3school.com.cn/html5/index.asp" title="HTML 5 参考手册">HTML 5 参考手册</a></li><li><a href="/works/Ext_3.0_cn/index.html" title="Ext 3.0 中文参考手册">Ext 3.0 中文参考手册</a></li><li><a href="http://www.findmebyip.com/litmus" title="HTML5和CSS3兼容性参考">HTML5和CSS3兼容性参考</a></li><li><a href="http://www.cocos2d-iphone.org/api-ref/" title="cocos2d for iPhone API Reference">cocos2d for iPhone API Reference</a></li><li><a href="/ref/GNUstep_Reference" title="GNUstep Reference">GNUstep Reference</a></li><li><a href="/ref/zh-google-cpp-styleguide/index.html" title="Google C++ 编程规范">Google C++ 编程规范</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">实用工具</h3>
+				<ul class="uList ellipsis"><li><a href="/WebTools/wannianli/" title="万年历查询">万年历</a></li><li><a href="http://www.connectionstrings.com/" title="数据库连接字符串">Connection Strings</a></li><li><a href="http://css3please.com/" title="cross browser css3 rule generator">CSS3规则生成器</a></li><li><a href="http://centricle.com/ref/css/filters/" title="CSS Hack表">CSS Hack表</a></li><li><a href="http://tools.chinaz.com/" title="站长工具">站长工具</a></li><li><a href="http://www.useragentstring.com/" title="User Agent Strings">User Agent Strings</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">友情链接</h3>
+				<ul class="uList ellipsis"><li><a href="http://www.xw81.com/" title="XeonWell Studio">XeonWell Studio</a></li><li><a href="http://www.5dmail.net" title="国内最大的邮件技术资讯基地">邮件技术资讯网</a></li></ul>
+			</div>
+		</div>
+		<div id="rightWrapper">
+			<div id="oriList" class="listDiv roundedCorners">
+				<h3 class="listTitle">原创文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/html-css/apple-touch-icon.html" title="在apple设备上显示网站图标">在apple设备上显示网站图标</a></li><li><a href="/Html/Article/iPhone/iPhone-iPad-check.html" title="判断用户的是iPhone还是iPad">判断用户的是iPhone还是iPad</a></li><li><a href="/Html/Article/iPhone/iPhone-vibrate.html" title="代码实现iPhone震动">代码实现iPhone震动</a></li><li><a href="/Html/Article/iPhone/cocos2d-for-iPhone-guide.html" title="cocos2d for iPhone教程">cocos2d for iPhone教程</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/iPhone-DebugLog.html" title="控制Log的输出">控制Log的输出</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/iPhone/iPhone-SDK-Version-Check-1.html" title="iPhone版本判断">iPhone版本判断</a></li><li><a href="/Html/Article/system/VMware-custom-start.html" title="VMware的自定义启动">VMware的自定义启动</a></li><li><a href="/Html/Article/iPhone/backup-XCode-Key-Bindings.html" title="备份XCode键盘快捷键和颜色文字">备份XCode键盘快捷键和颜色文字</a></li><li><a href="/Html/Article/iPhone/error-communicating-with-the-iTunes-Store.html" title="error communicating with the iTunes Store">error communicating with the iTunes Store</a></li><li><a href="/Html/Article/b1og/liquid-particles.html" title="HTML5 canvas效果Liquid Particles">HTML5 canvas效果Liquid Particles</a></li><li><a href="/Html/Article/b1og/apple-html5-showcase.html" title="apple的html5 Showcase">apple的html5 Showcase</a></li><li><a href="/Html/Article/b1og/html5test-browser-scores.html" title="html5test.com测试你的浏览器支持多少html5特性">html5test.com测试你的浏览器支持多少html5特性</a></li><li><a href="/Html/Article/b1og/netbalancer-hanzify.html" title="网络限速软件NetBalancer">网络限速软件NetBalancer</a></li><li><a href="/Html/Article/html-css/first-letter-in-browsers.html" title="first-letter在各浏览器中的表现">first-letter在各浏览器中的表现</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/b1og/css3-button-maker.html" title="CSS3 Button Maker">CSS3 Button Maker</a></li><li><a href="/Html/Article/b1og/editplus-stx-html5-css3-js-jquery.html" title="EditPlus的js(含jquery),HTML5,CSS3语法高亮文件">EditPlus的js(含jquery),HTML5,CSS3语法高亮文件</a></li><li><a href="/Html/Article/html-css/raquo-laquo-rsaquo-lsaquo.html" title="raquo laquo rsaquo lsaquo">raquo laquo rsaquo lsaquo</a></li></ul>
+			</div>
+		</div>
+		<div id="centerWrapper" class="roundedCorners clearfix">
+			<nav class="nav"><a href="/" title="个人知识管理">Home</a>  &nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="/Html/Article/system/" title="System">System</a></nav>
+			<article class="article">
+				<header><h1 class="artTitle hei">通过devcon在命令行下启用/禁用网卡</h1></header>
+				<div class="artContent">
+					<p>devcon就是一个命令行工具，能够在命令行中实现&ldquo;设备管理器&rdquo;的功能，我这里只要&ldquo;启用/禁用&rdquo;功能即可。<br />
+devcon的下载地址：<br />
+<a href="http://support.microsoft.com/kb/311272/zh-cn">http://support.microsoft.com/kb/311272/zh-cn</a> <br />
+微软出品，权威产品。</p>
+<p>使用的时候还是有点小问题，搜索了一下找不到答案，只有自己解决了：<br />
+1、禁用设备的命令是:<br />
+devcon disable 设备ID<br />
+这个设备ID怎么得到呢？通过设备管理器，在设备上点击&ldquo;属性&rdquo;，在&ldquo;详细信息&rdquo;标签里面有个下拉列表，选择&ldquo;设备范例Id&rdquo;，下面显示出来的就是设备ID，<br />
+怎么把这个ID复制出来呢？右键是没办法的，但是直接CTRL+C就OK了。<br />
+2、设备ID不能直接输入，否则会把ID开头相同的一大堆设备都操作一遍，最后还会出几个错误提示；加上双引号也不行，会提示没有设备被禁用/启用；必须这样写：@&quot;设备ID&quot;，所以最后的命令格式是：<br />
+<span style="color: #ff0000">devcon disable @&quot;设备ID&quot;</span></p>
+<p>&nbsp;devcon详细用法</p>
+<p>设备控制台帮助：<br />
+devcon.exe [-r] [-m:\\&lt;machine&gt;] &lt;command&gt; [&lt;arg&gt;...]<br />
+-r 如果指定它，在命令完成后若需要则重新启动计算机。<br />
+&lt;machine&gt; 是目标计算机的名称。<br />
+&lt;command&gt; 是将要执行的命令（如下所示）。<br />
+&lt;arg&gt;... 是命令需要的一个或多个参数。<br />
+要获取关于某一特定命令的帮助，请键入：devcon.exe help &lt;command&gt;<br />
+classfilter 允许修改类别筛选程序。<br />
+classes 列出所有设备安装类别。<br />
+disable 禁用与指定的硬件或实例 ID 匹配的设备。<br />
+driverfiles 列出针对设备安装的驱动程序文件。<br />
+drivernodes 列出设备的所有驱动程序节点。<br />
+enable 启用与指定的硬件或实例 ID 匹配的设备。<br />
+find 查找与指定的硬件或实例 ID 匹配的设备。<br />
+findall 查找设备，包括那些未显示的设备。<br />
+help 显示此信息。<br />
+hwids 列出设备的硬件 ID。<br />
+install 手动安装设备。<br />
+listclass 列出某一安装类别的所有设备。<br />
+reboot 重新启动本地计算机。<br />
+remove 删除与特定的硬件或实例 ID 匹配的设备。<br />
+rescan 扫描以发现新的硬件。<br />
+resources 列出设备的硬件资源。<br />
+restart 重新启动与特定的硬件或实例 ID 匹配的设备。<br />
+stack 列出预期的设备驱动程序堆栈。<br />
+status 列出设备的运行状态。<br />
+update 手动更新设备。<br />
+UpdateNI 手动更新设备，无用户提示 <br />
+SetHwID 添加、删除和更改根枚举设备的硬件 ID 的顺序。</p>
+<p>DevCon 命令示例<br />
+devcon -m:\\test find pci\*</p>
+<p>列出计算机 test 上的所有已知 PCI 设备。（通过使用 -m，您可以指定一个目标计算机。您必须使用&ldquo;进程间通信&rdquo;(IPC) 访问此计算机。）</p>
+<p>devcon -r install %WINDIR%\Inf\Netloop.inf *MSLOOP</p>
+<p>安装一个新的 Microsoft 环回适配器实例。这将创建一个新的根枚举设备节点，使用此节点您可以安装&ldquo;虚拟设备&rdquo;，如环回适配器。如果需要重新启动计算机，此命令还将以安静模式重新启动计算机。</p>
+<p>devcon classes</p>
+<p>列出所有已知的安装类别。输出结果包含短的未本地化的名称（例如，&ldquo;USB&rdquo;）和描述性名称（例如，&ldquo;通用串行总线控制器&rdquo;）。</p>
+<p>devcon classfilter upper !filter1 !filter2</p>
+<p>删除这两个指定的筛选程序。</p>
+<p>devcon classfilter lower !badfilter +goodfilter</p>
+<p>用&ldquo;goodfilter&rdquo;替换&ldquo;badfilter&rdquo;。</p>
+<p>devcon driverfiles =ports</p>
+<p>列出与 ports 安装类别中的每一个设备关联的文件。</p>
+<p>devcon disable *MSLOOP</p>
+<p>禁用硬件 ID 以&ldquo;MSLOOP&rdquo;结尾（包括&ldquo;*MSLOOP&rdquo;）的所有设备。</p>
+<p>devcon drivernodes @ROOT\PCI_HAL\PNP0A03</p>
+<p>列出设备&ldquo;ROOT\PCI_HAL\PNP0A03&rdquo;的所有兼容驱动程序。这可以用来确定为什么选择原配的设备信息 (.inf) 文件而不选第三方 .inf 文件。</p>
+<p>devcon enable '*MSLOOP</p>
+<p>启用硬件 ID 为&ldquo;*MSLOOP&rdquo;的所有设备。单引号指示必须严格按字面解释硬件 ID（换句话说，星号 [&ldquo;*&rdquo;] 真的是 一个星号，而不是通配符）。</p>
+<p>devcon find *</p>
+<p>列出本地计算机上存在的所有设备的设备实例。</p>
+<p>devcon find pci\*</p>
+<p>列出本地计算机上所有已知的&ldquo;外围组件互连&rdquo;(PCI) 设备（如果一个设备的硬件 ID 以&ldquo;PCI\&rdquo;为前缀，此命令就认为该设备是 PCI 设备）。</p>
+<p>devcon find =ports *pnp*</p>
+<p>列出存在的作为 ports 安装类别的成员而且硬件 ID 中包含&ldquo;PNP&rdquo;的设备。</p>
+<p>devcon find =ports @root\*</p>
+<p>列出存在的作为 ports 安装类别的成员而且在枚举树的&ldquo;root&rdquo;分支中的设备（实例 ID 以&ldquo;root\&rdquo;为前缀）。请注意，有关实例 ID 的格式化方式，不应作任何编程假定。要确定根设备，可以检查设备状态位。此功能包括在 DevCon 中是为了帮助进行调试。</p>
+<p>devcon findall =ports</p>
+<p>列出 ports 类别的&ldquo;不存在&rdquo;的设备和存在的设备。这包括已经被删除的设备、从一个插槽移到另一个插槽的设备，以及在某些情况下由于 BIOS 改变而被不同地枚举的设备。</p>
+<p>devcon listclass usb 1394</p>
+<p>列出命令中所列的每个类别（本例中是 USB 和 1394）的所有存在的设备。</p>
+<p>devcon remove @usb\*</p>
+<p>删除所有 USB 设备。被删除的设备列出时将显示其删除状态。</p>
+<p>devcon rescan</p>
+<p>重新扫描以发现新的&ldquo;即插即用&rdquo;设备。</p>
+<p>devcon resources =ports</p>
+<p>列出由 ports 安装类别中的所有设备使用的资源。</p>
+<p>devcon restart =net @'ROOT\*MSLOOP\0000</p>
+<p>重新启动环回适配器&ldquo;ROOT\*MSLOOP\0000&rdquo;。命令中的单引号指示必须按字面解释实例 ID。</p>
+<p>devcon hwids=mouse</p>
+<p>列出系统中鼠标类设备的所有硬件 ID。</p>
+<p>devcon sethwid @ROOT\LEGACY_BEEP\0000 := beep</p>
+<p>将硬件 ID beep 赋予旧式蜂鸣设备。</p>
+<p>devcon stack =ports</p>
+<p>列出设备预期的驱动程序堆栈。包括设备和类别高层/低层筛选程序，以及控制服务。</p>
+<p>devcon status @pci\*</p>
+<p>列出实例 ID 以&ldquo;pci\&rdquo;开头的每一个存在设备的状态。</p>
+<p>devcon status @ACPI\PNP0501\1</p>
+<p>列出特定设备实例的状态，在本例中是一个高级配置和电源界面 (ACPI) - 枚举的串行端口。</p>
+<p>devcon status @root\rdp_mou\0000</p>
+<p>列出 Microsoft 终端服务器或终端服务鼠标驱动程序的状态。</p>
+<p>devcon status *PNP05*</p>
+<p>列出所有 COM 端口的状态。</p>
+<p>devcon update mydev.inf *pnp0501</p>
+<p>更新与硬件 ID *pnp0501 严格匹配的所有设备，让它们使用 Mydev.inf 中与硬件 ID *pnp0501 关联的最好的驱动程序。</p>
+<p>注意：即使系统上已经存在更好的匹配项，这一更新也将强制所有设备使用 Mydev.inf 中的驱动程序。如果在获得签名之前，您想要在开发过程中安装驱动程序的新版本，则这是很有用的。此更新仅影响与指定的硬件 ID 匹配的设备，不会影响到其子设备。如果指定的 .inf 文件未经签名，则 Windows 可能会显示一个对话框，提示您确认是否应安装此驱动程序。如果需要重新启动计算机，将报告这一情况并且 DevCon 返回一个级别 1 错误。如果指定 -r，在需要重新启动计算机时就会自动重启。<br />
+注意<br />
+DevCon 将返回一个在脚本中使用的错误级别：<br />
+&ldquo;0&rdquo;指示成功。<br />
+&ldquo;1&rdquo;指示需要重新启动。<br />
+&ldquo;2&rdquo;指示失败。<br />
+&ldquo;3&rdquo;指示语法错误。<br />
+如果您指定 -r 并且需要重新启动，则在处理完所有设备后，将在无任何警告信息的情况下重新启动。<br />
+如果您指定 -m:\\computer 并且命令对远程计算机不起作用，将报告一个错误。<br />
+为便于交互，DevCon 允许在实例 ID 中使用通配符。不要根据一台计算机或一种操作系统版本去推测有关另一台计算机或另一种操作系统版本的实例 ID 格式的任何信息。&nbsp;</p>
+<p>&nbsp;</p>
+				</div>
+				<footer>
+					<p class="tagList">Tags: <a href="/Tag/?Article/devcon">devcon</a> </p>
+					<!-- AddThis Button BEGIN --><div class="addthis_toolbox addthis_32x32_style addthis_default_style"><a class="addthis_button_facebook"></a><a class="addthis_button_twitter"></a><a class="addthis_button_plurk"></a><a class="addthis_button_funp"></a><a class="addthis_button_digg"></a><a class="addthis_button_xanga"></a><a class="addthis_button_blogger"></a><a class="addthis_button_googlereader"></a><a class="addthis_button_googlebuzz"></a><a class="addthis_button_email"></a><a class="addthis_button_compact"></a></div><!-- AddThis Button END -->
+					<ul>
+						<li>上篇文章: <a href="/Html/Article/system/win2000-domain-parse.html">在win2k下建立泛域名解析</a></li>
+						<li>下篇文章: <a href="/Html/Article/system/bat-teach-1.html">简明批处理教程</a></li>
+					</ul>
+					<p>可能感兴趣的文章:</p>
+					<ul class="rndArtList"><li><a href="/Html/Article/system/deny-china-ip-apache-htacess.html" title="屏蔽/禁止所有中国IP访问的方法">屏蔽/禁止所有中国IP访问的方法</a></li><li><a href="/Html/Article/asp/id-trimtonum.html" title="我的ID型参数过滤防注入之道">我的ID型参数过滤防注入之道</a></li><li><a href="/Html/Article/html-css/XHtml-Cheat-Sheet.html" title="XHtml Cheat Sheet v1.03">XHtml Cheat Sheet v1.03</a></li><li><a href="/Html/Article/html-css/css-rgba-browser-support.html" title="当前各浏览器对css的rgba函数支持表">当前各浏览器对css的rgba函数支持表</a></li><li><a href="/Html/Article/html-css/CSS-round-corner.html" title="CSS实现圆角">CSS实现圆角</a></li></ul>
+				</footer>
+			</article>
+		</div>
+	</div>
+	<footer id="footer"><p>&copy; 2010-2011 XeonWell. 以上文摘,&nbsp;仅供个人收藏和参考&nbsp;<a href="http://www.miibeian.gov.cn">粤ICP备10095269号-1</a>&nbsp;</p>
+<p><a title="Valid XHTML 1.0 Strict" href="http://validator.w3.org/">HTML5</a> | <a title="Valid CSS" href="http://jigsaw.w3.org/css-validator/">Valid CSS 1/2/3</a> | <a title="508 Standards, Section" href="http://www.contentquality.com/mynewtester/cynthia.exe?url1=http%3A%2F%2Fwww.xw.hb.cn%2F">508</a> | <a title="WAI" href="http://www.contentquality.com/mynewtester/cynthia.exe?rptmode=2&amp;url1=http%3A%2F%2Fwww.xw.hb.cn%2F">WAI</a>&nbsp;| <a href="/rss/">RSS</a> | <a href="/rss/?type=atom">Atom</a> | <a href="/google-site.xml">SiteMap</a></p></footer>
+	<div id="jsDiv">
+		<script type="text/javascript" src="/Js/jquery.js"></script>
+		<script type="text/javascript" src="/Js/common.js"></script>
+		<!--[if lte IE 6]><script type="text/javascript" src="/Js/ie-fix.js"></script><![endif]-->
+		<script type="text/javascript" src="/js/article.js"></script>
+		<script type="text/javascript" src="/Click.Asp?id=52"></script>
+		<!-- AddThis Button BEGIN --><script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xeonwell"></script><!-- AddThis Button END -->
+	</div>
+	<div class="nd"><p><a href="/">个人知识管理</a></p><script type="text/javascript" src="/Js/stat.js"></script></div>
+</div>
+</body>
+</html>

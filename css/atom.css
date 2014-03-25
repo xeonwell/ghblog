@@ -1,0 +1,11 @@
+﻿feed * {display: none;}
+feed {font-size: 14pt; font-family: "arial", "Tahoma"; float: left; text-align: center; width: 100%; padding: 0; margin: 0;}
+feed title {display: block; font-size: 30px; text-align: left; padding-top: 10px; padding-left: 20px; font-family: "arial", "Tahoma";}
+feed subtitle {display: block; text-align: left; padding-top: 10px; padding-left: 20px;}
+entry {padding: 10px; display: block; font-size: small; margin: 20px 10% 5px 10%; border-top: gray 1px solid; text-align: left; background: #F5F5F5; width: auto;}
+entry title {font-size: 18px; display: block; padding: 5px 0 10px 0;}
+entry author name{display: block;}
+entry updated {display: block;}
+entry summary {display: block; padding: 15px; word-break: break-all;}
+entry summary *{display: block;}
+entry link {display: block; padding: 5px 0 5px 0; color: blue;}
