@@ -1,0 +1,326 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>canvas JavaScript API学习（二）--XeonWell Studio</title>
+<meta name="Keywords" content="canvas,html5,html,css,javascript,web,js" />
+<meta name="Description" content="接下来的内容是我对canvas绘图进一步学习心得，这次会介绍更多API方法的使用，来提高我们绘图的能力，创建更多丰富的图形，如果你有一点点图形学基础，那将对你的学习有很大帮助。,html,css,javascript,web,js" />
+<meta name="Author" content="XeonWell, email:admin_xw_hb_cn" />
+<meta name="language" content="Chinese" />
+<meta name="Robots" content="index,follow" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="icon" href="/i/xiong.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/i/xiong.ico" type="image/x-icon" />
+<link href="/css/fw.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if lte IE 8]><link href="/css/ie-fix.css" rel="stylesheet" type="text/css" media="all" />
+<script src="/js/ie-html5.js" type="text/javascript" /></script><![endif]-->
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shThemeDefault.css"/>
+</head>
+
+<body>
+<div id="bodyWrapper">
+	<header id="header" class="clearfix">
+		<h1><a href="/" title="XeonWell Studio">XeonWell Studio</a></h1>
+		<ul id="menu" class="resetList"><li><a href="/" title="XeonWell Studio">Home</a></li><li><a href="/Html/Article/Mobile/" title="Mobile" accesskey="1"><strong>Mobile</strong></a></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS" accesskey="2" id="curNav"><strong>(X)Html/CSS</strong></a></li><li><a href="/Html/Article/javascript/" title="Javascript" accesskey="3"><strong>Javascript</strong></a></li><li><a href="/Html/Article/asp/" title="ASP" accesskey="4"><strong>ASP</strong></a></li><li><a href="/Html/Article/cs/" title="C#" accesskey="5"><strong>C#</strong></a></li><li><a href="/Html/Article/system/" title="System" accesskey="6"><strong>System</strong></a></li><li><a href="/Html/Article/b1og/" title="Blog" accesskey="7"><strong>Blog</strong></a></li></ul>
+		<div id="searchDiv">
+			<form id="searchForm" action="/Search/" method="get">
+			<p><label for="searchStr">输入搜索字符串</label><input type="text" class="searchStr" name="searchStr" id="searchStr" value="" size="19" alt="输入搜索字符串" /><input type="submit" value="Search" class="search" alt="search" /></p>
+			</form>
+		</div>
+	</header>
+	<div id="content" class="clearfix">
+		<div id="leftWrapper">
+			<div id="artCategory" class="listDiv roundedCorners">
+				<h3 class="listTitle">文章分类</h3>
+				<ul class="uList"><li><a href="/Html/Article/Mobile/" title="Mobile">Mobile</a><ul><li><a href="/Html/Article/iPhone/" title="iPhone">iPhone</a></li></ul></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS">(X)Html/CSS</a></li><li><a href="/Html/Article/javascript/" title="Javascript">Javascript</a><ul><li><a href="/Html/Article/jquery/" title="jQuery">jQuery</a></li></ul></li><li><a href="/Html/Article/asp/" title="ASP">ASP</a></li><li><a href="/Html/Article/cs/" title="C#">C#</a></li><li><a href="/Html/Article/system/" title="System">System</a><ul><li><a href="/Html/Article/nginx/" title="Nginx">Nginx</a></li><li><a href="/Html/Article/IIS/" title="IIS">IIS</a></li><li><a href="/Html/Article/database/" title="Database">Database</a></li><li><a href="/Html/Article/mail/" title="Mail">Mail</a></li></ul></li><li><a href="/Html/Article/b1og/" title="Blog">Blog</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners" id="tagCloud">
+				<h3 class="listTitle">Tag Cloud</h3>
+				<div class="tagList"><a href="/Tag/?Article/html5" title="html5">html5</a>, <a href="/Tag/?Article/iPhone" title="iPhone">iPhone</a>, <a href="/Tag/?Article/canvas" title="canvas">canvas</a>, <a href="/Tag/?Article/JavaScript" title="JavaScript">JavaScript</a>, <a href="/Tag/?Article/css3" title="css3">css3</a>, <a href="/Tag/?Article/css" title="css">css</a>, <a href="/Tag/?Article/Nginx" title="Nginx">Nginx</a>, <a href="/Tag/?Article/Cheat Sheet" title="Cheat Sheet">Cheat Sheet</a>, <a href="/Tag/?Article/jQuery" title="jQuery">jQuery</a>, <a href="/Tag/?Article/XCode" title="XCode">XCode</a>, <a href="/Tag/?Article/iis" title="iis">iis</a>, <a href="/Tag/?Article/wap" title="wap">wap</a>, <a href="/Tag/?Article/HTTP" title="HTTP">HTTP</a>, <a href="/Tag/?Article/Android" title="Android">Android</a>, <a href="/Tag/?Article/CSS Hack" title="CSS Hack">CSS Hack</a>, <a href="/Tag/?Article/xhtml" title="xhtml">xhtml</a>, <a href="/Tag/?Article/Doctype" title="Doctype">Doctype</a>, <a href="/Tag/?Article/Help Sheet" title="Help Sheet">Help Sheet</a>, <a href="/Tag/?Article/User-Agent" title="User-Agent">User-Agent</a>, <a href="/Tag/?Article/DNS" title="DNS">DNS</a>, <a href="/Tag/?Article/iPad" title="iPad">iPad</a>, <a href="/Tag/?Article/浮动" title="浮动">浮动</a>, <a href="/Tag/?Article/win2000" title="win2000">win2000</a>, <a href="/Tag/?Article/ubuntu" title="ubuntu">ubuntu</a>, <a href="/Tag/?Article/EditPlus" title="EditPlus">EditPlus</a>, <a href="/Tag/?Article/chrome" title="chrome">chrome</a>, <a href="/Tag/?Article/清除浮动" title="清除浮动">清除浮动</a>, <a href="/Tag/?Article/clearfix" title="clearfix">clearfix</a>, <a href="/Tag/?Article/DOM" title="DOM">DOM</a>, <a href="/Tag/?Article/跨浏览器" title="跨浏览器">跨浏览器</a>, <a href="/Tag/?Article/手机" title="手机">手机</a>, <a href="/Tag/?Article/3G" title="3G">3G</a>, <a href="/Tag/?Article/Visual Cheat Sheet" title="Visual Cheat Sheet">Visual Cheat Sheet</a>, <a href="/Tag/?Article/SDK" title="SDK">SDK</a>, <a href="/Tag/?Article/cocos2d" title="cocos2d">cocos2d</a>, <a href="/Tag/?Article/vibrate" title="vibrate">vibrate</a>, <a href="/Tag/?Article/UA" title="UA">UA</a>, <a href="/Tag/?Article/brightness" title="brightness">brightness</a>, <a href="/Tag/?Article/imagetoolbar" title="imagetoolbar">imagetoolbar</a>, <a href="/Tag/?Article/galleryImg" title="galleryImg">galleryImg</a>, <a href="/Tag/?Article/google" title="google">google</a>, <a href="/Tag/?Article/asp" title="asp">asp</a>, <a href="/Tag/?Article/fckeditor" title="fckeditor">fckeditor</a>, <a href="/Tag/?Article/asp.net" title="asp.net">asp.net</a>, <a href="/Tag/?Article/Outlook Express" title="Outlook Express">Outlook Express</a>, <a href="/Tag/?Article/SqlPlus" title="SqlPlus">SqlPlus</a>, <a href="/Tag/?Article/Gzip" title="Gzip">Gzip</a>, <a href="/Tag/?Article/win2003" title="win2003">win2003</a>, <a href="/Tag/?Article/虚拟主机" title="虚拟主机">虚拟主机</a>, <a href="/Tag/?Article/泛域名" title="泛域名">泛域名</a>, <a href="/">XeonWell Studio</a></div>
+			</div>
+			<div id="hotList" class="listDiv roundedCorners">
+				<h3 class="listTitle">热门文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/asp/ASP-isblank.html" title="ASP判断是否为空">ASP判断是否为空</a></li><li><a href="/Html/Article/b1og/editplus-stx-html5-css3-js-jquery.html" title="EditPlus的js(含jquery),HTML5,CSS3语法高亮文件">EditPlus的js(含jquery),HTML5,CSS3语法高亮文件</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/UIScrollView-Reference.html" title="UIScrollView参考">UIScrollView参考</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/iPhone/iPhone-scale-image.html" title="iPhone中缩放图片">iPhone中缩放图片</a></li><li><a href="/Html/Article/html-css/html5-table-template.html" title="HTML5 Table Template">HTML5 Table Template</a></li><li><a href="/Html/Article/b1og/js-jquery-stx-editplus.html" title="EditPlus的Javascript语法文件(包含jQuery语法高亮)">EditPlus的Javascript语法文件(包含jQuery语法高亮)</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners">
+				<h3 class="listTitle">随机推荐</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/html-css/ClearFix-float.html" title="Clear Fix浮动问题修复">Clear Fix浮动问题修复</a></li><li><a href="/Html/Article/system/VMware-custom-start.html" title="VMware的自定义启动">VMware的自定义启动</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-3.html" title="canvas JavaScript API学习（三）">canvas JavaScript API学习（三）</a></li><li><a href="/Html/Article/jquery/jQuery-Visual-Cheat-Sheet-1-4-2.html" title="jQuery 1.4.2 Visual Cheat Sheet">jQuery 1.4.2 Visual Cheat Sheet</a></li><li><a href="http://www.swordair.com/docs/HTML5-differences-from-HTML4/" title="HTML5 相对于 HTML4 的差异">HTML5 相对于 HTML4 的差异</a></li><li><a href="/Html/Article/nginx/install-nginx-windows-service.html" title="安装Nginx为Windows服务">安装Nginx为Windows服务</a></li><li><a href="/Html/Article/system/delete-session-local.html" title="删除连接本机的session">删除连接本机的session</a></li><li><a href="/Html/Article/system/browser-connections-number-per-server.html" title="当前主流浏览器并行连接数（同域名）">当前主流浏览器并行连接数（同域名）</a></li><li><a href="/Html/Article/b1og/apple-html5-showcase.html" title="apple的html5 Showcase">apple的html5 Showcase</a></li><li><a href="/Html/Article/jquery/jQuery-143-jQueryMobile-release.html" title="jQuery 1.4.3和jQuery Mobile alpha发布">jQuery 1.4.3和jQuery Mobile alpha发布</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">参考手册</h3>
+				<ul class="uList ellipsis"><li><a href="/works/css20/Index.html" title="CSS2.0中文参考手册">CSS2.0中文参考手册</a></li><li><a href="/works/DHTMLref/Index.html" title="DHTML中文参考手册">DHTML中文参考手册</a></li><li><a href="/works/css3/Index.html" title="CSS3.0中文参考手册">CSS3.0中文参考手册</a></li><li><a href="/works/VBscript/Index.html" title="VBScript 语言参考">VBScript 语言参考</a></li><li><a href="/works/ado/index.html" title="ADO中文参考手册">ADO中文参考手册</a></li><li><a href="http://www.junchenwu.com/WAI/wai-pageauth.html" title="Web内容可访问性指南 1.0">Web内容可访问性指南 1.0</a></li><li><a href="http://www.w3school.com.cn/html5/index.asp" title="HTML 5 参考手册">HTML 5 参考手册</a></li><li><a href="/works/Ext_3.0_cn/index.html" title="Ext 3.0 中文参考手册">Ext 3.0 中文参考手册</a></li><li><a href="http://www.findmebyip.com/litmus" title="HTML5和CSS3兼容性参考">HTML5和CSS3兼容性参考</a></li><li><a href="http://www.cocos2d-iphone.org/api-ref/" title="cocos2d for iPhone API Reference">cocos2d for iPhone API Reference</a></li><li><a href="/ref/GNUstep_Reference" title="GNUstep Reference">GNUstep Reference</a></li><li><a href="/ref/zh-google-cpp-styleguide/index.html" title="Google C++ 编程规范">Google C++ 编程规范</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">实用工具</h3>
+				<ul class="uList ellipsis"><li><a href="/WebTools/wannianli/" title="万年历查询">万年历</a></li><li><a href="http://www.connectionstrings.com/" title="数据库连接字符串">Connection Strings</a></li><li><a href="http://css3please.com/" title="cross browser css3 rule generator">CSS3规则生成器</a></li><li><a href="http://centricle.com/ref/css/filters/" title="CSS Hack表">CSS Hack表</a></li><li><a href="http://tools.chinaz.com/" title="站长工具">站长工具</a></li><li><a href="http://www.useragentstring.com/" title="User Agent Strings">User Agent Strings</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">友情链接</h3>
+				<ul class="uList ellipsis"><li><a href="http://www.xw81.com/" title="XeonWell Studio">XeonWell Studio</a></li><li><a href="http://www.5dmail.net" title="国内最大的邮件技术资讯基地">邮件技术资讯网</a></li></ul>
+			</div>
+		</div>
+		<div id="rightWrapper">
+			<div id="oriList" class="listDiv roundedCorners">
+				<h3 class="listTitle">原创文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/iPhone/adjust-iphone-brightness.html" title="调节iphone屏幕亮度">调节iphone屏幕亮度</a></li><li><a href="/Html/Article/iPhone/hide-system-volume-view-on-ios.html" title="隐藏ios系统的音量变化显示界面">隐藏ios系统的音量变化显示界面</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/apple-touch-icon.html" title="在apple设备上显示网站图标">在apple设备上显示网站图标</a></li><li><a href="/Html/Article/iPhone/iPhone-iPad-check.html" title="判断用户的是iPhone还是iPad">判断用户的是iPhone还是iPad</a></li><li><a href="/Html/Article/iPhone/iPhone-vibrate.html" title="代码实现iPhone震动">代码实现iPhone震动</a></li><li><a href="/Html/Article/iPhone/cocos2d-for-iPhone-guide.html" title="cocos2d for iPhone教程">cocos2d for iPhone教程</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/iPhone-DebugLog.html" title="控制Log的输出">控制Log的输出</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/iPhone/iPhone-SDK-Version-Check-1.html" title="iPhone版本判断">iPhone版本判断</a></li><li><a href="/Html/Article/system/VMware-custom-start.html" title="VMware的自定义启动">VMware的自定义启动</a></li><li><a href="/Html/Article/iPhone/backup-XCode-Key-Bindings.html" title="备份XCode键盘快捷键和颜色文字">备份XCode键盘快捷键和颜色文字</a></li><li><a href="/Html/Article/iPhone/error-communicating-with-the-iTunes-Store.html" title="error communicating with the iTunes Store">error communicating with the iTunes Store</a></li><li><a href="/Html/Article/b1og/liquid-particles.html" title="HTML5 canvas效果Liquid Particles">HTML5 canvas效果Liquid Particles</a></li><li><a href="/Html/Article/b1og/apple-html5-showcase.html" title="apple的html5 Showcase">apple的html5 Showcase</a></li><li><a href="/Html/Article/b1og/html5test-browser-scores.html" title="html5test.com测试你的浏览器支持多少html5特性">html5test.com测试你的浏览器支持多少html5特性</a></li><li><a href="/Html/Article/b1og/netbalancer-hanzify.html" title="网络限速软件NetBalancer">网络限速软件NetBalancer</a></li><li><a href="/Html/Article/html-css/first-letter-in-browsers.html" title="first-letter在各浏览器中的表现">first-letter在各浏览器中的表现</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li></ul>
+			</div>
+		</div>
+		<div id="centerWrapper" class="roundedCorners clearfix">
+			<nav class="nav"><a href="/" title="XeonWell Studio">Home</a>  &nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="/Html/Article/html-css/" title="(X)Html/CSS">(X)Html/CSS</a></nav>
+			<article class="article">
+				<header><h1 class="artTitle hei">canvas JavaScript API学习（二）</h1></header>
+				<div class="artContent">
+					<p>接下来的内容是我对canvas绘图进一步学习心得，这次会介绍更多API方法的使用，来提高我们绘图的能力，创建更多丰富的图形，如果你有一点点图形学基础，那将对你的学习有很大帮助。</p>
+<p><strong>写在前面</strong><br />
+看过前面的那篇文章，你就大概了解使用JavaScript的canvas api来绘图是怎么一回事。你需要得到一个渲染环境（rendering context），然后在指定位置通过api画出你要的图形。这里涉及到canvas的&ldquo;网格&rdquo;或叫&ldquo;坐标系&rdquo;。<br />
+&nbsp;</p>
+<div id="attachment_532" class="wp-caption aligncenter" style="width: 230px"><a href="http://blog.wanz.im/wp-content/uploads/2010/04/Canvas_default_grid.png"><img class="size-full wp-image-532" title="Canvas_default_grid" alt="Canvas_default_grid" width="220" height="220" src="http://blog.wanz.im/wp-content/uploads/2010/04/Canvas_default_grid.png" /></a>
+<p class="wp-caption-text">Canvas_default_grid</p>
+</div>
+<p><br />
+如图中所示的，canvas坐标系的原点就是canvas左上角坐标(0,0)的位置，所画图形的位置就是相对这个原点水平偏移x个像素,垂直偏移y个像素的位置。</p>
+<p>&nbsp;</p>
+<p><strong>canvas绘图：矩形</strong><br />
+canvas只支持一种图形的绘图方法，那就是矩形，其他的图形都是通过路径（path）构造出来的，因此，在以后的绘图过程中，你可能更多的要使用它来构建复杂的图形，这就是你需要一点图形学的基础的原因。</p>
+<p>与矩形绘图相关的函数有：</p>
+<blockquote>
+<p>fillRect(x,y,width,height) : 填充的矩形<br />
+strokeRect(x,y,width,height) : 矩形框<br />
+clearRect(x,y,width,height) : 清除指定区域使之透明，该区域是矩形区域</p>
+</blockquote>
+<p>上一篇文章中我们演示了fillRect的用法，也提到了clearRect，具体的内容请查看之前的文章或查看demo：<a href="http://wanz.im/demo/html5_canvas_basic.html"><font color="#0a6804">html5_canvas_basic</font></a>&nbsp;<a href="http://wanz.im/demo/html5_canvas_rebound.html"><font color="#0a6804">html5_canvas_rebound</font></a></p>
+<p>strokeRect函数的用法与其他两个一样，直接上代码。</p>
+<pre class="brush: xhtml;" title="code">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta  charset=&quot;utf-8&quot; /&gt;
+&lt;title&gt;Canvas javascript api demo&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+canvas {
+	border:1px #000 solid;
+}
+&lt;/style&gt;
+ 
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;this is a canvas api test page!&lt;/h1&gt;
+&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;this browser does not support canvas...&lt;/canvas&gt;
+&lt;a href=&quot;http://blog.wanz.im/2010/04/17/canvas_javascript_api_learning_two/&quot;&gt;返回文章&lt;/a&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var $=function(id){
+	return document.getElementById(id);
+}
+window.onload=function(){
+	var ctx=$('canvas').getContext('2d');
+ 	ctx.strokeStyle='rgb(255,0,0)';
+	ctx.strokeRect (10, 10, 50, 50); 
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>代码很简单，strokeStyle用法同fillStyle，用来设置边框颜色，同样支持rgb或rgba值，十六进制值（如：#F00）和hsl或hsla值。但是你可能注意到了，我们设定的矩形框宽度和高度都是50px，但是实际绘图出来的是52px，边框宽度为2px，如下图的测量结果，这显然不是我们想看到的。不知道为什么要这样设计，希望有知道的朋友可以告诉我一下，先谢过了。<br />
+&nbsp;</p>
+<div id="attachment_538" class="wp-caption aligncenter" style="width: 204px"><a href="http://blog.wanz.im/wp-content/uploads/2010/04/strokeRect_border.png"><img class="size-full wp-image-538" title="strokeRect_border" alt="strokeRect_border" width="194" height="207" src="http://blog.wanz.im/wp-content/uploads/2010/04/strokeRect_border.png" /></a>
+<p class="wp-caption-text">strokeRect_border_extra_width</p>
+</div>
+<p>&nbsp;</p>
+<p><strong>canvas绘图：使用路径（path）绘图&mdash;&mdash;线段</strong><br />
+正如前面所说的，只有矩形是可以直接使用api函数绘出的，其他的图形都需要通过路径来构造。要使用路径来绘图，我们需要先了解下面几个函数：</p>
+<blockquote>
+<p>beginPath()<br />
+closePath()<br />
+stroke()<br />
+fill()</p>
+</blockquote>
+<p>beginPath函数是为画路径而准备的，是一个初始化的过程，在调用函数后就可以开始画路径了，所有的用来构成一个图形的路径将被保存起来，每调用一次这个函数，之前保存的路径就都被重置清空。</p>
+<p>closePath函数用来得到将被画出的路径，并且可以用来闭合路径。</p>
+<p>stroke函数是可选的，该方法可以配合closePath函数，它会尝试将路径闭合，在当前位置到起始位置用一条直线连接起来。如果路劲已经闭合或者当前&ldquo;画布&rdquo;上只有一个点，那么这个函数将不起任何作用。</p>
+<p>fill函数使用fillStyle的颜色来填充图形，使用这个函数可以不需要调用closePath函数而直接闭合路径。</p>
+<p>让我们看看下面的代码，<a href="http://wanz.im/demo/html5_canvas_triangle.html"><font color="#0a6804">查看demo</font></a></p>
+<pre class="brush: xhtml;" title="code">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta  charset=&quot;utf-8&quot; /&gt;
+&lt;title&gt;Canvas javascript api demo&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+canvas {
+	border:1px #000 solid;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;this is a canvas api test page!&lt;/h1&gt;
+&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;this browser does not support canvas...&lt;/canvas&gt;
+&lt;a href=&quot;http://blog.wanz.im/2010/04/17/canvas_javascript_api_learning_two/&quot;&gt;返回文章&lt;/a&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var $=function(id){
+	return document.getElementById(id);
+}
+window.onload=function(){
+	var ctx=$('canvas').getContext('2d');
+	ctx.beginPath();
+	ctx.moveTo(75,50);
+	ctx.lineTo(100,75);
+	ctx.lineTo(100,25);
+	ctx.closePath();//使用closePath配合stroke闭合路径
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(140,30);
+	ctx.lineTo(140,75);
+	ctx.lineTo(160,25);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(100,100);
+	ctx.lineTo(200,100);
+	ctx.lineTo(100,200);
+	ctx.fillStyle='#f00';
+	ctx.fill();
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>代码中除了前面介绍的四个函数外，还提到moveTo跟lineTo两个函数。这两个函数都只带两个参数，分别为canvas上某点的坐标值。moveTo什么都不做，如果把canvas解释成一块画布，那么它的作用就是将画笔移动到画布上的某个位置，在canvas初始化时或者beginPath被调用时，画笔的默认位置是canvas坐标系的原点。lineTo函数用来画一条线段，该函数的两个参数指定了线段的终点坐标，起始坐标为moveTo指定的位置或者上一个路径的终点。</p>
+<p><strong>canvas绘图：使用路径（path）绘图&mdash;&mdash;圆弧</strong><br />
+我们使用arc函数来画圆弧或一个完整的圆，这个函数有6个参数，函数原型如下：</p>
+<blockquote>
+<p>arc(x, y, radius, startAngle, endAngle, anticlockwise)</p>
+</blockquote>
+<p>参数x和y是圆心坐标值，radius为圆半径；startAngle和endAngle为圆弧起始位置弧度和和终点位置弧度，该值为弧度而不是角度值，角度转弧度的公式为：var radians = (Math.PI/180)*degrees；anticlockwise是一个布尔值，当它为true时，圆弧绘制方向为逆时针方向，false是为顺时针方向。</p>
+<p>圆或圆弧的绘制相对前面提到的那些图形稍微复杂了点。<a href="http://wanz.im/demo/html5_canvas_arc.html"><font color="#0a6804">查看demo</font></a></p>
+<pre class="brush: xhtml;" title="code">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta  charset=&quot;utf-8&quot; /&gt;
+&lt;title&gt;Canvas javascript api demo&lt;/title&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+canvas {
+	border:1px #000 solid;
+}
+&lt;/style&gt;
+ 
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;this is a canvas api test page!&lt;/h1&gt;
+&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;this browser does not support canvas...&lt;/canvas&gt;
+&lt;a href=&quot;http://blog.wanz.im/2010/04/17/canvas_javascript_api_learning_two/&quot;&gt;返回文章&lt;/a&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var $=function(id){
+	return document.getElementById(id);
+}
+window.onload=function(){
+	var ctx=$('canvas').getContext('2d');
+	ctx.beginPath();  
+	var x= 50;               // x coordinate  
+	var y= 50;               // y coordinate  
+	var radius= 20;                    // Arc radius  
+	var startAngle= 0;                     // Starting point on circle  
+	var endAngle=(Math.PI/180)*120;
+	var anticlockwise= true; // anticlockwise       
+	ctx.arc(x,y,radius,startAngle,endAngle, anticlockwise);  
+	ctx.stroke();
+ 
+	ctx.beginPath();  
+	var x= 150;               // x coordinate  
+	var y= 50;               // y coordinate  
+	var radius= 20;                    // Arc radius  
+	var startAngle= 0;                     // Starting point on circle  
+	var endAngle=(Math.PI/180)*120;
+	var anticlockwise= false; // clockwise    
+	ctx.arc(x,y,radius,startAngle,endAngle, anticlockwise);  
+	ctx.stroke();
+ 
+	ctx.beginPath();  
+	var x= 150;               // x coordinate  
+	var y= 125;               // y coordinate  
+	var radius= 50;                    // Arc radius  
+	var startAngle= 0;                     // Starting point on circle  
+	var endAngle=(Math.PI/180)*360;
+	var anticlockwise= false; // clockwise or anticlockwise       
+	ctx.arc(x,y,radius,startAngle,endAngle, anticlockwise);  
+	ctx.fillStyle='rgba(255,0,0,0.5)';
+	ctx.fill();
+ 
+	ctx.beginPath();  
+	var x= 125;               // x coordinate  
+	var y= 150;               // y coordinate  
+	var radius= 50;                    // Arc radius  
+	var startAngle= 0;                     // Starting point on circle  
+	var endAngle=(Math.PI/180)*360;
+	var anticlockwise= false; // clockwise or anticlockwise       
+	ctx.arc(x,y,radius,startAngle,endAngle, anticlockwise);  
+	ctx.fillStyle='rgba(0,255,0,0.5)';
+	ctx.fill();
+ 
+	ctx.beginPath();  
+	var x= 175;               // x coordinate  
+	var y= 150;               // y coordinate  
+	var radius= 50;                    // Arc radius  
+	var startAngle= 0;                     // Starting point on circle  
+	var endAngle=(Math.PI/180)*360;
+	var anticlockwise= false; // clockwise or anticlockwise       
+	ctx.arc(x,y,radius,startAngle,endAngle, anticlockwise);  
+	ctx.fillStyle='rgba(0,0,255,0.5)';
+	ctx.fill();
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p><strong>canvas绘图：使用路径（path）绘图&mdash;&mdash;贝塞尔二次和三次曲线<br />
+</strong>通过使用这两种曲线绘制的api，你可以画出更复杂的图形。它们的区别在于二次曲线只有一个控制点，而三次曲线有两个。你可以在wiki上查看更多关于<a href="http://zh.wikipedia.org/zh-cn/%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF"><font color="#0a6804">贝塞尔二次和三次曲线</font></a>的资料。它们的函数原型如下：</p>
+<blockquote>
+<p>quadraticCurveTo(cp1x, cp1y, x, y) //二次曲线，在Firefox 1.5下有bug<br />
+bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)//三次曲线</p>
+</blockquote>
+<div id="attachment_552" class="wp-caption aligncenter" style="width: 200px"><a href="http://blog.wanz.im/wp-content/uploads/2010/04/Canvas_curves.png"><img class="size-full wp-image-552" title="Canvas_curves" alt="Canvas_curves" width="190" height="190" src="http://blog.wanz.im/wp-content/uploads/2010/04/Canvas_curves.png" /></a>
+<p class="wp-caption-text">二次曲线和三次曲线</p>
+</div>
+<p><br />
+红色为控制点，蓝色为起点跟终点</p>
+<p>&nbsp;</p>
+<p>两个函数的x和y参数都是终点坐标值，cp1x和cp1y是第一个控制点的坐标值，cp2x和cp2y是第二个控制点的坐标值，起点坐标可以用moveTo来确定。</p>
+<p>虽说这两个函数能构造出复杂的图形，但是使用二次和三次贝塞尔曲线是有很大难度的，因为你根本无法想象一个复杂的图形，它所对应的曲线参数是多少，无法直观的得到它们。要做到这点，你需要有足够的时间和耐心慢慢尝试，或者借助图形学工具来得到这些参数。接下来我来演示一个比较复杂的demo。<a href="http://wanz.im/demo/html5_canvas_poker.html"><font color="#0a6804">查看demo</font></a><br />
+&nbsp;</p>
+<div id="attachment_576" class="wp-caption aligncenter" style="width: 310px"><a href="http://blog.wanz.im/wp-content/uploads/2010/04/canvas_poker.png"><font color="#0a6804"><img class="size-full wp-image-576" title="canvas_poker" alt="canvas_poker" width="300" height="300" src="http://blog.wanz.im/wp-content/uploads/2010/04/canvas_poker.png" /></font></a>
+<p class="wp-caption-text">canvas_poker</p>
+</div>
+<p>上面的这个demo比较复杂，原因在于前面说的，你必须很清楚的知道贝塞尔曲线的各个参数，这里我借助了我上大学时候图形学的课程设计的帮助得到这些必要的参数的，希望它也能帮到你。这个工具文件只有28k，请使用右键另存为下载：<a href="http://blog.wanz.im/wp-content/uploads/2010/04/bezierCurve.exe"><font color="#0a6804">贝塞尔二次和三次曲线生成工具</font></a>。<br />
+先看看工具界面，各个节点都可以调整到你所希望的样子，并有对应的坐标值。<br />
+&nbsp;</p>
+<div id="attachment_569" class="wp-caption aligncenter" style="width: 310px"><a href="http://blog.wanz.im/wp-content/uploads/2010/04/bezierCurvetool.jpg"><img class="size-medium wp-image-569" title="bezierCurvetool" alt="bezierCurvetool" width="300" height="263" src="http://blog.wanz.im/wp-content/uploads/2010/04/bezierCurvetool-300x263.jpg" /></a>
+<p class="wp-caption-text">bezierCurvetool</p>
+</div>
+<p>&nbsp;</p>
+<p><strong>Firefox 1.5 quadraticCurveTo() bug</strong><br />
+这个bug出现在Firefox1.5中，在调用quadraticCurveTo函数的时候，得到的却是bezierCurveTo函数一样的结果。这是核心中将二次的控制点重复使用一次导致的，正如前面所说的，二次只有一个控制点，这里却变成了两个。解决的办法是将原本使用二次曲线函数的方式用三次曲线函数来表示该曲线。</p>
+<p>原文地址: <a href="http://blog.wanz.im/2010/04/17/canvas_javascript_api_learning_two/">canvas JavaScript API学习（二）</a></p>
+				</div>
+				<footer>
+					<p class="tagList">Tags: <a href="/Tag/?Article/html5">html5</a> , <a href="/Tag/?Article/canvas">canvas</a> , <a href="/Tag/?Article/JavaScript">JavaScript</a> </p>
+					<ul>
+						<li>上篇文章: <a href="/Html/Article/html-css/html5-canvas-study-1.html">canvas JavaScript API学习（一）</a></li>
+						<li>下篇文章: <a href="/Html/Article/html-css/html5-canvas-study-3.html">canvas JavaScript API学习（三）</a></li>
+					</ul>
+					<p>可能感兴趣的文章:</p>
+					<ul class="rndArtList"><li><a href="/Html/Article/IIS/UrlScan-config-file.html" title="UrlScan.ini配置文件">UrlScan.ini配置文件</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-2.html" title="canvas JavaScript API学习（二）">canvas JavaScript API学习（二）</a></li><li><a href="/Html/Article/system/dns-query-1.html" title="DNS中的递归查询和迭代查询">DNS中的递归查询和迭代查询</a></li><li><a href="/Html/Article/asp/Adodb-Stream-intro.html" title="Adodb.Stream 组件的使用说明">Adodb.Stream 组件的使用说明</a></li><li><a href="/Html/Article/html-css/css-reset-collection.html" title="几个CSS Reset和讲解">几个CSS Reset和讲解</a></li></ul>
+				</footer>
+			</article>
+		</div>
+	</div>
+	<footer id="footer"><p>&copy; 2010-2011 XeonWell. 以上文摘,&nbsp;仅供个人收藏和参考&nbsp;<a href="http://www.miibeian.gov.cn">粤ICP备10095269号-1</a>&nbsp;</p>
+<p><a title="Valid XHTML 1.0 Strict" href="http://validator.w3.org/">HTML5</a> | <a title="Valid CSS" href="http://jigsaw.w3.org/css-validator/">Valid CSS 1/2/3</a> | <a title="508 Standards, Section" href="http://www.contentquality.com/mynewtester/cynthia.exe?url1=http%3A%2F%2Fwww.xw.hb.cn%2F">508</a> | <a title="WAI" href="http://www.contentquality.com/mynewtester/cynthia.exe?rptmode=2&amp;url1=http%3A%2F%2Fwww.xw.hb.cn%2F">WAI</a>&nbsp;| <a href="/rss/">RSS</a> | <a href="/rss/?type=atom">Atom</a> | <a href="/google-site.xml">SiteMap</a></p></footer>
+	<div id="jsDiv">
+		<script type="text/javascript" src="/Js/jquery.js"></script>
+		<script type="text/javascript" src="/Js/common.js"></script>
+		<!--[if lte IE 6]><script type="text/javascript" src="/Js/ie-fix.js"></script><![endif]-->
+		<script type="text/javascript" src="/js/article.js"></script>
+		<script type="text/javascript" src="/Click.Asp?id=115"></script>
+	</div>
+	<div class="nd"><p><a href="/">XeonWell Studio</a></p><script type="text/javascript" src="/Js/stat.js"></script></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,234 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>IIRF(Ionic&#39;s Isapi Rewrite Filter)入门，在IIS上重写Url--XeonWell Studio</title>
+<meta name="Keywords" content="Isapi,Rewrite,Filter,html,css,javascript,web,js" />
+<meta name="Description" content="IIRF(Ionic&#39;s Isapi Rewrite Filter)入门，在IIS上重写Url,html,css,javascript,web,js" />
+<meta name="Author" content="XeonWell, email:admin_xw_hb_cn" />
+<meta name="language" content="Chinese" />
+<meta name="Robots" content="index,follow" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="icon" href="/i/xiong.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/i/xiong.ico" type="image/x-icon" />
+<link href="/css/fw.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if lte IE 8]><link href="/css/ie-fix.css" rel="stylesheet" type="text/css" media="all" />
+<script src="/js/ie-html5.js" type="text/javascript" /></script><![endif]-->
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shThemeDefault.css"/>
+</head>
+
+<body>
+<div id="bodyWrapper">
+	<header id="header" class="clearfix">
+		<h1><a href="/" title="XeonWell Studio">XeonWell Studio</a></h1>
+		<ul id="menu" class="resetList"><li><a href="/" title="XeonWell Studio">Home</a></li><li><a href="/Html/Article/Mobile/" title="Mobile" accesskey="1"><strong>Mobile</strong></a></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS" accesskey="2"><strong>(X)Html/CSS</strong></a></li><li><a href="/Html/Article/javascript/" title="Javascript" accesskey="3"><strong>Javascript</strong></a></li><li><a href="/Html/Article/asp/" title="ASP" accesskey="4"><strong>ASP</strong></a></li><li><a href="/Html/Article/cs/" title="C#" accesskey="5"><strong>C#</strong></a></li><li><a href="/Html/Article/system/" title="System" accesskey="6"><strong>System</strong></a></li><li><a href="/Html/Article/b1og/" title="Blog" accesskey="7"><strong>Blog</strong></a></li></ul>
+		<div id="searchDiv">
+			<form id="searchForm" action="/Search/" method="get">
+			<p><label for="searchStr">输入搜索字符串</label><input type="text" class="searchStr" name="searchStr" id="searchStr" value="" size="19" alt="输入搜索字符串" /><input type="submit" value="Search" class="search" alt="search" /></p>
+			</form>
+		</div>
+	</header>
+	<div id="content" class="clearfix">
+		<div id="leftWrapper">
+			<div id="artCategory" class="listDiv roundedCorners">
+				<h3 class="listTitle">文章分类</h3>
+				<ul class="uList"><li><a href="/Html/Article/Mobile/" title="Mobile">Mobile</a><ul><li><a href="/Html/Article/iPhone/" title="iPhone">iPhone</a></li></ul></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS">(X)Html/CSS</a></li><li><a href="/Html/Article/javascript/" title="Javascript">Javascript</a><ul><li><a href="/Html/Article/jquery/" title="jQuery">jQuery</a></li></ul></li><li><a href="/Html/Article/asp/" title="ASP">ASP</a></li><li><a href="/Html/Article/cs/" title="C#">C#</a></li><li><a href="/Html/Article/system/" title="System">System</a><ul><li><a href="/Html/Article/nginx/" title="Nginx">Nginx</a></li><li><a href="/Html/Article/IIS/" title="IIS">IIS</a></li><li><a href="/Html/Article/database/" title="Database">Database</a></li><li><a href="/Html/Article/mail/" title="Mail">Mail</a></li></ul></li><li><a href="/Html/Article/b1og/" title="Blog">Blog</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners" id="tagCloud">
+				<h3 class="listTitle">Tag Cloud</h3>
+				<div class="tagList"><a href="/Tag/?Article/html5" title="html5">html5</a>, <a href="/Tag/?Article/iPhone" title="iPhone">iPhone</a>, <a href="/Tag/?Article/canvas" title="canvas">canvas</a>, <a href="/Tag/?Article/JavaScript" title="JavaScript">JavaScript</a>, <a href="/Tag/?Article/css3" title="css3">css3</a>, <a href="/Tag/?Article/css" title="css">css</a>, <a href="/Tag/?Article/Nginx" title="Nginx">Nginx</a>, <a href="/Tag/?Article/Cheat Sheet" title="Cheat Sheet">Cheat Sheet</a>, <a href="/Tag/?Article/jQuery" title="jQuery">jQuery</a>, <a href="/Tag/?Article/XCode" title="XCode">XCode</a>, <a href="/Tag/?Article/iis" title="iis">iis</a>, <a href="/Tag/?Article/wap" title="wap">wap</a>, <a href="/Tag/?Article/HTTP" title="HTTP">HTTP</a>, <a href="/Tag/?Article/Android" title="Android">Android</a>, <a href="/Tag/?Article/CSS Hack" title="CSS Hack">CSS Hack</a>, <a href="/Tag/?Article/xhtml" title="xhtml">xhtml</a>, <a href="/Tag/?Article/Doctype" title="Doctype">Doctype</a>, <a href="/Tag/?Article/Help Sheet" title="Help Sheet">Help Sheet</a>, <a href="/Tag/?Article/User-Agent" title="User-Agent">User-Agent</a>, <a href="/Tag/?Article/DNS" title="DNS">DNS</a>, <a href="/Tag/?Article/iPad" title="iPad">iPad</a>, <a href="/Tag/?Article/浮动" title="浮动">浮动</a>, <a href="/Tag/?Article/win2000" title="win2000">win2000</a>, <a href="/Tag/?Article/ubuntu" title="ubuntu">ubuntu</a>, <a href="/Tag/?Article/EditPlus" title="EditPlus">EditPlus</a>, <a href="/Tag/?Article/chrome" title="chrome">chrome</a>, <a href="/Tag/?Article/清除浮动" title="清除浮动">清除浮动</a>, <a href="/Tag/?Article/clearfix" title="clearfix">clearfix</a>, <a href="/Tag/?Article/DOM" title="DOM">DOM</a>, <a href="/Tag/?Article/跨浏览器" title="跨浏览器">跨浏览器</a>, <a href="/Tag/?Article/手机" title="手机">手机</a>, <a href="/Tag/?Article/3G" title="3G">3G</a>, <a href="/Tag/?Article/Visual Cheat Sheet" title="Visual Cheat Sheet">Visual Cheat Sheet</a>, <a href="/Tag/?Article/SDK" title="SDK">SDK</a>, <a href="/Tag/?Article/cocos2d" title="cocos2d">cocos2d</a>, <a href="/Tag/?Article/vibrate" title="vibrate">vibrate</a>, <a href="/Tag/?Article/UA" title="UA">UA</a>, <a href="/Tag/?Article/brightness" title="brightness">brightness</a>, <a href="/Tag/?Article/imagetoolbar" title="imagetoolbar">imagetoolbar</a>, <a href="/Tag/?Article/galleryImg" title="galleryImg">galleryImg</a>, <a href="/Tag/?Article/google" title="google">google</a>, <a href="/Tag/?Article/asp" title="asp">asp</a>, <a href="/Tag/?Article/fckeditor" title="fckeditor">fckeditor</a>, <a href="/Tag/?Article/asp.net" title="asp.net">asp.net</a>, <a href="/Tag/?Article/Outlook Express" title="Outlook Express">Outlook Express</a>, <a href="/Tag/?Article/SqlPlus" title="SqlPlus">SqlPlus</a>, <a href="/Tag/?Article/Gzip" title="Gzip">Gzip</a>, <a href="/Tag/?Article/win2003" title="win2003">win2003</a>, <a href="/Tag/?Article/虚拟主机" title="虚拟主机">虚拟主机</a>, <a href="/Tag/?Article/泛域名" title="泛域名">泛域名</a>, <a href="/">XeonWell Studio</a></div>
+			</div>
+			<div id="hotList" class="listDiv roundedCorners">
+				<h3 class="listTitle">热门文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/asp/ASP-isblank.html" title="ASP判断是否为空">ASP判断是否为空</a></li><li><a href="/Html/Article/b1og/editplus-stx-html5-css3-js-jquery.html" title="EditPlus的js(含jquery),HTML5,CSS3语法高亮文件">EditPlus的js(含jquery),HTML5,CSS3语法高亮文件</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/UIScrollView-Reference.html" title="UIScrollView参考">UIScrollView参考</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/iPhone/iPhone-scale-image.html" title="iPhone中缩放图片">iPhone中缩放图片</a></li><li><a href="/Html/Article/html-css/html5-table-template.html" title="HTML5 Table Template">HTML5 Table Template</a></li><li><a href="/Html/Article/b1og/js-jquery-stx-editplus.html" title="EditPlus的Javascript语法文件(包含jQuery语法高亮)">EditPlus的Javascript语法文件(包含jQuery语法高亮)</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners">
+				<h3 class="listTitle">随机推荐</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/iPhone/iPhone-scale-image.html" title="iPhone中缩放图片">iPhone中缩放图片</a></li><li><a href="/Html/Article/system/Win2003-server-config1.html" title="Win2003虚拟主机设置">Win2003虚拟主机设置</a></li><li><a href="/Html/Article/html-css/HTML5-CSS-Reset-Style.html" title="HTML5 CSS Reset Style">HTML5 CSS Reset Style</a></li><li><a href="/Html/Article/iPhone/hide-system-volume-view-on-ios.html" title="隐藏ios系统的音量变化显示界面">隐藏ios系统的音量变化显示界面</a></li><li><a href="/Html/Article/html-css/first-letter-in-browsers.html" title="first-letter在各浏览器中的表现">first-letter在各浏览器中的表现</a></li><li><a href="/Html/Article/system/netsh-command.html" title="netsh命令的修改+转贴">netsh命令的修改+转贴</a></li><li><a href="/Html/Article/nginx/nginx-proxy-iis-X-Forwarded-For.html" title="nginx反向代理后,让IIS Log中记录真实客户IP">nginx反向代理后,让IIS Log中记录真实客户IP</a></li><li><a href="/Html/Article/system/delete-igfxcui.html" title="删除右键中的 另存为图式、图形选项、显示模式">删除右键中的 另存为图式、图形选项、显示模式</a></li><li><a href="/Html/Article/IIS/change-win2003-iis6-upload-file-size.html" title="更改win2003的IIS 6.0对上传下载文件的大小限制">更改win2003的IIS 6.0对上传下载文件的大小限制</a></li><li><a href="/Html/Article/b1og/WebKit-Native-Asynchronous-Script-Loading.html" title="WebKit原生支持异步载入脚本">WebKit原生支持异步载入脚本</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">参考手册</h3>
+				<ul class="uList ellipsis"><li><a href="/works/css20/Index.html" title="CSS2.0中文参考手册">CSS2.0中文参考手册</a></li><li><a href="/works/DHTMLref/Index.html" title="DHTML中文参考手册">DHTML中文参考手册</a></li><li><a href="/works/css3/Index.html" title="CSS3.0中文参考手册">CSS3.0中文参考手册</a></li><li><a href="/works/VBscript/Index.html" title="VBScript 语言参考">VBScript 语言参考</a></li><li><a href="/works/ado/index.html" title="ADO中文参考手册">ADO中文参考手册</a></li><li><a href="http://www.junchenwu.com/WAI/wai-pageauth.html" title="Web内容可访问性指南 1.0">Web内容可访问性指南 1.0</a></li><li><a href="http://www.w3school.com.cn/html5/index.asp" title="HTML 5 参考手册">HTML 5 参考手册</a></li><li><a href="/works/Ext_3.0_cn/index.html" title="Ext 3.0 中文参考手册">Ext 3.0 中文参考手册</a></li><li><a href="http://www.findmebyip.com/litmus" title="HTML5和CSS3兼容性参考">HTML5和CSS3兼容性参考</a></li><li><a href="http://www.cocos2d-iphone.org/api-ref/" title="cocos2d for iPhone API Reference">cocos2d for iPhone API Reference</a></li><li><a href="/ref/GNUstep_Reference" title="GNUstep Reference">GNUstep Reference</a></li><li><a href="/ref/zh-google-cpp-styleguide/index.html" title="Google C++ 编程规范">Google C++ 编程规范</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">实用工具</h3>
+				<ul class="uList ellipsis"><li><a href="/WebTools/wannianli/" title="万年历查询">万年历</a></li><li><a href="http://www.connectionstrings.com/" title="数据库连接字符串">Connection Strings</a></li><li><a href="http://css3please.com/" title="cross browser css3 rule generator">CSS3规则生成器</a></li><li><a href="http://centricle.com/ref/css/filters/" title="CSS Hack表">CSS Hack表</a></li><li><a href="http://tools.chinaz.com/" title="站长工具">站长工具</a></li><li><a href="http://www.useragentstring.com/" title="User Agent Strings">User Agent Strings</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">友情链接</h3>
+				<ul class="uList ellipsis"><li><a href="http://www.xw81.com/" title="XeonWell Studio">XeonWell Studio</a></li><li><a href="http://www.5dmail.net" title="国内最大的邮件技术资讯基地">邮件技术资讯网</a></li></ul>
+			</div>
+		</div>
+		<div id="rightWrapper">
+			<div id="oriList" class="listDiv roundedCorners">
+				<h3 class="listTitle">原创文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/iPhone/adjust-iphone-brightness.html" title="调节iphone屏幕亮度">调节iphone屏幕亮度</a></li><li><a href="/Html/Article/iPhone/hide-system-volume-view-on-ios.html" title="隐藏ios系统的音量变化显示界面">隐藏ios系统的音量变化显示界面</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/apple-touch-icon.html" title="在apple设备上显示网站图标">在apple设备上显示网站图标</a></li><li><a href="/Html/Article/iPhone/iPhone-iPad-check.html" title="判断用户的是iPhone还是iPad">判断用户的是iPhone还是iPad</a></li><li><a href="/Html/Article/iPhone/iPhone-vibrate.html" title="代码实现iPhone震动">代码实现iPhone震动</a></li><li><a href="/Html/Article/iPhone/cocos2d-for-iPhone-guide.html" title="cocos2d for iPhone教程">cocos2d for iPhone教程</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/iPhone-DebugLog.html" title="控制Log的输出">控制Log的输出</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/iPhone/iPhone-SDK-Version-Check-1.html" title="iPhone版本判断">iPhone版本判断</a></li><li><a href="/Html/Article/system/VMware-custom-start.html" title="VMware的自定义启动">VMware的自定义启动</a></li><li><a href="/Html/Article/iPhone/backup-XCode-Key-Bindings.html" title="备份XCode键盘快捷键和颜色文字">备份XCode键盘快捷键和颜色文字</a></li><li><a href="/Html/Article/iPhone/error-communicating-with-the-iTunes-Store.html" title="error communicating with the iTunes Store">error communicating with the iTunes Store</a></li><li><a href="/Html/Article/b1og/liquid-particles.html" title="HTML5 canvas效果Liquid Particles">HTML5 canvas效果Liquid Particles</a></li><li><a href="/Html/Article/b1og/apple-html5-showcase.html" title="apple的html5 Showcase">apple的html5 Showcase</a></li><li><a href="/Html/Article/b1og/html5test-browser-scores.html" title="html5test.com测试你的浏览器支持多少html5特性">html5test.com测试你的浏览器支持多少html5特性</a></li><li><a href="/Html/Article/b1og/netbalancer-hanzify.html" title="网络限速软件NetBalancer">网络限速软件NetBalancer</a></li><li><a href="/Html/Article/html-css/first-letter-in-browsers.html" title="first-letter在各浏览器中的表现">first-letter在各浏览器中的表现</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li></ul>
+			</div>
+		</div>
+		<div id="centerWrapper" class="roundedCorners clearfix">
+			<nav class="nav"><a href="/" title="XeonWell Studio">Home</a>  &nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="/Html/Article/system/" title="System">System</a> &nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="/Html/Article/IIS/" title="IIS">IIS</a></nav>
+			<article class="article">
+				<header><h1 class="artTitle hei">IIRF(Ionic&#39;s Isapi Rewrite Filter)入门，在IIS上重写Url</h1></header>
+				<div class="artContent">
+					<p>每一次看scottgur的BLOG总能收获意外的惊喜^_^。在他的这篇BLOG（Tip/Trick: Url Rewriting with ASP.NET(感谢思归）中，描述了有关在ASP.NET重写URL的各种方法。而我这篇文章不会涉及如何在ASP.NET重写URL，只是简单介绍IIRF（为了方便少写几字，以后的Ionic's Isapi Rewrite Filter将全部简写）如何在IIS下面实现URL的重写。</p>
+<p>介绍</p>
+<p>&nbsp;IIRF是一款开源的重写URL过滤器，类似于Apache的URL重写，基于VC8.0（可以用Visual Studio2005或Visual C++ 2005 Express重新编译）开发。它可以运行在IIS5.0＋，支持ASP,ASP.NET,PHP等许多格式。相对比ASP.NET2.0自带的URL重写，具有更好的性能和许多我们所需要特性，重要的一点在于：它可以支持无扩展名的URL（例如：cnlbogs.com/****,你无需在创建一个默认的default.aspx文件，IIRF自动会帮你解析），让URL更加的方便我们记忆，也能进一步提高搜索的排名？IIRF能够在aspnet_isapi提前捕获我们所请求的URL进行处理，如果我们访问cnlbogs.com/a.aspx,需要获取cnlbogs.com/a.htm,步骤需要(iis-aspnet_isapi),通过IIRF，我们可以直接跳aspnet_isapi.dll,直接访问a.htm，要知道，这种方式在ASP.NET是无法实现的。</p>
+<p>&nbsp;IIRF跟ASP.NET重写URL一样，它也是基于正则的方式来匹配，具有LOG记录，请求的条件判断。还是进入正题吧。</p>
+<p>安装</p>
+<p>&nbsp;IIRF安装需要我们手动操作来完成。不过。也是很方便了。</p>
+<p>1 将IsapiRewrite4.dll, IsapiRewrite4.ini复制到c:\windows\system32\inetsrv(你也可以复制到其它适当的文件夹下面)。</p>
+<p>IsapiRewrite4.ini是IIRF配置文件，每次该文件更改之后，IIRF会自动重新加载该文件，无需重启IIS来重新加载配置，如果您修改后INI文件后格式不正确，IIRF将会自动获取最后正确加载的配置文件。</p>
+<p>2 打开IIS管理器,选择&quot;默认网站&quot;，右击&quot;属性&quot;，选择&quot;ISAPI筛选器&quot;，点击&quot;添加&quot;，输入筛选器名称：Ionic Rewriter，可执行文件选择上面复制到c:\windows\system32\inetsrv下面的IsapiRewrite4.dll文件，点&quot;确定&quot;。</p>
+<p>3重启IISADMIN service服务。（在计算机管理----windows服务里面）</p>
+<p>4 完成。</p>
+<p>日志</p>
+<p>IIRF能够将INI配置文件加载，用户的URL请求记录都会保存到指定的日志文件里。因为它具有很大的性能开销，因此建议将它日志的记录等级设为0，只有<br />
+为了方便调试的时候时候，可以设置为5，</p>
+<p>RewriteLog &lt;filename stub&gt;&nbsp; 保存的日志路径，如 c:\temp\iirfLog.out<br />
+RewriteLogLevel {0,1,2,3,4,5} 日志的等级,默认值为0</p>
+<p>0 -不会记录日志<br />
+1- 少许的日志<br />
+2-&nbsp; 比较多的日志<br />
+3- 比较详细的日志<br />
+4- 详细的日志（4），并会跟踪server variable和替换的字符串。<br />
+5- 详细的日志（5），包括日志文件更改的事件，建议方便调试的时候使用</p>
+<p>正则</p>
+<p>正则的语法跟.NET一样，只不过是格式不一样而已。所以我也不在详细介绍。具体有关正则的说明大家可以用GOOGLE搜索。</p>
+<p>格式：<br />
+RewriteRule &lt;url-pattern&gt; &lt;replacement-string&gt;&nbsp;&nbsp; [&lt;modifiers&gt;]<br />
+url-pattern：匹配的正则表达式(必需)<br />
+replacement-string:要替换的字符串（必需）<br />
+modifiers：有关对RewriteRule的操作标记。可选选项。在下面我会说明</p>
+<p>默认下IIRF的url-pattern，replacement-string正则的前面已经带了主机头的。</p>
+<p>为了方便描述，直接看几个示例(以下示例基本全部来源IIRF文档)</p>
+<p>RewriteRule&nbsp; ^/original/(.*).php&nbsp; /modified/$1.aspx</p>
+<p>源：<a href="http://xxx/original/index.php">http://xxx/original/index.php</a></p>
+<p>目标：<a href="http://xxx/modified/index.aspx">http://xxx/modified/index.aspx</a></p>
+<p>RewriteRule&nbsp; ^/dinoch/album/([^/]+)/([^/]+).(jpg|JPG|PNG)&nbsp;&nbsp; /chiesa/pics.aspx?d=$1&amp;p=$2.$3</p>
+<p>源：<a href="http://xxx/dinoch/album/30/1.jpg">http://xxx/dinoch/album/30/1.jpg</a></p>
+<p>目标：<a href="http://xxx/chiesa/pics.aspx?d=30&amp;p=1.jpg">http://xxx/chiesa/pics.aspx?d=30&amp;p=1.jpg</a></p>
+<p>&nbsp;比较简单，主要还在于modifiers的功能。下面列举了它的所有值，允许组合(如[R,L])。</p>
+<p>&nbsp;&nbsp; R = Redirect（URL跳转到&lt;replacement-string&gt;地址）<br />
+&nbsp;&nbsp; NF = Not found(返回404错误给用户，但该文件并未移除，还是保留在网站中）<br />
+&nbsp;&nbsp; L = Last test if match(如果已经匹配，将不在继续匹配下去)<br />
+&nbsp;&nbsp; F = Forbidden(跟NF标志相似，)<br />
+&nbsp;&nbsp; I = Do case-insensitive matching<br />
+&nbsp;&nbsp; U = Store original url in server Variable HTTP_X_REWRITE_URL(保存原始的url到HTTP_X_REWRITE_URL服务器变量中。)</p>
+<p>[R]&nbsp; or [R=code]<br />
+就像跟我们在ASP.NET使用的Redirect方法一样，重新改变浏览器的方向，跳转到新的指定的URL中。<br />
+[R=code]允许我们指定特定的HTTP状态返回码。只能介于301到399。如果超出这个范围。默认会是使用302状态。<br />
+RewriteRule ^/goto.aspx?r=(.*)$ $1 [R]<br />
+源:http://xxx/goto.aspx?r=http://www.google.com/<br />
+目标:http://www.google.com</p>
+<p>[L]<br />
+上面已经简单介绍过。不在说明</p>
+<p>[NF] <br />
+上面已经简单介绍过。它还可以跟RewriteCond一起配合，来实现自定义的404错误请求。<br />
+特别要注意，你所要匹配的文件必须存在，替换的字符串不允许是存在文件名<br />
+RewriteRule ^/1008.aspx$ /1.aspx [NF]<br />
+1008.aspx文件需要存在，1.aspx不存在，否则无法正常达到我们的结果。<br />
+（很奇怪，我不知道是不是我搞错了。但我最终测试的结果确实是这样，文档也没详细说明过，有知道的朋友可以告诉我一下原因）</p>
+<p>[F]<br />
+不在说明。</p>
+<p>[I]<br />
+模糊匹配</p>
+<p>[U]<br />
+保存原始的url到HTTP_X_REWRITE_URL服务器变量中。<br />
+在ASP.NET你可以用Request.ServerVariables[&quot;HTTP_X_REWRITE_URL&quot;]获取原始值。</p>
+<p>RewriteCond<br />
+RewriteCond &lt;test-string&gt; &lt;pattern&gt; [&lt;modifier flag[,...]&gt;]<br />
+类似于条件判断,并且允许多个条件，OR,AND。只有当RewriteCond的Server Variable 匹配所指定的正则表达，RewriteRule才会执行。比如：<br />
+RewriteCond %{REMOTE_ADDR} ^(127.0.0.1)$<br />
+RewriteRule ^/(.*).aspx$ /$1.aspx<br />
+如果我们访问网站的地址的IP来源于127.0.0.1,那么，允许 RewriteRule ^/(.*).aspx$ /$1.aspx</p>
+<p>RewriteCond %{REMOTE_ADDR} ^(127.0.0.1)$ [OR]<br />
+RewriteCond %{REMOTE_ADDR} ^(192.168.0.10)$<br />
+RewriteRule ^/(.*).aspx$ /$1.aspx<br />
+添加了OR来多个条件判断</p>
+<p>RewriteCond %{REMOTE_ADDR}&nbsp;&nbsp; ^(?!127.0.0.1)([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3})(.*)$<br />
+RewriteRule&nbsp; ^/(?!redirected.htm)(.*)$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /redirected.htm</p>
+<p>Modifier flags有二个值<br />
+I＝模糊匹配<br />
+OR=逻辑判断</p>
+<p>从IIRF的RewriteCond的功能上来说，确实很灵活，不知道跟IIS7的重写怎么样，嘻嘻。还没瞧见过呢*^_&amp;。另外。RewriteCond的[Patterns]可以带下面几个参数<br />
+&nbsp;-d<br />
+&nbsp; Treats the TestString as a pathname and tests if it exists,<br />
+&nbsp; and is a directory.<br />
+TestString是一个路径名称，并且存在这个路径<br />
+&nbsp;-f<br />
+&nbsp; Treats the TestString as a pathname and tests if it exists and<br />
+&nbsp; is a regular file.<br />
+TestString是一个路径名称，并且是一个存在的文件<br />
+&nbsp; -s <br />
+&nbsp; Treats the TestString as a pathname and tests if it exists and<br />
+&nbsp; is a regular file with size greater than zero.<br />
+TestString 是一个路径名称，并且存在文件超过0字节</p>
+<p>如文档所使用的例子<br />
+(1)RewriteCond %{HTTP_URL}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (/|\.htm|\.php|\.html|/[^.]*)$&nbsp;&nbsp; [I] )<br />
+(2)RewriteCond %{REQUEST_FILENAME}&nbsp;&nbsp;&nbsp;&nbsp; !-f<br />
+(3)RewriteCond %{REQUEST_FILENAME}&nbsp;&nbsp;&nbsp;&nbsp; !-d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />
+(4)RewriteRule ^.*$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /index.aspx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [U,L]<br />
+(1)如果URL是以htm,php,html(模糊匹配)，<br />
+(2)URL不是存在文件<br />
+(3)URL不是请求的路径<br />
+(4)将所有请求跳转到index.aspx,保存原始的URL，之后不在对此进行匹配</p>
+<p>在如<br />
+RewriteCond&nbsp; %{HTTP_USER_AGENT}&nbsp; ^Mozilla.*<br />
+RewriteRule&nbsp; ^/$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /homepage.max.html&nbsp; [L]</p>
+<p>IIRF其它配置属性<br />
+IterationLimit {integer}从指定的integer后开始匹配RewriteRule组。如果超出RewriteRule个数，默认将会从第8个开始。<br />
+MaxMatchCount {integer} RewriteRule组的总个数。<br />
+RewriteLog &lt;filename stub&gt; 日志路径<br />
+RewriteLogLevel {0,1,2,3,4,5} 日志的等级</p>
+<p>一个常见问题<br />
+在刚安装IIRF之后就测试一下ASP.NET下面的URL，发现还是跟以前ASP.NET重写URL有一样的问题：无法改写Form下面的action的路径，而我们这时使用Request.RawUrl获取原始的URL是为空的。也许你开始注意到了我上面写过的RewriteRule的modifiers选项[U]。我们可以通过将原始的URL保存到服务器变量中。然后通过Request.ServerVariables[name]来获取。然后重写action的值就可以了。</p>
+<p>&nbsp;1 Public Class FormFixerHtmlTextWriter<br />
+&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Inherits System.Web.UI.HtmlTextWriter<br />
+&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Private _url As String<br />
+&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Public Sub New(ByVal writer As TextWriter)<br />
+&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MyBase.New(writer)<br />
+&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _url = ForumContext.Current.Context.Request.ServerVariables(&quot;HTTP_X_REWRITE_URL&quot;)<br />
+&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End Sub<br />
+&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Public Overloads Overrides Sub WriteAttribute(ByVal name As String, ByVal value As String, ByVal encode As Boolean)<br />
+&nbsp;9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If (Not _url Is Nothing And String.Compare(name, &quot;action&quot;, True) = 0) Then<br />
+10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; value = _url<br />
+11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End If<br />
+12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MyBase.WriteAttribute(name, value, encode)<br />
+13&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End Sub<br />
+14&nbsp;&nbsp;&nbsp; End Class</p>
+<p>后记：<br />
+IIRF已经分析的差不多了。从上面可以看出，功能确实很强大，而且配置也很灵活。发现自己也慢慢喜欢上它了。嘿嘿。重要的是。它是免费,开源的。</p>
+<p>为自己小小的鼓掌一下。嘻嘻。写这篇随笔真不容易。希望能给大家一个帮助。另外，由于自己水平有限，上面也许有描述错误的地方或不清楚的地方还请指出，有则改之，无则加勉:)</p>
+<p>最后，祝大家2007年的第一个周未愉快*^_^*</p>
+<p>[2007-09-01]<br />
+<a href="http://zhangsichu.com/blogview.asp?Content_Id=82">http://zhangsichu.com/blogview.asp?Content_Id=82</a><br />
+这里已经有人实现了二级域名的重写，大家可以去看看．感谢 tombom 提供的信息．</p>
+<p>IIRF网站：<a href="http://cheeso.members.winisp.net/IIRF.aspx">http://cheeso.members.winisp.net/IIRF.aspx</a></p>
+				</div>
+				<footer>
+					<p class="tagList">Tags: </p>
+					<ul>
+						<li>上篇文章: <a href="javascript:void 0;">没有了</a></li>
+						<li>下篇文章: <a href="/Html/Article/IIS/IIS6-http-gzip-compress.html">IIS 6.0中配置HTTP Gzip压缩</a></li>
+					</ul>
+					<p>可能感兴趣的文章:</p>
+					<ul class="rndArtList"><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/iPhone/adjust-iphone-brightness.html" title="调节iphone屏幕亮度">调节iphone屏幕亮度</a></li><li><a href="/Html/Article/html-css/small-font-clear.html" title="让页面上的小字体(10px,11px)清晰显示">让页面上的小字体(10px,11px)清晰显示</a></li><li><a href="/Html/Article/html-css/CSS2-Help-Sheet.html" title="CSS2 Help Sheet">CSS2 Help Sheet</a></li><li><a href="/Html/Article/html-css/css-ellipsis-1.html" title="CSS实现超出部分省略(兼容各浏览器)">CSS实现超出部分省略(兼容各浏览器)</a></li></ul>
+				</footer>
+			</article>
+		</div>
+	</div>
+	<footer id="footer"><p>&copy; 2010-2011 XeonWell. 以上文摘,&nbsp;仅供个人收藏和参考&nbsp;<a href="http://www.miibeian.gov.cn">粤ICP备10095269号-1</a>&nbsp;</p>
+<p><a title="Valid XHTML 1.0 Strict" href="http://validator.w3.org/">HTML5</a> | <a title="Valid CSS" href="http://jigsaw.w3.org/css-validator/">Valid CSS 1/2/3</a> | <a title="508 Standards, Section" href="http://www.contentquality.com/mynewtester/cynthia.exe?url1=http%3A%2F%2Fwww.xw.hb.cn%2F">508</a> | <a title="WAI" href="http://www.contentquality.com/mynewtester/cynthia.exe?rptmode=2&amp;url1=http%3A%2F%2Fwww.xw.hb.cn%2F">WAI</a>&nbsp;| <a href="/rss/">RSS</a> | <a href="/rss/?type=atom">Atom</a> | <a href="/google-site.xml">SiteMap</a></p></footer>
+	<div id="jsDiv">
+		<script type="text/javascript" src="/Js/jquery.js"></script>
+		<script type="text/javascript" src="/Js/common.js"></script>
+		<!--[if lte IE 6]><script type="text/javascript" src="/Js/ie-fix.js"></script><![endif]-->
+		<script type="text/javascript" src="/js/article.js"></script>
+		<script type="text/javascript" src="/Click.Asp?id=16"></script>
+	</div>
+	<div class="nd"><p><a href="/">XeonWell Studio</a></p><script type="text/javascript" src="/Js/stat.js"></script></div>
+</div>
+</body>
+</html>
