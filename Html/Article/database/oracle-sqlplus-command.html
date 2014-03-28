@@ -1,0 +1,537 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SQLPLUS命令的使用大全-oracle--XeonWell Studio</title>
+<meta name="Keywords" content="SQLPLUS,移动应用技术分享,iphone,ios,ipad,android" />
+<meta name="Description" content="SQLPLUS命令的使用大全,移动应用技术分享，探讨移动应用技术发展趋势" />
+<meta name="Author" content="XeonWell, email:admin_xw_hb_cn" />
+<meta name="language" content="Chinese" />
+<meta name="Robots" content="index,follow" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="icon" href="/i/xiong.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/i/xiong.ico" type="image/x-icon" />
+<link href="/css/fw.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if lte IE 8]><link href="/css/ie-fix.css" rel="stylesheet" type="text/css" media="all" />
+<script src="/js/ie-html5.js" type="text/javascript" /></script><![endif]-->
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shThemeDefault.css"/>
+</head>
+
+<body>
+<div id="bodyWrapper">
+	<header id="header" class="clearfix">
+		<h1><a href="/" title="XeonWell Studio">XeonWell Studio</a></h1>
+		<ul id="menu" class="resetList"><li><a href="/" title="XeonWell Studio">Home</a></li><li><a href="/Html/Article/Mobile/" title="Mobile" accesskey="1"><strong>Mobile</strong></a></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS" accesskey="2"><strong>(X)Html/CSS</strong></a></li><li><a href="/Html/Article/javascript/" title="Javascript" accesskey="3"><strong>Javascript</strong></a></li><li><a href="/Html/Article/asp/" title="ASP" accesskey="4"><strong>ASP</strong></a></li><li><a href="/Html/Article/cs/" title="C#" accesskey="5"><strong>C#</strong></a></li><li><a href="/Html/Article/system/" title="System" accesskey="6"><strong>System</strong></a></li><li><a href="/Html/Article/b1og/" title="Blog" accesskey="7"><strong>Blog</strong></a></li></ul>
+	</header>
+	<div id="content" class="clearfix">
+		<div id="leftWrapper">
+			<div id="artCategory" class="listDiv roundedCorners">
+				<h3 class="listTitle">文章分类</h3>
+				<ul class="uList"><li><a href="/Html/Article/Mobile/" title="Mobile">Mobile</a><ul><li><a href="/Html/Article/iPhone/" title="iPhone">iPhone</a></li></ul></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS">(X)Html/CSS</a></li><li><a href="/Html/Article/javascript/" title="Javascript">Javascript</a><ul><li><a href="/Html/Article/jquery/" title="jQuery">jQuery</a></li></ul></li><li><a href="/Html/Article/asp/" title="ASP">ASP</a></li><li><a href="/Html/Article/cs/" title="C#">C#</a></li><li><a href="/Html/Article/system/" title="System">System</a><ul><li><a href="/Html/Article/nginx/" title="Nginx">Nginx</a></li><li><a href="/Html/Article/IIS/" title="IIS">IIS</a></li><li><a href="/Html/Article/database/" title="Database">Database</a></li><li><a href="/Html/Article/mail/" title="Mail">Mail</a></li></ul></li><li><a href="/Html/Article/b1og/" title="Blog">Blog</a></li></ul>
+			</div>
+			<div id="hotList" class="listDiv roundedCorners">
+				<h3 class="listTitle">热门文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/asp/ASP-isblank.html" title="ASP判断是否为空">ASP判断是否为空</a></li><li><a href="/Html/Article/b1og/editplus-stx-html5-css3-js-jquery.html" title="EditPlus的js(含jquery),HTML5,CSS3语法高亮文件">EditPlus的js(含jquery),HTML5,CSS3语法高亮文件</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/UIScrollView-Reference.html" title="UIScrollView参考">UIScrollView参考</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/iPhone/iPhone-scale-image.html" title="iPhone中缩放图片">iPhone中缩放图片</a></li><li><a href="/Html/Article/html-css/html5-table-template.html" title="HTML5 Table Template">HTML5 Table Template</a></li><li><a href="/Html/Article/b1og/js-jquery-stx-editplus.html" title="EditPlus的Javascript语法文件(包含jQuery语法高亮)">EditPlus的Javascript语法文件(包含jQuery语法高亮)</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners">
+				<h3 class="listTitle">随机推荐</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/iPhone/iPhone-iPad-check.html" title="判断用户的是iPhone还是iPad">判断用户的是iPhone还是iPad</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/css-rgba-browser-support.html" title="当前各浏览器对css的rgba函数支持表">当前各浏览器对css的rgba函数支持表</a></li><li><a href="/Html/Article/asp/asp-regexp-checkdata.html" title="在ASP中用&quot;正则表达式对象&quot;来校验数据的合法性">在ASP中用&quot;正则表达式对象&quot;来校验数据的合法性</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-1.html" title="canvas JavaScript API学习（一）">canvas JavaScript API学习（一）</a></li><li><a href="/Html/Article/html-css/HTML5-CSS-Reset-Style.html" title="HTML5 CSS Reset Style">HTML5 CSS Reset Style</a></li><li><a href="/Html/Article/b1og/monster-for-chrome.html" title="淘宝UED团队推Monster分析网站代码">淘宝UED团队推Monster分析网站代码</a></li><li><a href="/Html/Article/system/http-request-model.html" title="HTTP请求模型简介">HTTP请求模型简介</a></li><li><a href="/Html/Article/html-css/ie-condition-notes.html" title="IE条件注释参考">IE条件注释参考</a></li><li><a href="/Html/Article/b1og/border-image-generator.html" title="border-image generator生成器">border-image generator生成器</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">参考手册</h3>
+				<ul class="uList ellipsis"><li><a href="http://i.xw.hb.cn/works/css20/Index.html" title="CSS2.0中文参考手册">CSS2.0中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/DHTMLref/Index.html" title="DHTML中文参考手册">DHTML中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/css3/Index.html" title="CSS3.0中文参考手册">CSS3.0中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/Vbscript/Index.html" title="VBScript 语言参考">VBScript 语言参考</a></li><li><a href="http://i.xw.hb.cn/works/ado/index.html" title="ADO中文参考手册">ADO中文参考手册</a></li><li><a href="http://www.junchenwu.com/WAI/wai-pageauth.html" title="Web内容可访问性指南 1.0">Web内容可访问性指南 1.0</a></li><li><a href="http://www.w3school.com.cn/html5/index.asp" title="HTML 5 参考手册">HTML 5 参考手册</a></li><li><a href="http://i.xw.hb.cn/works/Ext_3.0_cn/index.html" title="Ext 3.0 中文参考手册">Ext 3.0 中文参考手册</a></li><li><a href="http://www.findmebyip.com/litmus" title="HTML5和CSS3兼容性参考">HTML5和CSS3兼容性参考</a></li><li><a href="http://www.cocos2d-iphone.org/api-ref/" title="cocos2d for iPhone API Reference">cocos2d for iPhone API Reference</a></li><li><a href="http://i.xw.hb.cn/ref/GNUstep_Reference" title="GNUstep Reference">GNUstep Reference</a></li><li><a href="http://i.xw.hb.cn/ref/zh-google-cpp-styleguide/index.html" title="Google C++ 编程规范">Google C++ 编程规范</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">实用工具</h3>
+				<ul class="uList ellipsis"><li><a href="http://i.xw.hb.cn/WebTools/wannianli/" title="万年历查询">万年历</a></li><li><a href="http://css3please.com/" title="cross browser css3 rule generator">CSS3规则生成器</a></li><li><a href="http://centricle.com/ref/css/filters/" title="CSS Hack表">CSS Hack表</a></li><li><a href="http://tools.chinaz.com/" title="站长工具">站长工具</a></li><li><a href="http://www.useragentstring.com/" title="User Agent Strings">User Agent Strings</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">友情链接</h3>
+				<ul class="uList ellipsis"><li><a href="http://www.xw.hb.cn/" title="XeonWell Studio">XeonWell Studio</a></li><li><a href="http://www.5dmail.net" title="国内最大的邮件技术资讯基地">邮件技术资讯网</a></li></ul>
+			</div>
+		</div>
+		<div id="rightWrapper">
+			<div id="oriList" class="listDiv roundedCorners">
+				<h3 class="listTitle">原创文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/iPhone/adjust-iphone-brightness.html" title="调节iphone屏幕亮度">调节iphone屏幕亮度</a></li><li><a href="/Html/Article/iPhone/hide-system-volume-view-on-ios.html" title="隐藏ios系统的音量变化显示界面">隐藏ios系统的音量变化显示界面</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/apple-touch-icon.html" title="在apple设备上显示网站图标">在apple设备上显示网站图标</a></li><li><a href="/Html/Article/iPhone/iPhone-iPad-check.html" title="判断用户的是iPhone还是iPad">判断用户的是iPhone还是iPad</a></li><li><a href="/Html/Article/iPhone/iPhone-vibrate.html" title="代码实现iPhone震动">代码实现iPhone震动</a></li><li><a href="/Html/Article/iPhone/cocos2d-for-iPhone-guide.html" title="cocos2d for iPhone教程">cocos2d for iPhone教程</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/iPhone-DebugLog.html" title="控制Log的输出">控制Log的输出</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/iPhone/iPhone-SDK-Version-Check-1.html" title="iPhone版本判断">iPhone版本判断</a></li><li><a href="/Html/Article/system/VMware-custom-start.html" title="VMware的自定义启动">VMware的自定义启动</a></li><li><a href="/Html/Article/iPhone/backup-XCode-Key-Bindings.html" title="备份XCode键盘快捷键和颜色文字">备份XCode键盘快捷键和颜色文字</a></li><li><a href="/Html/Article/iPhone/error-communicating-with-the-iTunes-Store.html" title="error communicating with the iTunes Store">error communicating with the iTunes Store</a></li><li><a href="/Html/Article/b1og/liquid-particles.html" title="HTML5 canvas效果Liquid Particles">HTML5 canvas效果Liquid Particles</a></li><li><a href="/Html/Article/b1og/apple-html5-showcase.html" title="apple的html5 Showcase">apple的html5 Showcase</a></li><li><a href="/Html/Article/b1og/html5test-browser-scores.html" title="html5test.com测试你的浏览器支持多少html5特性">html5test.com测试你的浏览器支持多少html5特性</a></li><li><a href="/Html/Article/b1og/netbalancer-hanzify.html" title="网络限速软件NetBalancer">网络限速软件NetBalancer</a></li><li><a href="/Html/Article/html-css/first-letter-in-browsers.html" title="first-letter在各浏览器中的表现">first-letter在各浏览器中的表现</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li></ul>
+			</div>
+		</div>
+		<div id="centerWrapper" class="roundedCorners clearfix">
+			<nav class="nav"><a href="/" title="XeonWell Studio">Home</a>  &nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="/Html/Article/system/" title="System">System</a> &nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="/Html/Article/database/" title="Database">Database</a></nav>
+			<article class="article">
+				<header><h1 class="artTitle hei">SQLPLUS命令的使用大全-oracle</h1></header>
+				<div class="artContent">
+					<p>1. 执行一个SQL脚本文件 <br />
+SQL&gt;start file_name <br />
+SQL&gt;@ file_name <br />
+我们可以将多条sql语句保存在一个文本文件中，这样当要执行这个文件中的所有的sql语句时，用上面的任一命令即可，这类似于dos中的批处理。 <br />
+<br />
+2. 对当前的输入进行编辑 <br />
+SQL&gt;edit <br />
+<br />
+3. 重新运行上一次运行的sql语句 <br />
+SQL&gt;/ <br />
+<br />
+4. 将显示的内容输出到指定文件 <br />
+SQL&gt; SPOOL file_name <br />
+在屏幕上的所有内容都包含在该文件中，包括你输入的sql语句。 <br />
+<br />
+5. 关闭spool输出 <br />
+SQL&gt; SPOOL OFF <br />
+只有关闭spool输出，才会在输出文件中看到输出的内容。 <br />
+&nbsp;</p>
+<p><br />
+6．显示一个表的结构 <br />
+SQL&gt; desc table_name <br />
+<br />
+7. COL命令： <br />
+主要格式化列的显示形式。 <br />
+该命令有许多选项，具体如下： <br />
+COL[UMN] [{ column|expr} [ option ...]] <br />
+Option选项可以是如下的子句: <br />
+ALI[AS] alias <br />
+CLE[AR] <br />
+FOLD_A[FTER] <br />
+FOLD_B[EFORE] <br />
+FOR[MAT] format <br />
+HEA[DING] text <br />
+JUS[TIFY] {L[EFT]|C[ENTER]|C[ENTRE]|R[IGHT]} <br />
+LIKE { expr|alias} <br />
+NEWL[INE] <br />
+NEW_V[ALUE] variable <br />
+NOPRI[NT]|PRI[NT] <br />
+NUL[L] text <br />
+OLD_V[ALUE] variable <br />
+ON|OFF <br />
+WRA[PPED]|WOR[D_WRAPPED]|TRU[NCATED] <br />
+<br />
+1). 改变缺省的列标题 <br />
+COLUMN column_name HEADING column_heading <br />
+For example: <br />
+Sql&gt;select * from dept; <br />
+DEPTNO DNAME LOC <br />
+---------- ---------------------------- --------- <br />
+10 ACCOUNTING NEW YORK <br />
+sql&gt;col LOC heading location <br />
+sql&gt;select * from dept; <br />
+DEPTNO DNAME location <br />
+--------- ---------------------------- ----------- <br />
+10 ACCOUNTING NEW YORK <br />
+<br />
+2). 将列名ENAME改为新列名EMPLOYEE NAME并将新列名放在两行上： <br />
+Sql&gt;select * from emp <br />
+Department name Salary <br />
+---------- ---------- ---------- <br />
+10 aaa 11 <br />
+SQL&gt; COLUMN ENAME HEADING &rsquo;Employee|Name&rsquo; <br />
+Sql&gt;select * from emp <br />
+Employee <br />
+Department name Salary <br />
+---------- ---------- ---------- <br />
+10 aaa 11 <br />
+note: the col heading turn into two lines from one line. <br />
+<br />
+3). 改变列的显示长度： <br />
+FOR[MAT] format <br />
+Sql&gt;select empno,ename,job from emp; <br />
+EMPNO ENAME JOB <br />
+---------- ---------- --------- <br />
+7369 SMITH CLERK <br />
+7499 ALLEN SALESMAN <br />
+7521 WARD SALESMAN <br />
+Sql&gt; col ename format a40 <br />
+EMPNO ENAME JOB <br />
+---------- ---------------------------------------- --------- <br />
+7369 SMITH CLERK <br />
+7499 ALLEN SALESMAN <br />
+7521 WARD SALESMAN <br />
+<br />
+4). 设置列标题的对齐方式 <br />
+JUS[TIFY] {L[EFT]|C[ENTER]|C[ENTRE]|R[IGHT]} <br />
+SQL&gt; col ename justify center <br />
+SQL&gt; / <br />
+EMPNO ENAME JOB <br />
+---------- ---------------------------------------- --------- <br />
+7369 SMITH CLERK <br />
+7499 ALLEN SALESMAN <br />
+7521 WARD SALESMAN <br />
+对于NUMBER型的列，列标题缺省在右边，其它类型的列标题缺省在左边 <br />
+<br />
+5). 不让一个列显示在屏幕上 <br />
+NOPRI[NT]|PRI[NT] <br />
+SQL&gt; col job noprint <br />
+SQL&gt; / <br />
+EMPNO ENAME <br />
+---------- ---------------------------------------- <br />
+7369 SMITH <br />
+7499 ALLEN <br />
+7521 WARD <br />
+<br />
+6). 格式化NUMBER类型列的显示： <br />
+SQL&gt; COLUMN SAL FORMAT $99,990 <br />
+SQL&gt; / <br />
+Employee <br />
+Department Name Salary Commission <br />
+---------- ---------- --------- ---------- <br />
+30 ALLEN $1,600 300 <br />
+<br />
+7). 显示列值时，如果列值为NULL值，用text值代替NULL值 <br />
+COMM NUL[L] text <br />
+SQL&gt;COL COMM NUL[L] text <br />
+<br />
+8). 设置一个列的回绕方式 <br />
+WRA[PPED]|WOR[D_WRAPPED]|TRU[NCATED] <br />
+COL1 <br />
+-------------------- <br />
+HOW ARE YOU? <br />
+<br />
+SQL&gt;COL COL1 FORMAT A5 <br />
+SQL&gt;COL COL1 WRAPPED <br />
+COL1 <br />
+----- <br />
+HOW A <br />
+RE YO <br />
+U? <br />
+<br />
+SQL&gt; COL COL1 WORD_WRAPPED <br />
+COL1 <br />
+----- <br />
+HOW <br />
+ARE <br />
+YOU? <br />
+<br />
+SQL&gt; COL COL1 WORD_WRAPPED <br />
+COL1 <br />
+----- <br />
+HOW A <br />
+<br />
+9). 显示列的当前的显示属性值 <br />
+SQL&gt; COLUMN column_name <br />
+<br />
+10). 将所有列的显示属性设为缺省值 <br />
+SQL&gt; CLEAR COLUMNS <br />
+<br />
+8. 屏蔽掉一个列中显示的相同的值 <br />
+BREAK ON break_column <br />
+SQL&gt; BREAK ON DEPTNO <br />
+SQL&gt; SELECT DEPTNO, ENAME, SAL <br />
+FROM EMP <br />
+WHERE SAL &lt; 2500 <br />
+ORDER BY DEPTNO; <br />
+DEPTNO ENAME SAL <br />
+---------- ----------- --------- <br />
+10 CLARK 2450 <br />
+MILLER 1300 <br />
+20 SMITH 800 <br />
+ADAMS 1100 <br />
+<br />
+9. 在上面屏蔽掉一个列中显示的相同的值的显示中，每当列值变化时在值变化之前插入n个空行。 <br />
+BREAK ON break_column SKIP n <br />
+<br />
+SQL&gt; BREAK ON DEPTNO SKIP 1 <br />
+SQL&gt; / <br />
+DEPTNO ENAME SAL <br />
+---------- ----------- --------- <br />
+10 CLARK 2450 <br />
+MILLER 1300 <br />
+<br />
+20 SMITH 800 <br />
+ADAMS 1100 <br />
+<br />
+10. 显示对BREAK的设置 <br />
+SQL&gt; BREAK <br />
+<br />
+11. 删除6、7的设置 <br />
+SQL&gt; CLEAR BREAKS <br />
+<br />
+12. Set 命令： <br />
+该命令包含许多子命令： <br />
+SET system_variable value <br />
+system_variable value 可以是如下的子句之一： <br />
+APPI[NFO]{ON|OFF|text} <br />
+ARRAY[SIZE] {15|n} <br />
+AUTO[COMMIT]{ON|OFF|IMM[EDIATE]|n} <br />
+AUTOP[RINT] {ON|OFF} <br />
+AUTORECOVERY [ON|OFF] <br />
+AUTOT[RACE] {ON|OFF|TRACE[ONLY]} [EXP[LAIN]] [STAT[ISTICS]] <br />
+BLO[CKTERMINATOR] {.|c} <br />
+CMDS[EP] {;|c|ON|OFF} <br />
+COLSEP {_|text} <br />
+COM[PATIBILITY]{V7|V8|NATIVE} <br />
+CON[CAT] {.|c|ON|OFF} <br />
+COPYC[OMMIT] {0|n} <br />
+COPYTYPECHECK {ON|OFF} <br />
+DEF[INE] {&amp;|c|ON|OFF} <br />
+DESCRIBE [DEPTH {1|n|ALL}][LINENUM {ON|OFF}][INDENT {ON|OFF}] <br />
+ECHO {ON|OFF} <br />
+EDITF[ILE] file_name[.ext] <br />
+EMB[EDDED] {ON|OFF} <br />
+ESC[APE] {|c|ON|OFF} <br />
+FEED[BACK] {6|n|ON|OFF} <br />
+FLAGGER {OFF|ENTRY |INTERMED[IATE]|FULL} <br />
+FLU[SH] {ON|OFF} <br />
+HEA[DING] {ON|OFF} <br />
+HEADS[EP] {||c|ON|OFF} <br />
+INSTANCE [instance_path|LOCAL] <br />
+LIN[ESIZE] {80|n} <br />
+LOBOF[FSET] {n|1} <br />
+LOGSOURCE [pathname] <br />
+LONG {80|n} <br />
+LONGC[HUNKSIZE] {80|n} <br />
+MARK[UP] HTML [ON|OFF] [HEAD text] [BODY text] [ENTMAP {ON|OFF}] [SPOOL <br />
+{ON|OFF}] [PRE[FORMAT] {ON|OFF}] <br />
+NEWP[AGE] {1|n|NONE} <br />
+NULL text <br />
+NUMF[ORMAT] format <br />
+NUM[WIDTH] {10|n} <br />
+PAGES[IZE] {24|n} <br />
+PAU[SE] {ON|OFF|text} <br />
+RECSEP {WR[APPED]|EA[CH]|OFF} <br />
+RECSEPCHAR {_|c} <br />
+SERVEROUT[PUT] {ON|OFF} [SIZE n] [FOR[MAT] {WRA[PPED]|WOR[D_ <br />
+WRAPPED]|TRU[NCATED]}] <br />
+SHIFT[INOUT] {VIS[IBLE]|INV[ISIBLE]} <br />
+SHOW[MODE] {ON|OFF} <br />
+SQLBL[ANKLINES] {ON|OFF} <br />
+SQLC[ASE] {MIX[ED]|LO[WER]|UP[PER]} <br />
+SQLCO[NTINUE] {&gt; |text} <br />
+SQLN[UMBER] {ON|OFF} <br />
+SQLPRE[FIX] {#|c} <br />
+SQLP[ROMPT] {SQL&gt;|text} <br />
+SQLT[ERMINATOR] {;|c|ON|OFF} <br />
+SUF[FIX] {SQL|text} <br />
+TAB {ON|OFF} <br />
+TERM[OUT] {ON|OFF} <br />
+TI[ME] {ON|OFF} <br />
+TIMI[NG] {ON|OFF} <br />
+TRIM[OUT] {ON|OFF} <br />
+TRIMS[POOL] {ON|OFF} <br />
+UND[ERLINE] {-|c|ON|OFF} <br />
+VER[IFY] {ON|OFF} <br />
+WRA[P] {ON|OFF} <br />
+<br />
+1). 设置当前session是否对修改的数据进行自动提交 <br />
+SQL&gt;SET AUTO[COMMIT] {ON|OFF|IMM[EDIATE]| n} <br />
+<br />
+2)．在用start命令执行一个sql脚本时，是否显示脚本中正在执行的SQL语句 <br />
+SQL&gt; SET ECHO {ON|OFF} <br />
+<br />
+3).是否显示当前sql语句查询或修改的行数 <br />
+SQL&gt; SET FEED[BACK] {6|n|ON|OFF} <br />
+默认只有结果大于6行时才显示结果的行数。如果set feedback 1 ，则不管查询到多少行都返回。当为off 时，一律不显示查询的行数 <br />
+<br />
+4).是否显示列标题 <br />
+SQL&gt; SET HEA[DING] {ON|OFF} <br />
+当set heading off 时，在每页的上面不显示列标题，而是以空白行代替 <br />
+<br />
+5).设置一行可以容纳的字符数 <br />
+SQL&gt; SET LIN[ESIZE] {80|n} <br />
+如果一行的输出内容大于设置的一行可容纳的字符数，则折行显示。 <br />
+<br />
+6).设置页与页之间的分隔 <br />
+SQL&gt; SET NEWP[AGE] {1|n|NONE} <br />
+当set newpage 0 时，会在每页的开头有一个小的黑方框。 <br />
+当set newpage n 时，会在页和页之间隔着n个空行。 <br />
+当set newpage none 时，会在页和页之间没有任何间隔。 <br />
+<br />
+7).显示时，用text值代替NULL值 <br />
+SQL&gt; SET NULL text <br />
+<br />
+8).设置一页有多少行数 <br />
+SQL&gt; SET PAGES[IZE] {24|n} <br />
+如果设为0，则所有的输出内容为一页并且不显示列标题 <br />
+<br />
+9).是否显示用DBMS_OUTPUT.PUT_LINE包进行输出的信息。 <br />
+SQL&gt; SET SERVEROUT[PUT] {ON|OFF} <br />
+在编写存储过程时，我们有时会用dbms_output.put_line将必要的信息输出，以便对存储过程进行调试，只有将serveroutput变量设为on后，信息才能显示在屏幕上。 <br />
+<br />
+10).当SQL语句的长度大于LINESIZE时，是否在显示时截取SQL语句。 <br />
+SQL&gt; SET WRA[P] {ON|OFF} <br />
+当输出的行的长度大于设置的行的长度时（用set linesize n命令设置），当set wrap on时，输出行的多于的字符会另起一行显示，否则，会将输出行的多于字符切除，不予显示。 <br />
+<br />
+11).是否在屏幕上显示输出的内容，主要用与SPOOL结合使用。 <br />
+SQL&gt; SET TERM[OUT] {ON|OFF} <br />
+在用spool命令将一个大表中的内容输出到一个文件中时，将内容输出在屏幕上会耗费大量的时间，设置set termspool off后，则输出的内容只会保存在输出文件中，不会显示在屏幕上，极大的提高了spool的速度。 <br />
+<br />
+12).将SPOOL输出中每行后面多余的空格去掉 <br />
+SQL&gt; SET TRIMS[OUT] {ON|OFF} <br />
+<br />
+13)显示每个sql语句花费的执行时间 <br />
+set TIMING {ON|OFF} <br />
+<br />
+14．修改sql buffer中的当前行中，第一个出现的字符串 <br />
+C[HANGE] /old_value/new_value <br />
+SQL&gt; l <br />
+1* select * from dept <br />
+SQL&gt; c/dept/emp <br />
+1* select * from emp <br />
+<br />
+15．编辑sql buffer中的sql语句 <br />
+EDI[T] <br />
+<br />
+16．显示sql buffer中的sql语句，list n显示sql buffer中的第n行，并使第n行成为当前行 <br />
+L[IST] [n] <br />
+<br />
+17．在sql buffer的当前行下面加一行或多行 <br />
+I[NPUT] <br />
+<br />
+18．将指定的文本加到sql buffer的当前行后面 <br />
+A[PPEND] <br />
+SQL&gt; select deptno, <br />
+2 dname <br />
+3 from dept; <br />
+DEPTNO DNAME <br />
+---------- -------------- <br />
+10 ACCOUNTING <br />
+20 RESEARCH <br />
+30 SALES <br />
+40 OPERATIONS <br />
+<br />
+SQL&gt; L 2 <br />
+2* dname <br />
+SQL&gt; a ,loc <br />
+2* dname,loc <br />
+SQL&gt; L <br />
+1 select deptno, <br />
+2 dname,loc <br />
+3* from dept <br />
+SQL&gt; / <br />
+<br />
+DEPTNO DNAME LOC <br />
+---------- -------------- ------------- <br />
+10 ACCOUNTING NEW YORK <br />
+20 RESEARCH DALLAS <br />
+30 SALES CHICAGO <br />
+40 OPERATIONS BOSTON <br />
+<br />
+19．将sql buffer中的sql语句保存到一个文件中 <br />
+SAVE file_name <br />
+<br />
+20．将一个文件中的sql语句导入到sql buffer中 <br />
+GET file_name <br />
+<br />
+21．再次执行刚才已经执行的sql语句 <br />
+RUN <br />
+or <br />
+/ <br />
+<br />
+22．执行一个存储过程 <br />
+EXECUTE procedure_name <br />
+<br />
+23．在sql*plus中连接到指定的数据库 <br />
+CONNECT user_name/passwd@db_alias <br />
+<br />
+24．设置每个报表的顶部标题 <br />
+TTITLE <br />
+<br />
+25．设置每个报表的尾部标题 <br />
+BTITLE <br />
+<br />
+26．写一个注释 <br />
+REMARK [text] <br />
+<br />
+27．将指定的信息或一个空行输出到屏幕上 <br />
+PROMPT [text] <br />
+<br />
+28．将执行的过程暂停，等待用户响应后继续执行 <br />
+PAUSE [text] <br />
+<br />
+Sql&gt;PAUSE Adjust paper and press RETURN to continue. <br />
+<br />
+29．将一个数据库中的一些数据拷贝到另外一个数据库（如将一个表的数据拷贝到另一个数据库） <br />
+COPY {FROM database | TO database | FROM database TO database} <br />
+{APPEND|CREATE|INSERT|REPLACE} destination_table <br />
+[(column, column, column, ...)] USING query <br />
+<br />
+sql&gt;COPY FROM SCOTT/TIGER@HQ TO JOHN/CHROME@WEST <br />
+create emp_temp <br />
+USING SELECT * FROM EMP <br />
+<br />
+30．不退出sql*plus，在sql*plus中执行一个操作系统命令： <br />
+HOST <br />
+<br />
+Sql&gt; host hostname <br />
+该命令在windows下可能被支持。 <br />
+<br />
+31．在sql*plus中，切换到操作系统命令提示符下，运行操作系统命令后，可以再次切换回sql*plus： <br />
+! <br />
+<br />
+sql&gt;! <br />
+$hostname <br />
+$exit <br />
+sql&gt; <br />
+<br />
+该命令在windows下不被支持。 <br />
+<br />
+32．显示sql*plus命令的帮助 <br />
+HELP <br />
+如何安装帮助文件： <br />
+Sql&gt;@ ?sqlplusadminhelphlpbld.sql ?sqlplusadminhelphelpus.sql <br />
+Sql&gt;help index <br />
+<br />
+33．显示sql*plus系统变量的值或sql*plus环境变量的值 <br />
+Syntax <br />
+SHO[W] option <br />
+where option represents one of the following terms or clauses: <br />
+system_variable <br />
+ALL <br />
+BTI[TLE] <br />
+ERR[ORS] [{FUNCTION|PROCEDURE|PACKAGE|PACKAGE BODY| <br />
+TRIGGER|VIEW|TYPE|TYPE BODY} [schema.]name] <br />
+LNO <br />
+PARAMETERS [parameter_name] <br />
+PNO <br />
+REL[EASE] <br />
+REPF[OOTER] <br />
+REPH[EADER] <br />
+SGA <br />
+SPOO[L] <br />
+SQLCODE <br />
+TTI[TLE] <br />
+USER <br />
+<br />
+1) . 显示当前环境变量的值： <br />
+Show all <br />
+<br />
+2) . 显示当前在创建函数、存储过程、触发器、包等对象的错误信息 <br />
+Show error <br />
+当创建一个函数、存储过程等出错时，变可以用该命令查看在那个地方出错及相应的出错信息，进行修改后再次进行编译。 <br />
+<br />
+3) . 显示初始化参数的值： <br />
+show PARAMETERS [parameter_name] <br />
+<br />
+4) . 显示数据库的版本： <br />
+show REL[EASE] <br />
+<br />
+5) . 显示SGA的大小 <br />
+show SGA <br />
+<br />
+6). 显示当前的用户名 <br />
+show user</p>
+				</div>
+				<footer>
+					<p class="tagList">Tags: <a href="/Tag/?Article/SqlPlus">SqlPlus</a> </p>
+					<ul>
+						<li>上篇文章: <a href="/Html/Article/database/oracle-sqlplus-script.html">【学习Oracle】使用SqlPlus执行较大脚本文件</a></li>
+						<li>下篇文章: <a href="/Html/Article/database/mysql-root-lost-password-resolve.html">MySQL的root 密码忘记解决办法</a></li>
+					</ul>
+					<p>可能感兴趣的文章:</p>
+					<ul class="rndArtList"><li><a href="/Html/Article/asp/asp-regexp-checkdata.html" title="在ASP中用&quot;正则表达式对象&quot;来校验数据的合法性">在ASP中用&quot;正则表达式对象&quot;来校验数据的合法性</a></li><li><a href="/Html/Article/asp/asp-download-file.html" title="asp下载文件">asp下载文件</a></li><li><a href="/Html/Article/b1og/css3-rule-generator-css3please.html" title="CSS3代码生成器-css3please.com">CSS3代码生成器-css3please.com</a></li><li><a href="/Html/Article/database/mysql-root-lost-password-resolve.html" title="MySQL的root 密码忘记解决办法">MySQL的root 密码忘记解决办法</a></li><li><a href="/Html/Article/system/vss-user-rights-settings.html" title="VSS中为建立的用户设置权限">VSS中为建立的用户设置权限</a></li></ul>
+				</footer>
+			</article>
+		</div>
+	</div>
+	<footer id="footer"><p>&copy; 2010-2011 XeonWell. 以上文摘,&nbsp;仅供个人收藏和参考&nbsp;<a href="http://www.miibeian.gov.cn">粤ICP备10095269号-1</a>&nbsp;</p>
+<p><a title="Valid XHTML 1.0 Strict" href="http://validator.w3.org/">HTML5</a> | <a title="Valid CSS" href="http://jigsaw.w3.org/css-validator/">Valid CSS 1/2/3</a> | <a title="508 Standards, Section" href="http://www.contentquality.com/mynewtester/cynthia.exe?url1=http%3A%2F%2Fwww.xw.hb.cn%2F">508</a> | <a title="WAI" href="http://www.contentquality.com/mynewtester/cynthia.exe?rptmode=2&amp;url1=http%3A%2F%2Fwww.xw.hb.cn%2F">WAI</a>&nbsp;| <a href="/rss/">RSS</a> | <a href="/rss/?type=atom">Atom</a> | <a href="/google-site.xml">SiteMap</a></p></footer>
+	<div id="jsDiv">
+		<script type="text/javascript" src="/Js/jquery.js"></script>
+		<script type="text/javascript" src="/Js/common.js"></script>
+		<!--[if lte IE 6]><script type="text/javascript" src="/Js/ie-fix.js"></script><![endif]-->
+		<script type="text/javascript" src="/js/article.js"></script>
+	</div>
+	<div class="nd"><p><a href="/">XeonWell Studio</a></p><script type="text/javascript" src="/Js/stat.js"></script></div>
+</div>
+</body>
+</html>

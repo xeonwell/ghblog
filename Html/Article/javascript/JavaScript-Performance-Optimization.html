@@ -1,0 +1,261 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>javascript代码性能优化--XeonWell Studio</title>
+<meta name="Keywords" content="性能优化,移动应用技术分享,iphone,ios,ipad,android" />
+<meta name="Description" content="Javascript代码优化无非主要围绕：DOM操作、循环、闭包、对象重复出现、对象的声明方式、作用域链、字符串操作、类的声明方式等等,移动应用技术分享，探讨移动应用技术发展趋势" />
+<meta name="Author" content="XeonWell, email:admin_xw_hb_cn" />
+<meta name="language" content="Chinese" />
+<meta name="Robots" content="index,follow" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="icon" href="/i/xiong.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/i/xiong.ico" type="image/x-icon" />
+<link href="/css/fw.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if lte IE 8]><link href="/css/ie-fix.css" rel="stylesheet" type="text/css" media="all" />
+<script src="/js/ie-html5.js" type="text/javascript" /></script><![endif]-->
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shThemeDefault.css"/>
+</head>
+
+<body>
+<div id="bodyWrapper">
+	<header id="header" class="clearfix">
+		<h1><a href="/" title="XeonWell Studio">XeonWell Studio</a></h1>
+		<ul id="menu" class="resetList"><li><a href="/" title="XeonWell Studio">Home</a></li><li><a href="/Html/Article/Mobile/" title="Mobile" accesskey="1"><strong>Mobile</strong></a></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS" accesskey="2"><strong>(X)Html/CSS</strong></a></li><li><a href="/Html/Article/javascript/" title="Javascript" accesskey="3" id="curNav"><strong>Javascript</strong></a></li><li><a href="/Html/Article/asp/" title="ASP" accesskey="4"><strong>ASP</strong></a></li><li><a href="/Html/Article/cs/" title="C#" accesskey="5"><strong>C#</strong></a></li><li><a href="/Html/Article/system/" title="System" accesskey="6"><strong>System</strong></a></li><li><a href="/Html/Article/b1og/" title="Blog" accesskey="7"><strong>Blog</strong></a></li></ul>
+	</header>
+	<div id="content" class="clearfix">
+		<div id="leftWrapper">
+			<div id="artCategory" class="listDiv roundedCorners">
+				<h3 class="listTitle">文章分类</h3>
+				<ul class="uList"><li><a href="/Html/Article/Mobile/" title="Mobile">Mobile</a><ul><li><a href="/Html/Article/iPhone/" title="iPhone">iPhone</a></li></ul></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS">(X)Html/CSS</a></li><li><a href="/Html/Article/javascript/" title="Javascript">Javascript</a><ul><li><a href="/Html/Article/jquery/" title="jQuery">jQuery</a></li></ul></li><li><a href="/Html/Article/asp/" title="ASP">ASP</a></li><li><a href="/Html/Article/cs/" title="C#">C#</a></li><li><a href="/Html/Article/system/" title="System">System</a><ul><li><a href="/Html/Article/nginx/" title="Nginx">Nginx</a></li><li><a href="/Html/Article/IIS/" title="IIS">IIS</a></li><li><a href="/Html/Article/database/" title="Database">Database</a></li><li><a href="/Html/Article/mail/" title="Mail">Mail</a></li></ul></li><li><a href="/Html/Article/b1og/" title="Blog">Blog</a></li></ul>
+			</div>
+			<div id="hotList" class="listDiv roundedCorners">
+				<h3 class="listTitle">热门文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/asp/ASP-isblank.html" title="ASP判断是否为空">ASP判断是否为空</a></li><li><a href="/Html/Article/b1og/editplus-stx-html5-css3-js-jquery.html" title="EditPlus的js(含jquery),HTML5,CSS3语法高亮文件">EditPlus的js(含jquery),HTML5,CSS3语法高亮文件</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/UIScrollView-Reference.html" title="UIScrollView参考">UIScrollView参考</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/iPhone/iPhone-scale-image.html" title="iPhone中缩放图片">iPhone中缩放图片</a></li><li><a href="/Html/Article/html-css/html5-table-template.html" title="HTML5 Table Template">HTML5 Table Template</a></li><li><a href="/Html/Article/b1og/js-jquery-stx-editplus.html" title="EditPlus的Javascript语法文件(包含jQuery语法高亮)">EditPlus的Javascript语法文件(包含jQuery语法高亮)</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners">
+				<h3 class="listTitle">随机推荐</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/html-css/CSS-hack-browser.html" title="CSS hack浏览器兼容一览表">CSS hack浏览器兼容一览表</a></li><li><a href="/Html/Article/html-css/Html5-Visual-Cheat-Sheet.html" title="Html5 Visual Cheat Sheet">Html5 Visual Cheat Sheet</a></li><li><a href="/Html/Article/b1og/border-image-generator.html" title="border-image generator生成器">border-image generator生成器</a></li><li><a href="/Html/Article/asp/disable-filesystemobject.html" title="如何禁止使用FileSystemObject">如何禁止使用FileSystemObject</a></li><li><a href="/Html/Article/b1og/fix-Chinese-tag-utf8.html" title="修正访问utf-8页面中中文Tag时出错的问题">修正访问utf-8页面中中文Tag时出错的问题</a></li><li><a href="/Html/Article/system/session-principle-1.html" title="session机制详解">session机制详解</a></li><li><a href="/Html/Article/Mobile/android-uses-permission.html" title="android之uses-permission">android之uses-permission</a></li><li><a href="/Html/Article/html-css/xhtml-doctype-diference.html" title="XHTML1.0的几种DocType的区别">XHTML1.0的几种DocType的区别</a></li><li><a href="/Html/Article/b1og/liquid-particles.html" title="HTML5 canvas效果Liquid Particles">HTML5 canvas效果Liquid Particles</a></li><li><a href="/Html/Article/b1og/css3-rule-generator-css3please.html" title="CSS3代码生成器-css3please.com">CSS3代码生成器-css3please.com</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">参考手册</h3>
+				<ul class="uList ellipsis"><li><a href="http://i.xw.hb.cn/works/css20/Index.html" title="CSS2.0中文参考手册">CSS2.0中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/DHTMLref/Index.html" title="DHTML中文参考手册">DHTML中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/css3/Index.html" title="CSS3.0中文参考手册">CSS3.0中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/Vbscript/Index.html" title="VBScript 语言参考">VBScript 语言参考</a></li><li><a href="http://i.xw.hb.cn/works/ado/index.html" title="ADO中文参考手册">ADO中文参考手册</a></li><li><a href="http://www.junchenwu.com/WAI/wai-pageauth.html" title="Web内容可访问性指南 1.0">Web内容可访问性指南 1.0</a></li><li><a href="http://www.w3school.com.cn/html5/index.asp" title="HTML 5 参考手册">HTML 5 参考手册</a></li><li><a href="http://i.xw.hb.cn/works/Ext_3.0_cn/index.html" title="Ext 3.0 中文参考手册">Ext 3.0 中文参考手册</a></li><li><a href="http://www.findmebyip.com/litmus" title="HTML5和CSS3兼容性参考">HTML5和CSS3兼容性参考</a></li><li><a href="http://www.cocos2d-iphone.org/api-ref/" title="cocos2d for iPhone API Reference">cocos2d for iPhone API Reference</a></li><li><a href="http://i.xw.hb.cn/ref/GNUstep_Reference" title="GNUstep Reference">GNUstep Reference</a></li><li><a href="http://i.xw.hb.cn/ref/zh-google-cpp-styleguide/index.html" title="Google C++ 编程规范">Google C++ 编程规范</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">实用工具</h3>
+				<ul class="uList ellipsis"><li><a href="http://i.xw.hb.cn/WebTools/wannianli/" title="万年历查询">万年历</a></li><li><a href="http://css3please.com/" title="cross browser css3 rule generator">CSS3规则生成器</a></li><li><a href="http://centricle.com/ref/css/filters/" title="CSS Hack表">CSS Hack表</a></li><li><a href="http://tools.chinaz.com/" title="站长工具">站长工具</a></li><li><a href="http://www.useragentstring.com/" title="User Agent Strings">User Agent Strings</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">友情链接</h3>
+				<ul class="uList ellipsis"><li><a href="http://www.xw.hb.cn/" title="XeonWell Studio">XeonWell Studio</a></li><li><a href="http://www.5dmail.net" title="国内最大的邮件技术资讯基地">邮件技术资讯网</a></li></ul>
+			</div>
+		</div>
+		<div id="rightWrapper">
+			<div id="oriList" class="listDiv roundedCorners">
+				<h3 class="listTitle">原创文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/iPhone/adjust-iphone-brightness.html" title="调节iphone屏幕亮度">调节iphone屏幕亮度</a></li><li><a href="/Html/Article/iPhone/hide-system-volume-view-on-ios.html" title="隐藏ios系统的音量变化显示界面">隐藏ios系统的音量变化显示界面</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/apple-touch-icon.html" title="在apple设备上显示网站图标">在apple设备上显示网站图标</a></li><li><a href="/Html/Article/iPhone/iPhone-iPad-check.html" title="判断用户的是iPhone还是iPad">判断用户的是iPhone还是iPad</a></li><li><a href="/Html/Article/iPhone/iPhone-vibrate.html" title="代码实现iPhone震动">代码实现iPhone震动</a></li><li><a href="/Html/Article/iPhone/cocos2d-for-iPhone-guide.html" title="cocos2d for iPhone教程">cocos2d for iPhone教程</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/iPhone-DebugLog.html" title="控制Log的输出">控制Log的输出</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/iPhone/iPhone-SDK-Version-Check-1.html" title="iPhone版本判断">iPhone版本判断</a></li><li><a href="/Html/Article/system/VMware-custom-start.html" title="VMware的自定义启动">VMware的自定义启动</a></li><li><a href="/Html/Article/iPhone/backup-XCode-Key-Bindings.html" title="备份XCode键盘快捷键和颜色文字">备份XCode键盘快捷键和颜色文字</a></li><li><a href="/Html/Article/iPhone/error-communicating-with-the-iTunes-Store.html" title="error communicating with the iTunes Store">error communicating with the iTunes Store</a></li><li><a href="/Html/Article/b1og/liquid-particles.html" title="HTML5 canvas效果Liquid Particles">HTML5 canvas效果Liquid Particles</a></li><li><a href="/Html/Article/b1og/apple-html5-showcase.html" title="apple的html5 Showcase">apple的html5 Showcase</a></li><li><a href="/Html/Article/b1og/html5test-browser-scores.html" title="html5test.com测试你的浏览器支持多少html5特性">html5test.com测试你的浏览器支持多少html5特性</a></li><li><a href="/Html/Article/b1og/netbalancer-hanzify.html" title="网络限速软件NetBalancer">网络限速软件NetBalancer</a></li><li><a href="/Html/Article/html-css/first-letter-in-browsers.html" title="first-letter在各浏览器中的表现">first-letter在各浏览器中的表现</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li></ul>
+			</div>
+		</div>
+		<div id="centerWrapper" class="roundedCorners clearfix">
+			<nav class="nav"><a href="/" title="XeonWell Studio">Home</a>  &nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="/Html/Article/javascript/" title="Javascript">Javascript</a></nav>
+			<article class="article">
+				<header><h1 class="artTitle hei">javascript代码性能优化</h1></header>
+				<div class="artContent">
+					<p>在这篇文章叙述的关于Javascript代码优化，其实并没有什么新意，关于这方面的优化，一直都是<a href="http://www.nczonline.net/">Nicholas C.  Zakas</a>的专利。我在这里将要说的是对当前众多关于Javascript代码优化的方式一个小总结，并尝试去归类各种不同的优化方式，方便于记忆众说纷纭的优化技巧。本人归类的结果如下图所示：</p>
+<p><img title="performance catagroy" width="652" height="162" alt="" src="http://www.ilovejs.net/wp-content/uploads/2010/06/performance.png" /></p>
+<p>Javascript代码优化无非主要围绕：DOM操作、循环、闭包、对象重复出现、对象的声明方式、作用域链、字符串操作、类的声明方式等等。循环、闭包、对象重复出现是从作用域链的角度去优化的；DOM操作主要围绕HTMLCollection、NodeList等来优化；对象的声明方式主要是对象（Object）、数组（Array）、字符串（String）、函数（Function）、正则（RegExp）等内置的对象使用字面量的方式来声明，这个比使用new来实例化相应的对象在性能上要强很多；字符串操作的优化方式主要是通过数组的push和join方法；类的声明方式优化方式主要是分清属性和方法的声明的方式，方法使用prototype的方式来声明；Javascript语言本身的流程操作语句的优化（if、switch、with、eval等等）。</p>
+<p>因此，我将Javascript代码优化主要分为六类：<em>DOM&ldquo;真空&rdquo;空间</em>、<em>缩短作用域链</em>、<em>字面量声明方式</em>、<em>字符串操作</em>、<em>类声明方式</em>、<em>流程操作语句</em>。下面将逐个叙述：</p>
+<h3><strong>DOM&ldquo;真空&rdquo;空间</strong></h3>
+<p>DOM&ldquo;真空&rdquo;空间这个词或许有些迷惑，举个例子就明白了：当使用removeChild将一个DOM元素从DOM树中删除之后，这个DOM元素并没有彻底消失，它就存在于DOM&ldquo;真空&rdquo;空间中，可以通过引用重新调用这个元素，并且对它的操作不会影响DOM文档树。</p>
+<p>所以很多对DOM的HTMLCollection、NodeList操作的优化，都是利用了这个&ldquo;真空&rdquo;空间，先将元素从DOM树中剥离开来，再对这个元素进行一系列的操作之后，最后再通过appendChild或者insertBefore插入原来位置的DOM树中。这样就使得页面的reflow的次数最小化。比如下面优化的例子： &nbsp;</p>
+<pre title="code" class="brush: jscript;">
+/**
+* Remove an element and provide a function that inserts it into its original position
+* @param element {Element} The element to be temporarily removed
+* @return {Function} A function that inserts the element into its original position
+**/
+//removeToInsertLater函数的作用是将element从DOM树中删除，保存于DOM&ldquo;真空&rdquo;空间里，同时返回一个闭包函数，用于在对element操作之后将其插回原来的位置。
+function removeToInsertLater(element) {
+  var parentNode = element.parentNode;
+  var nextSibling = element.nextSibling;
+  parentNode.removeChild(element);
+  return function() {
+    if (nextSibling) {
+      parentNode.insertBefore(element, nextSibling);
+    } else {
+      parentNode.appendChild(element);
+    }
+    nextSibling=null; //因为处于闭包中，需要设置为null，断开作用域链，下同。
+    parentNode=null;
+  };
+}
+//接下来我们就可以对element进行一系列的操作，最后插回去
+function updateAllAnchors(element, anchorClass) {
+  var insertFunction = removeToInsertLater(element);
+  var anchors = element.getElementsByTagName('a');
+  for (var i = 0, length = anchors.length; i &lt; length; i ++) {
+    anchors[i].className = anchorClass;
+  }
+  insertFunction();
+}
+</pre>
+<p>如果所示，将需要操作的DOM元素先从DOM树中剥离开来，对其进行操作，再安插回去，减少了页面reflow的次数，还有一种方式是将HTMLCollection、NodeList对象转换成数组的形式来进行操作，这都是不错的优化方式，可以应用在很多类似的优化案例中。当然了，对DOM的操作，DOM本身提供的API方法也都存在性能问题，使用nextSibling比childNodes快多了、使用item比使用普通的索引慢多了、不同的循环的方式对操作HTMLCollection、NodeList也都存在不同的性能：《<a href="http://www.ilovejs.net/archives/248">雷人的优化HTMLCollection对象的循环操作技巧</a>》，这个将会在下面的循环里叙述。</p>
+<h3><strong>缩短作用域链</strong></h3>
+<p>缩短作用域链，说简单点就是尽量使用局部变量来储存外部的对象。对于在循环中重复出现的对象，这个尤其具有优化效果；对于在闭包函数外的对象，当需要在闭包内使用的时候，可以在闭包内声明一个局部变量来储存该对象；还有对DOM元素的length属性、或者在DOM操作的循环中单个DOM元素使用局部变量来储存，也十分具有优化效果。目的就是使得在数据存取的过程中从作用域链中能最快的取出来，而最快的取出来的前提就是需要对象或者变量在作用域链的顶部。经过测试表明：局部变量的存取速度是最快的。所以将作用域外的对象局部引用化，也是不错的优化方式。循环也算是缩短作用域链的一个方面，但是某些方面也不全是，这个跟循环内部的比较和判断有关，具体请浏览《<a href="http://www.ilovejs.net/archives/180">对循环操作的几种优化</a>》。下面举几个例子：</p>
+<pre title="code" class="brush: jscript;">
+//例子一：将NodeList的length属性缓存起来，这样就可以避免每次重新计算length属性，重新查询一遍DOM树。
+var d = document.getElementsByTagName(&quot;div&quot;);
+for(var i=0, l = d.length; i&lt;l; i++){
+  //code here...
+}
+//=====================================
+//例子二：将每一个DOM元素局部化，因为对每一个DOM元素的操作，都需要在NodeList中去查询这个DOM元素。
+var d = document.getElementsByTagName(&quot;div&quot;);
+for(var i=0, l = d.length; i&lt;l; i++){
+  var item = d[i];
+  item.className=&quot;active&quot;;
+  item.title = &quot;active item&quot;;
+  //......
+}
+//=====================================
+//例子三：储存重复出现的对象或者方法，特别是在循环中。将document.body缓存起来，这样在循环里读取的速度就非常快了。
+var b = document.body;
+for(var i=0;i&lt;10;i++){
+  b.appendChild(document.createTextNode(&quot;some text&quot;));
+}
+//=====================================
+//例子四：对闭包外的对象或者变量在闭包内局部化。
+//msg在setTimeout闭包参数的作用域外
+function setupAlertTimeout() {
+  var msg = 'Message to alert';
+window.setTimeout(function() { alert(msg); }, 100);
+}
+//下面这个更快，将变量声明放到闭包内，使得读取速度更快。
+function setupAlertTimeout() {
+  window.setTimeout(function() {
+    var msg = 'Message to alert';
+    alert(msg);
+  }, 100);
+}
+//再来个更快的，这下避免使用闭包来作为setTimeout的参数，使得程序运行更快。
+function alertMsg() {
+  var msg = 'Message to alert';
+  alert(msg);
+}
+function setupAlertTimeout() {
+  window.setTimeout(alertMsg, 100);
+}
+</pre>
+<p>对于上面例子四中关于闭包的使用，在这里解释一下：闭包非常强大而且使用，但是它也有很多缺陷，比如：是造成很多内存泄漏的罪魁祸首；声明一个闭包比声明一个不是闭包的内部函数更慢，比声明一个静态函数就更慢了。因此得出了上面的结论。</p>
+<p>还有，对于缩短作用域链的一个更直白的解释例子如下：</p>
+<pre title="code" class="brush: jscript;">
+var a = 'a';
+function createFunctionWithClosure() {
+  var b = 'b';
+  return function () {
+    var c = 'c';
+    a;
+    b;
+    c;
+  };
+}
+var f = createFunctionWithClosure();
+f();
+</pre>
+<p>如上所示：当函数f调用的时候，读取a比读取b慢，比读取c又更慢。这就是作用域链的存取速度导致的性能问题，在HTMLCollection、NodeList中更甚。</p>
+<h3><strong>字面量声明方式</strong></h3>
+<p>这个字面量的声明方式的优化方式比较简单易懂，就是使用Javascript这门语言所独有的可以使用字面量的形式来声明对象的特点，这些比使用new来实例化响应的内置的对象将消耗更多的性能和时间，而且也不够灵活。比如下面的声明方式：</p>
+<pre title="code" class="brush: jscript;">
+var obj = {};
+var obj2 = {
+  &quot;name&quot;:&quot;supersha&quot;
+}
+var arr = [];
+var arr2 = [1,2];
+var reg = /abc/gi;
+var fn = function(){
+  alert(&quot;传说中的Hello world&quot;);
+}
+</pre>
+<h3>字符串操作</h3>
+<p>字符串中的优化已经算是不值得多说了，主要使用数组的push、join方法来时优化。现在来说说使用传统的&ldquo;+&rdquo;或者&ldquo;+=&rdquo;运算符为啥低效：当使用&ldquo;+&rdquo;或者&ldquo;+=&rdquo;运算符的时候，内存中先会创建一个变量副本来储存这个连接的结果，之后把结果赋值给&ldquo;=&rdquo;号左边的变量或者对象属性，最后销毁这个变量副本，当在循环中通过&ldquo;+&rdquo;或者&ldquo;+=&rdquo;来连接字符串的时候，就不得不忍受副本变量的创建、赋值、销毁这一连串的操作，如果需要连接的两个字符串比较大的时候，就更难以忍受了。所以，对它的优化，就被无可奈何的提出来了。举个例子：</p>
+<pre title="code" class="brush: jscript;">
+//例子一：
+var veryLongMessage = [
+'This is a long string that due to our strict line length limit of',
+' characters per line must be wrapped. ',
+'% of engineers dislike this rule. The line length limit is for ',
+' style purposes, but we do not want it to have a performance impact.',
+' So the question is how should we do the wrapping?'
+].join();
+//=====================================
+//例子二：
+var strBuilder = ['First 20 fibonacci numbers:'];
+for (var i = 0; i &lt; 20; i++) {
+  strBuilder.push(i, ' = ', fibonacci(i));
+}
+var fibonacciStr = strBuilder.join('');
+</pre>
+<h3>类声明方式</h3>
+<p>类声明方式的优化，主要是利用了prototype原型链的优点，使得类在实例化的时候不需要给每一个实例都声明相同名称的方法或者属性，而是通过prototype原型链来声明方法或者属性，使得每一个类的实例都从原型链共享这个方法或者属性（有些不知道怎么表达，暂且这样吧）。比如下面的例子：</p>
+<pre title="code" class="brush: jscript;">
+//下面声明类的方式比较糟糕
+var Car = function(color,model,owner){
+  this.color=color;
+  this.model=model;
+  this.owner=owner;
+  this.setColor=function(c){
+    this.color=c;
+  }
+  //....
+}
+//改进一下下，好多了&hellip;&hellip;
+var Car = function(color,model,owner){
+  this.color=color;
+  this.model=model;
+  this.owner=owner;
+}
+Car.prototype.setColor=function(c){
+  this.color=c;
+}
+</pre>
+<h3>流程操作语句</h3>
+<p>这里所说的流程操作语句主要是if、switch、do while、while、for、try  catch，也有with、eval等等。if语句和switch语句之间的衡量是经常会碰到的优化问题：《<a href="http://www.ilovejs.net/archives/577">对Duff策略优化数组操作的疑虑</a>》；循环的优化在上面已经叙述过了；我相信很多叙述有关Javascript性能的文章都建议避免使用with、eval，甚至是try  catch语句，因为catch语句会增加作用域链的深度，造成数据读取速度下降的性能问题，更多的细节可以阅读《<a href="http://www.ilovejs.net/archives/509">高性能网站建设进阶指南</a>》和<a href="http://www.nczonline.net/">Nicholas C.Zakas</a>著的《<a href="http://www.amazon.com/Performance-JavaScript-Faster-Application-Interfaces/dp/059680279X">High  Performance JavaScript</a>》中更详细的叙述。</p>
+<h3>总结</h3>
+<p>上面例举了Javascript代码优化的五个基本类别的方式。当然了，Javascript代码优化还远不止上面例子中出现的情况，大到设计模式、Ajax应用，小到还有对if、switch、with、eval等等的优化等等，无处不存在着代码性能优化这些细节问题，但是细化下来，也基本在上面五个类别里了。案例是丰富多彩的，但是本质不变。目的只有一个：<strong>让你的代码跑的更快</strong>。</p>
+<h3>延伸阅读</h3>
+<ul>
+    <li>《<a href="http://blogs.msdn.com/b/ie/archive/2006/08/28/728654.aspx">IE  + JavaScript Performance Recommendations &ndash; Part 1</a>》</li>
+    <li>《<a href="http://blogs.msdn.com/b/ie/archive/2006/11/16/ie-javascript-performance-recommendations-part-2-javascript-code-inefficiencies.aspx">IE+JavaScript  Performance Recommendations Part 2: JavaScript Code Inefficiencies</a>》</li>
+    <li>《<a href="http://blogs.msdn.com/b/ie/archive/2007/01/04/ie-jscript-performance-recommendations-part-3-javascript-code-inefficiencies.aspx">IE+JScript  Performance Recommendations Part 3: JavaScript Code Inefficiencies</a>》</li>
+    <li>《<a href="http://code.google.com/speed/articles/optimizing-javascript.html">Optimizing  JavaScript code</a>》</li>
+    <li>《<a href="http://code.google.com/speed/articles/javascript-dom.html">Speeding up  JavaScript: Working with the DOM</a>》</li>
+</ul>
+<p>&nbsp;原文地址:<a href="http://www.ilovejs.net/archives/878">&nbsp;javascript代码性能优化</a></p>
+				</div>
+				<footer>
+					<p class="tagList">Tags: <a href="/Tag/?Article/JavaScript">JavaScript</a> , <a href="/Tag/?Article/性能优化">性能优化</a> </p>
+					<ul>
+						<li>上篇文章: <a href="/Html/Article/javascript/parseURL-function.html">一个解析URL的函数parseURL</a></li>
+						<li>下篇文章: <a href="/Html/Article/javascript/30-practices-boost-web-applications.html">30个提高Web程序执行效率的好经验</a></li>
+					</ul>
+					<p>可能感兴趣的文章:</p>
+					<ul class="rndArtList"><li><a href="/Html/Article/system/deny-china-ip-apache-htacess.html" title="屏蔽/禁止所有中国IP访问的方法">屏蔽/禁止所有中国IP访问的方法</a></li><li><a href="/Html/Article/system/access-batch-modify-fieldsname.html" title="access批量修改表字段名">access批量修改表字段名</a></li><li><a href="/Html/Article/IIS/IIS6-http-gzip-compress.html" title="IIS 6.0中配置HTTP Gzip压缩">IIS 6.0中配置HTTP Gzip压缩</a></li><li><a href="/Html/Article/b1og/chrome-download-url.html" title="Chrome各版本下载地址">Chrome各版本下载地址</a></li><li><a href="/Html/Article/b1og/87.html" title="完成rss和tag的功能">完成rss和tag的功能</a></li></ul>
+				</footer>
+			</article>
+		</div>
+	</div>
+	<footer id="footer"><p>&copy; 2010-2011 XeonWell. 以上文摘,&nbsp;仅供个人收藏和参考&nbsp;<a href="http://www.miibeian.gov.cn">粤ICP备10095269号-1</a>&nbsp;</p>
+<p><a title="Valid XHTML 1.0 Strict" href="http://validator.w3.org/">HTML5</a> | <a title="Valid CSS" href="http://jigsaw.w3.org/css-validator/">Valid CSS 1/2/3</a> | <a title="508 Standards, Section" href="http://www.contentquality.com/mynewtester/cynthia.exe?url1=http%3A%2F%2Fwww.xw.hb.cn%2F">508</a> | <a title="WAI" href="http://www.contentquality.com/mynewtester/cynthia.exe?rptmode=2&amp;url1=http%3A%2F%2Fwww.xw.hb.cn%2F">WAI</a>&nbsp;| <a href="/rss/">RSS</a> | <a href="/rss/?type=atom">Atom</a> | <a href="/google-site.xml">SiteMap</a></p></footer>
+	<div id="jsDiv">
+		<script type="text/javascript" src="/Js/jquery.js"></script>
+		<script type="text/javascript" src="/Js/common.js"></script>
+		<!--[if lte IE 6]><script type="text/javascript" src="/Js/ie-fix.js"></script><![endif]-->
+		<script type="text/javascript" src="/js/article.js"></script>
+	</div>
+	<div class="nd"><p><a href="/">XeonWell Studio</a></p><script type="text/javascript" src="/Js/stat.js"></script></div>
+</div>
+</body>
+</html>

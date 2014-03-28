@@ -1,0 +1,109 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>DNS中的递归查询和迭代查询--XeonWell Studio</title>
+<meta name="Keywords" content="DNS,递归查询,迭代查询,移动应用技术分享,iphone,ios,ipad,android" />
+<meta name="Description" content="DNS中的递归查询和迭代查询,移动应用技术分享，探讨移动应用技术发展趋势" />
+<meta name="Author" content="XeonWell, email:admin_xw_hb_cn" />
+<meta name="language" content="Chinese" />
+<meta name="Robots" content="index,follow" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="icon" href="/i/xiong.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/i/xiong.ico" type="image/x-icon" />
+<link href="/css/fw.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if lte IE 8]><link href="/css/ie-fix.css" rel="stylesheet" type="text/css" media="all" />
+<script src="/js/ie-html5.js" type="text/javascript" /></script><![endif]-->
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shThemeDefault.css"/>
+</head>
+
+<body>
+<div id="bodyWrapper">
+	<header id="header" class="clearfix">
+		<h1><a href="/" title="XeonWell Studio">XeonWell Studio</a></h1>
+		<ul id="menu" class="resetList"><li><a href="/" title="XeonWell Studio">Home</a></li><li><a href="/Html/Article/Mobile/" title="Mobile" accesskey="1"><strong>Mobile</strong></a></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS" accesskey="2"><strong>(X)Html/CSS</strong></a></li><li><a href="/Html/Article/javascript/" title="Javascript" accesskey="3"><strong>Javascript</strong></a></li><li><a href="/Html/Article/asp/" title="ASP" accesskey="4"><strong>ASP</strong></a></li><li><a href="/Html/Article/cs/" title="C#" accesskey="5"><strong>C#</strong></a></li><li><a href="/Html/Article/system/" title="System" accesskey="6" id="curNav"><strong>System</strong></a></li><li><a href="/Html/Article/b1og/" title="Blog" accesskey="7"><strong>Blog</strong></a></li></ul>
+	</header>
+	<div id="content" class="clearfix">
+		<div id="leftWrapper">
+			<div id="artCategory" class="listDiv roundedCorners">
+				<h3 class="listTitle">文章分类</h3>
+				<ul class="uList"><li><a href="/Html/Article/Mobile/" title="Mobile">Mobile</a><ul><li><a href="/Html/Article/iPhone/" title="iPhone">iPhone</a></li></ul></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS">(X)Html/CSS</a></li><li><a href="/Html/Article/javascript/" title="Javascript">Javascript</a><ul><li><a href="/Html/Article/jquery/" title="jQuery">jQuery</a></li></ul></li><li><a href="/Html/Article/asp/" title="ASP">ASP</a></li><li><a href="/Html/Article/cs/" title="C#">C#</a></li><li><a href="/Html/Article/system/" title="System">System</a><ul><li><a href="/Html/Article/nginx/" title="Nginx">Nginx</a></li><li><a href="/Html/Article/IIS/" title="IIS">IIS</a></li><li><a href="/Html/Article/database/" title="Database">Database</a></li><li><a href="/Html/Article/mail/" title="Mail">Mail</a></li></ul></li><li><a href="/Html/Article/b1og/" title="Blog">Blog</a></li></ul>
+			</div>
+			<div id="hotList" class="listDiv roundedCorners">
+				<h3 class="listTitle">热门文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/asp/ASP-isblank.html" title="ASP判断是否为空">ASP判断是否为空</a></li><li><a href="/Html/Article/b1og/editplus-stx-html5-css3-js-jquery.html" title="EditPlus的js(含jquery),HTML5,CSS3语法高亮文件">EditPlus的js(含jquery),HTML5,CSS3语法高亮文件</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/UIScrollView-Reference.html" title="UIScrollView参考">UIScrollView参考</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/iPhone/iPhone-scale-image.html" title="iPhone中缩放图片">iPhone中缩放图片</a></li><li><a href="/Html/Article/html-css/html5-table-template.html" title="HTML5 Table Template">HTML5 Table Template</a></li><li><a href="/Html/Article/b1og/js-jquery-stx-editplus.html" title="EditPlus的Javascript语法文件(包含jQuery语法高亮)">EditPlus的Javascript语法文件(包含jQuery语法高亮)</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners">
+				<h3 class="listTitle">随机推荐</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/system/netsh-command.html" title="netsh命令的修改+转贴">netsh命令的修改+转贴</a></li><li><a href="/Html/Article/Mobile/Android-SDK-2.3-Eclipse-Development-Environment.html" title="Android SDK 2.3与Eclipse最新版开发环境搭建">Android SDK 2.3与Eclipse最新版开发环境搭建</a></li><li><a href="/Html/Article/b1og/monster-for-chrome.html" title="淘宝UED团队推Monster分析网站代码">淘宝UED团队推Monster分析网站代码</a></li><li><a href="/Html/Article/Mobile/basic-knowledge-OPhone-development.html" title="OPhone开发的基础知识">OPhone开发的基础知识</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-3.html" title="canvas JavaScript API学习（三）">canvas JavaScript API学习（三）</a></li><li><a href="/Html/Article/nginx/install-nginx-windows-service.html" title="安装Nginx为Windows服务">安装Nginx为Windows服务</a></li><li><a href="/Html/Article/html-css/browser-css-hack.html" title="浏览器CSS HACK收集">浏览器CSS HACK收集</a></li><li><a href="/Html/Article/system/diference-get-post-http.html" title="HTTP中Get与Post的区别">HTTP中Get与Post的区别</a></li><li><a href="/Html/Article/cs/159.html" title="IIS处理模型及ASP.NET页面生命周期">IIS处理模型及ASP.NET页面生命周期</a></li><li><a href="/Html/Article/system/vss-user-rights-settings.html" title="VSS中为建立的用户设置权限">VSS中为建立的用户设置权限</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">参考手册</h3>
+				<ul class="uList ellipsis"><li><a href="http://i.xw.hb.cn/works/css20/Index.html" title="CSS2.0中文参考手册">CSS2.0中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/DHTMLref/Index.html" title="DHTML中文参考手册">DHTML中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/css3/Index.html" title="CSS3.0中文参考手册">CSS3.0中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/Vbscript/Index.html" title="VBScript 语言参考">VBScript 语言参考</a></li><li><a href="http://i.xw.hb.cn/works/ado/index.html" title="ADO中文参考手册">ADO中文参考手册</a></li><li><a href="http://www.junchenwu.com/WAI/wai-pageauth.html" title="Web内容可访问性指南 1.0">Web内容可访问性指南 1.0</a></li><li><a href="http://www.w3school.com.cn/html5/index.asp" title="HTML 5 参考手册">HTML 5 参考手册</a></li><li><a href="http://i.xw.hb.cn/works/Ext_3.0_cn/index.html" title="Ext 3.0 中文参考手册">Ext 3.0 中文参考手册</a></li><li><a href="http://www.findmebyip.com/litmus" title="HTML5和CSS3兼容性参考">HTML5和CSS3兼容性参考</a></li><li><a href="http://www.cocos2d-iphone.org/api-ref/" title="cocos2d for iPhone API Reference">cocos2d for iPhone API Reference</a></li><li><a href="http://i.xw.hb.cn/ref/GNUstep_Reference" title="GNUstep Reference">GNUstep Reference</a></li><li><a href="http://i.xw.hb.cn/ref/zh-google-cpp-styleguide/index.html" title="Google C++ 编程规范">Google C++ 编程规范</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">实用工具</h3>
+				<ul class="uList ellipsis"><li><a href="http://i.xw.hb.cn/WebTools/wannianli/" title="万年历查询">万年历</a></li><li><a href="http://css3please.com/" title="cross browser css3 rule generator">CSS3规则生成器</a></li><li><a href="http://centricle.com/ref/css/filters/" title="CSS Hack表">CSS Hack表</a></li><li><a href="http://tools.chinaz.com/" title="站长工具">站长工具</a></li><li><a href="http://www.useragentstring.com/" title="User Agent Strings">User Agent Strings</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">友情链接</h3>
+				<ul class="uList ellipsis"><li><a href="http://www.xw.hb.cn/" title="XeonWell Studio">XeonWell Studio</a></li><li><a href="http://www.5dmail.net" title="国内最大的邮件技术资讯基地">邮件技术资讯网</a></li></ul>
+			</div>
+		</div>
+		<div id="rightWrapper">
+			<div id="oriList" class="listDiv roundedCorners">
+				<h3 class="listTitle">原创文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/iPhone/adjust-iphone-brightness.html" title="调节iphone屏幕亮度">调节iphone屏幕亮度</a></li><li><a href="/Html/Article/iPhone/hide-system-volume-view-on-ios.html" title="隐藏ios系统的音量变化显示界面">隐藏ios系统的音量变化显示界面</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/apple-touch-icon.html" title="在apple设备上显示网站图标">在apple设备上显示网站图标</a></li><li><a href="/Html/Article/iPhone/iPhone-iPad-check.html" title="判断用户的是iPhone还是iPad">判断用户的是iPhone还是iPad</a></li><li><a href="/Html/Article/iPhone/iPhone-vibrate.html" title="代码实现iPhone震动">代码实现iPhone震动</a></li><li><a href="/Html/Article/iPhone/cocos2d-for-iPhone-guide.html" title="cocos2d for iPhone教程">cocos2d for iPhone教程</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/iPhone-DebugLog.html" title="控制Log的输出">控制Log的输出</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/iPhone/iPhone-SDK-Version-Check-1.html" title="iPhone版本判断">iPhone版本判断</a></li><li><a href="/Html/Article/system/VMware-custom-start.html" title="VMware的自定义启动">VMware的自定义启动</a></li><li><a href="/Html/Article/iPhone/backup-XCode-Key-Bindings.html" title="备份XCode键盘快捷键和颜色文字">备份XCode键盘快捷键和颜色文字</a></li><li><a href="/Html/Article/iPhone/error-communicating-with-the-iTunes-Store.html" title="error communicating with the iTunes Store">error communicating with the iTunes Store</a></li><li><a href="/Html/Article/b1og/liquid-particles.html" title="HTML5 canvas效果Liquid Particles">HTML5 canvas效果Liquid Particles</a></li><li><a href="/Html/Article/b1og/apple-html5-showcase.html" title="apple的html5 Showcase">apple的html5 Showcase</a></li><li><a href="/Html/Article/b1og/html5test-browser-scores.html" title="html5test.com测试你的浏览器支持多少html5特性">html5test.com测试你的浏览器支持多少html5特性</a></li><li><a href="/Html/Article/b1og/netbalancer-hanzify.html" title="网络限速软件NetBalancer">网络限速软件NetBalancer</a></li><li><a href="/Html/Article/html-css/first-letter-in-browsers.html" title="first-letter在各浏览器中的表现">first-letter在各浏览器中的表现</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li></ul>
+			</div>
+		</div>
+		<div id="centerWrapper" class="roundedCorners clearfix">
+			<nav class="nav"><a href="/" title="XeonWell Studio">Home</a>  &nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="/Html/Article/system/" title="System">System</a></nav>
+			<article class="article">
+				<header><h1 class="artTitle hei">DNS中的递归查询和迭代查询</h1></header>
+				<div class="artContent">
+					<h3>递归查询的工作方式</h3>
+<p>递归查询是最常见的查询方式，域名服务器将代替提出请求的客户机（下级<a onclick="tagshow('dns');return false;" href="http://www.worksnet.net/tag/dns/"><font color="#fe6600">dns</font></a>服务器）进行域名查询，若域名服务器不能直接回答，则域名服务器会在域各树中的各分支的上下进行递归查询，最终将返回查询结果给客户机，在域名服务器查询期间，客户机将完全处于等待状态。<br />
+示例： （红色为查询，蓝色为迭代查询返回的提示信息，棕色为递归查询返回的IP信息）</p>
+<p>&nbsp;<img border="0" alt="DNS 查询流程图" src="/UploadFile/image/dnsquery.gif" /></p>
+<p>示例说明：A向B发送递归查询请求，B向C发送迭代查询请求（下一节将介绍迭代查询），得到C给出的提示后，B向D发送迭代查询请求，得到D给出的提示后，B向E发出迭代请求，得到E给出的提示后，B向F发出迭代查询请求，得到F给出的提示后，B得到了F返回G的IP地址，B向A返回G的IP地址，整个查询结束。<br />
+也许你现在还很难理解什么是迭代查询，下一节中将以一个非常易于理解的方法说明。</p>
+<h3>迭代查询的工作方式</h3>
+<p>迭代查询又称重指引，当服务器使用迭代查询时能够使其他服务器返回一个最佳的查询点提示或主机地址，若此最佳的查询点中包含需要查询的主机地址，则返回主机地址信息，若此时服务器不能够直接查询到主机地址，则是按照提示的指引依次查询，直到服务器给出的提示中包含所需要查询的主机地址为止，一般的，每次指引都会更靠近根服务器（向上），查寻到根域名服务器后，则会再次根据提示向下查找。从上节的图中可以知道，B访问C、D、E、F、G，都是迭代查询，首先B访问C，得到了提示访问D的提示信息后，开始访问D，这时因为是迭代查询，D又返回给B提示信息，告诉B应该访问E，依次类推。<br />
+说明：假设你要寻找一家你从未去过的公司，你会有2种解决方案，1是找一个人替你问路，那可能是你的助手，2是自己问路，每走过一个路口，就问一个人，这就好比递归查询和迭代查询，递归查询在这里代表你的第1种解决方案，而迭代则是第2种解决方案。</p>
+<h3>如何配置递归查询及迭代查询</h3>
+<p>在默认情况下DNS服务器既接受来自其他客户机（其他DNS服务器）的迭代查询也接受其他客户机（其他DNS服务器）的递归查询。<br />
+提醒：在DNS服务器属性中，你可能会混淆高级选项卡中的&ldquo;禁止递归&rdquo;选项和转发器选项中的&ldquo;不对这个域使用递归&rdquo;后者控制将要接受的查询类型。<br />
+修改：<br />
+禁止递归查询。在DNS服务器属性中，高级选项卡，服务器选项，&ldquo;禁止递归&rdquo;。<br />
+通常根服务器或者流量较大的域名服务器都不使用递归查询，其原因也很简单，大量的递归查询会导致服务器过载。<br />
+问题：为什么不连迭代查询也关闭？这样不更节省损耗吗？这绝对是一个让人哭笑不得的问题。原因是如果不建立迭代查询，你的DNS又可以做什么事情呢？那不如不建立DNS服务器。</p>
+<h3>调整最佳性能的查询方式</h3>
+<p>一般的，你的企业内部如果有超过300台机器，你就应该在你的部署计划中建立多个DNS服务器了。根据活动目录或者物理位置将多个DNS平均分布。而根域名服务器总应该使用迭代查询，而不应该使用递归查询。同时，为了减轻客户机的负担，所有的下级域名服务器就都应该使用递归查询与迭代查询的混合模式。若你的企业整合了活动目录及有分公司分布在全球，通过使用多层的域名服务器，可以得到最佳的性价比！</p>
+<p>原文地址: <a href="http://www.worksnet.net/archives/4815/">合理使用DNS中的递归查询和迭代查询</a></p>
+				</div>
+				<footer>
+					<p class="tagList">Tags: <a href="/Tag/?Article/DNS">DNS</a> , <a href="/Tag/?Article/递归查询">递归查询</a> , <a href="/Tag/?Article/迭代查询">迭代查询</a> </p>
+					<ul>
+						<li>上篇文章: <a href="/Html/Article/system/dns-cache.html">DNS缓存相关知识</a></li>
+						<li>下篇文章: <a href="/Html/Article/system/session-principle-1.html">session机制详解</a></li>
+					</ul>
+					<p>可能感兴趣的文章:</p>
+					<ul class="rndArtList"><li><a href="/Html/Article/system/http-request-model.html" title="HTTP请求模型简介">HTTP请求模型简介</a></li><li><a href="/Html/Article/system/session-principle-1.html" title="session机制详解">session机制详解</a></li><li><a href="/Html/Article/system/diference-get-post-http.html" title="HTTP中Get与Post的区别">HTTP中Get与Post的区别</a></li><li><a href="/Html/Article/cs/159.html" title="IIS处理模型及ASP.NET页面生命周期">IIS处理模型及ASP.NET页面生命周期</a></li><li><a href="/Html/Article/system/dev-enable-disable-netcard.html" title="通过devcon在命令行下启用/禁用网卡">通过devcon在命令行下启用/禁用网卡</a></li></ul>
+				</footer>
+			</article>
+		</div>
+	</div>
+	<footer id="footer"><p>&copy; 2010-2011 XeonWell. 以上文摘,&nbsp;仅供个人收藏和参考&nbsp;<a href="http://www.miibeian.gov.cn">粤ICP备10095269号-1</a>&nbsp;</p>
+<p><a title="Valid XHTML 1.0 Strict" href="http://validator.w3.org/">HTML5</a> | <a title="Valid CSS" href="http://jigsaw.w3.org/css-validator/">Valid CSS 1/2/3</a> | <a title="508 Standards, Section" href="http://www.contentquality.com/mynewtester/cynthia.exe?url1=http%3A%2F%2Fwww.xw.hb.cn%2F">508</a> | <a title="WAI" href="http://www.contentquality.com/mynewtester/cynthia.exe?rptmode=2&amp;url1=http%3A%2F%2Fwww.xw.hb.cn%2F">WAI</a>&nbsp;| <a href="/rss/">RSS</a> | <a href="/rss/?type=atom">Atom</a> | <a href="/google-site.xml">SiteMap</a></p></footer>
+	<div id="jsDiv">
+		<script type="text/javascript" src="/Js/jquery.js"></script>
+		<script type="text/javascript" src="/Js/common.js"></script>
+		<!--[if lte IE 6]><script type="text/javascript" src="/Js/ie-fix.js"></script><![endif]-->
+		<script type="text/javascript" src="/js/article.js"></script>
+	</div>
+	<div class="nd"><p><a href="/">XeonWell Studio</a></p><script type="text/javascript" src="/Js/stat.js"></script></div>
+</div>
+</body>
+</html>

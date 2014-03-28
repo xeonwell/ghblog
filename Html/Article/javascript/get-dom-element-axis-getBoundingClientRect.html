@@ -1,0 +1,156 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>获取Dom元素的X/Y坐标--XeonWell Studio</title>
+<meta name="Keywords" content="Dom,坐标,getBoundingClientRect,offsetParent,移动应用技术分享,iphone,ios,ipad,android" />
+<meta name="Description" content="当今已有很多的JS框架封装了获取Dom元素的坐标的方法，我们可以直接使用，而这里我更多的是希望透过这些方法，看到原始的获取坐标方式以及如何处理跨浏览器问题。,移动应用技术分享，探讨移动应用技术发展趋势" />
+<meta name="Author" content="XeonWell, email:admin_xw_hb_cn" />
+<meta name="language" content="Chinese" />
+<meta name="Robots" content="index,follow" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="icon" href="/i/xiong.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/i/xiong.ico" type="image/x-icon" />
+<link href="/css/fw.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if lte IE 8]><link href="/css/ie-fix.css" rel="stylesheet" type="text/css" media="all" />
+<script src="/js/ie-html5.js" type="text/javascript" /></script><![endif]-->
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shThemeDefault.css"/>
+</head>
+
+<body>
+<div id="bodyWrapper">
+	<header id="header" class="clearfix">
+		<h1><a href="/" title="XeonWell Studio">XeonWell Studio</a></h1>
+		<ul id="menu" class="resetList"><li><a href="/" title="XeonWell Studio">Home</a></li><li><a href="/Html/Article/Mobile/" title="Mobile" accesskey="1"><strong>Mobile</strong></a></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS" accesskey="2"><strong>(X)Html/CSS</strong></a></li><li><a href="/Html/Article/javascript/" title="Javascript" accesskey="3" id="curNav"><strong>Javascript</strong></a></li><li><a href="/Html/Article/asp/" title="ASP" accesskey="4"><strong>ASP</strong></a></li><li><a href="/Html/Article/cs/" title="C#" accesskey="5"><strong>C#</strong></a></li><li><a href="/Html/Article/system/" title="System" accesskey="6"><strong>System</strong></a></li><li><a href="/Html/Article/b1og/" title="Blog" accesskey="7"><strong>Blog</strong></a></li></ul>
+	</header>
+	<div id="content" class="clearfix">
+		<div id="leftWrapper">
+			<div id="artCategory" class="listDiv roundedCorners">
+				<h3 class="listTitle">文章分类</h3>
+				<ul class="uList"><li><a href="/Html/Article/Mobile/" title="Mobile">Mobile</a><ul><li><a href="/Html/Article/iPhone/" title="iPhone">iPhone</a></li></ul></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS">(X)Html/CSS</a></li><li><a href="/Html/Article/javascript/" title="Javascript">Javascript</a><ul><li><a href="/Html/Article/jquery/" title="jQuery">jQuery</a></li></ul></li><li><a href="/Html/Article/asp/" title="ASP">ASP</a></li><li><a href="/Html/Article/cs/" title="C#">C#</a></li><li><a href="/Html/Article/system/" title="System">System</a><ul><li><a href="/Html/Article/nginx/" title="Nginx">Nginx</a></li><li><a href="/Html/Article/IIS/" title="IIS">IIS</a></li><li><a href="/Html/Article/database/" title="Database">Database</a></li><li><a href="/Html/Article/mail/" title="Mail">Mail</a></li></ul></li><li><a href="/Html/Article/b1og/" title="Blog">Blog</a></li></ul>
+			</div>
+			<div id="hotList" class="listDiv roundedCorners">
+				<h3 class="listTitle">热门文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/asp/ASP-isblank.html" title="ASP判断是否为空">ASP判断是否为空</a></li><li><a href="/Html/Article/b1og/editplus-stx-html5-css3-js-jquery.html" title="EditPlus的js(含jquery),HTML5,CSS3语法高亮文件">EditPlus的js(含jquery),HTML5,CSS3语法高亮文件</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/UIScrollView-Reference.html" title="UIScrollView参考">UIScrollView参考</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/iPhone/iPhone-scale-image.html" title="iPhone中缩放图片">iPhone中缩放图片</a></li><li><a href="/Html/Article/html-css/html5-table-template.html" title="HTML5 Table Template">HTML5 Table Template</a></li><li><a href="/Html/Article/b1og/js-jquery-stx-editplus.html" title="EditPlus的Javascript语法文件(包含jQuery语法高亮)">EditPlus的Javascript语法文件(包含jQuery语法高亮)</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners">
+				<h3 class="listTitle">随机推荐</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/asp/vbs-include-file.html" title="在一个vbs中包含其他vbs文件">在一个vbs中包含其他vbs文件</a></li><li><a href="/Html/Article/b1og/view-firefox-default-style.html" title="查看firefox的默认样式">查看firefox的默认样式</a></li><li><a href="/Html/Article/iPhone/hide-system-volume-view-on-ios.html" title="隐藏ios系统的音量变化显示界面">隐藏ios系统的音量变化显示界面</a></li><li><a href="/Html/Article/b1og/32-google-chrome-extension.html" title="网页设计开发人员必备的谷歌浏览器扩展">网页设计开发人员必备的谷歌浏览器扩展</a></li><li><a href="/Html/Article/Mobile/mobile-web-development-markup-language.html" title="移动网站开发——标记语言">移动网站开发——标记语言</a></li><li><a href="/Html/Article/javascript/Code-Syntax-Highlight-Plugin-for-FCKeditor.html" title="FCKeditor的syntax highlighter代码高亮插件">FCKeditor的syntax highlighter代码高亮插件</a></li><li><a href="/Html/Article/system/dns-query-1.html" title="DNS中的递归查询和迭代查询">DNS中的递归查询和迭代查询</a></li><li><a href="/Html/Article/b1og/120.html" title="为cms制作了一套html5的theme">为cms制作了一套html5的theme</a></li><li><a href="/Html/Article/system/session-principle-1.html" title="session机制详解">session机制详解</a></li><li><a href="/Html/Article/database/oracle-sqlplus-command.html" title="SQLPLUS命令的使用大全-oracle">SQLPLUS命令的使用大全-oracle</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">参考手册</h3>
+				<ul class="uList ellipsis"><li><a href="http://i.xw.hb.cn/works/css20/Index.html" title="CSS2.0中文参考手册">CSS2.0中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/DHTMLref/Index.html" title="DHTML中文参考手册">DHTML中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/css3/Index.html" title="CSS3.0中文参考手册">CSS3.0中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/Vbscript/Index.html" title="VBScript 语言参考">VBScript 语言参考</a></li><li><a href="http://i.xw.hb.cn/works/ado/index.html" title="ADO中文参考手册">ADO中文参考手册</a></li><li><a href="http://www.junchenwu.com/WAI/wai-pageauth.html" title="Web内容可访问性指南 1.0">Web内容可访问性指南 1.0</a></li><li><a href="http://www.w3school.com.cn/html5/index.asp" title="HTML 5 参考手册">HTML 5 参考手册</a></li><li><a href="http://i.xw.hb.cn/works/Ext_3.0_cn/index.html" title="Ext 3.0 中文参考手册">Ext 3.0 中文参考手册</a></li><li><a href="http://www.findmebyip.com/litmus" title="HTML5和CSS3兼容性参考">HTML5和CSS3兼容性参考</a></li><li><a href="http://www.cocos2d-iphone.org/api-ref/" title="cocos2d for iPhone API Reference">cocos2d for iPhone API Reference</a></li><li><a href="http://i.xw.hb.cn/ref/GNUstep_Reference" title="GNUstep Reference">GNUstep Reference</a></li><li><a href="http://i.xw.hb.cn/ref/zh-google-cpp-styleguide/index.html" title="Google C++ 编程规范">Google C++ 编程规范</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">实用工具</h3>
+				<ul class="uList ellipsis"><li><a href="http://i.xw.hb.cn/WebTools/wannianli/" title="万年历查询">万年历</a></li><li><a href="http://css3please.com/" title="cross browser css3 rule generator">CSS3规则生成器</a></li><li><a href="http://centricle.com/ref/css/filters/" title="CSS Hack表">CSS Hack表</a></li><li><a href="http://tools.chinaz.com/" title="站长工具">站长工具</a></li><li><a href="http://www.useragentstring.com/" title="User Agent Strings">User Agent Strings</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">友情链接</h3>
+				<ul class="uList ellipsis"><li><a href="http://www.xw.hb.cn/" title="XeonWell Studio">XeonWell Studio</a></li><li><a href="http://www.5dmail.net" title="国内最大的邮件技术资讯基地">邮件技术资讯网</a></li></ul>
+			</div>
+		</div>
+		<div id="rightWrapper">
+			<div id="oriList" class="listDiv roundedCorners">
+				<h3 class="listTitle">原创文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/iPhone/adjust-iphone-brightness.html" title="调节iphone屏幕亮度">调节iphone屏幕亮度</a></li><li><a href="/Html/Article/iPhone/hide-system-volume-view-on-ios.html" title="隐藏ios系统的音量变化显示界面">隐藏ios系统的音量变化显示界面</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/apple-touch-icon.html" title="在apple设备上显示网站图标">在apple设备上显示网站图标</a></li><li><a href="/Html/Article/iPhone/iPhone-iPad-check.html" title="判断用户的是iPhone还是iPad">判断用户的是iPhone还是iPad</a></li><li><a href="/Html/Article/iPhone/iPhone-vibrate.html" title="代码实现iPhone震动">代码实现iPhone震动</a></li><li><a href="/Html/Article/iPhone/cocos2d-for-iPhone-guide.html" title="cocos2d for iPhone教程">cocos2d for iPhone教程</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/iPhone-DebugLog.html" title="控制Log的输出">控制Log的输出</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/iPhone/iPhone-SDK-Version-Check-1.html" title="iPhone版本判断">iPhone版本判断</a></li><li><a href="/Html/Article/system/VMware-custom-start.html" title="VMware的自定义启动">VMware的自定义启动</a></li><li><a href="/Html/Article/iPhone/backup-XCode-Key-Bindings.html" title="备份XCode键盘快捷键和颜色文字">备份XCode键盘快捷键和颜色文字</a></li><li><a href="/Html/Article/iPhone/error-communicating-with-the-iTunes-Store.html" title="error communicating with the iTunes Store">error communicating with the iTunes Store</a></li><li><a href="/Html/Article/b1og/liquid-particles.html" title="HTML5 canvas效果Liquid Particles">HTML5 canvas效果Liquid Particles</a></li><li><a href="/Html/Article/b1og/apple-html5-showcase.html" title="apple的html5 Showcase">apple的html5 Showcase</a></li><li><a href="/Html/Article/b1og/html5test-browser-scores.html" title="html5test.com测试你的浏览器支持多少html5特性">html5test.com测试你的浏览器支持多少html5特性</a></li><li><a href="/Html/Article/b1og/netbalancer-hanzify.html" title="网络限速软件NetBalancer">网络限速软件NetBalancer</a></li><li><a href="/Html/Article/html-css/first-letter-in-browsers.html" title="first-letter在各浏览器中的表现">first-letter在各浏览器中的表现</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li></ul>
+			</div>
+		</div>
+		<div id="centerWrapper" class="roundedCorners clearfix">
+			<nav class="nav"><a href="/" title="XeonWell Studio">Home</a>  &nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="/Html/Article/javascript/" title="Javascript">Javascript</a></nav>
+			<article class="article">
+				<header><h1 class="artTitle hei">获取Dom元素的X/Y坐标</h1></header>
+				<div class="artContent">
+					<p>现在Web页面的交互方式越来越多样化，其中拖放页面元素也是一种很常见的操作。在这类操作当中有两个主要问题需要解决，一个是事件的注册方式，一般处理拖放元素的事件顺序是：捕获鼠标正键按下&mdash;&mdash;注册鼠标移动事件&mdash;&mdash;捕获鼠标正键抬起&mdash;&mdash;注销鼠标移动事件；另一个问题就是拖放元素的位置，即X/Y坐标。这里我主要来讲述后面的问题：如何获取一个Dom元素的坐标。</p>
+<p>当今已有很多的JS框架封装了获取Dom元素的坐标的方法，我们可以直接使用，而这里我更多的是希望透过这些方法，看到原始的获取坐标方式以及如何处理跨浏览器问题。</p>
+<p>首先认识一下getBoundingClientRect方法，标准语法为：</p>
+<pre>
+   oRect = object.getBoundingClientRect();</pre>
+<p>Dom节点调用该方法可返回一个ClientRect类型的对象，该对象有四个属性值：top、left、right、bottom，表示了该节点相对于可视浏览器可视区域的左上角位置的坐标，看图就能好理解：</p>
+<p><img alt="元素相对浏览器的坐标" src="/UploadFile/image/clientRect%20axis1.gif" /></p>
+<p class="wp-caption-text">坐标说明图1</p>
+<p>补充一下，如果当前的元素已经超出可视区域，依然按照可视区域的左上角位置的坐标来计算，如图2</p>
+<p><img alt="元素相对页面坐标图2" src="/UploadFile/image/clientRect%20axis2.gif" /></p>
+<p class="wp-caption-text">坐标说明图2</p>
+<p>这样就可以简单的获取Dom元素在可视区里的X/Y坐标（通过left和top属性）。最后在计算上页面滚动条的偏移量就可以计算出元素在整个页面中的X/Y坐标了。页面滚动偏移量的计算在不同浏览器下有所不同，不过我们可以借鉴YUI里面方法，设计一个通用的方式：</p>
+<pre>
+    scrollLeft = Math.max(document.documentElement.scrollLeft, document.body.scrollLeft);</pre>
+<pre>
+    scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop);</pre>
+<p>在W3C标准下<span>document</span>.<span>body</span>.scrollTop和document.body.scrollLeft都为0，所以采用了上面兼容的方式获取页面滚动条的偏移量。</p>
+<p>将ClientRect对象的left、top属性分别加上scrollLeft和scrollTop，就能获取Dom元素的X/Y坐标了。但对于IE8之前的IE版本在很多情况下要对这个值进行一些调整，有三种情况，下面来分别看一下：</p>
+<ul>
+    <li>1.IE6的标准模式下不需要调整；</li>
+    <li>2.所有怪异模式下为取document的当前borderLeftWidth和borderTopWidth值做调整，分别加在X/Y坐标值上；</li>
+    <li>3.其他的情况都分别在X/Y坐标值上加上2；</li>
+</ul>
+<p>这样就可以获取最后准确的X/Y坐标了。</p>
+<p>如果所有的浏览器都能如此就好了，可惜有些浏览器（FF2、Safari）不支持getBoundingClientRect方法。需要通过一级级查找和计算offsetParent来获取X/Y坐标值。这里首先介绍什么是元素的offsetParent属性。</p>
+<p>offsetParent属性是距离调用offsetParent的元素最近的（在包含层次中最靠近的），并且是已进行过CSS定位的与容器元素。首先说明一下CSS定位，是指对元素设置position属性为absolute、relative或fixed(IE6除外)，还有一个问题是元素在table元素中时会有不同的情况。下面是我的一些归纳，不全之处望大家指出：</p>
+<ul>
+    <li>1.元素不在table元素中，且元素及其所有上级元素都未进行CSS定位时，这个元素的offsetParent属性为根元素（Body）；</li>
+    <li>2.元素本身没进行CSS定位，而出现在table中或有上级元素进行了CSS定位，那么当向上先达到TD元素时该元素的offsetParent属性为TD元素；当向上先达到进行了CSS定位的上级元素时该元素的offsetParent属性为该上级元素；</li>
+    <li>3.无论元素在不在table中，只要元素本身进行了CSS定位，有上级元素进行了CSS定位的则元素的offsetParent属性为该上级元素，没有上级素进行了CSS定位的则元素的offsetParent属性为根元素；</li>
+</ul>
+<p>知道了offsetParent属性的含义，就可以通过offsetParent属性来一级级的计算X/Y坐标了。一种比较简单的while循环：</p>
+<pre>
+    var node;/*求坐标的元素*/
+    var xy=[];/*保存XY坐标*/
+    while ((node = node.offsetParent)) {
+      xy[0] += node.offsetLeft;
+      xy[1] += node.offsetTop];
+    }</pre>
+<p>通过这一个循环就能累计元素每级offsetParent属性元素的偏移量，但这个偏移量在累加的过程中没有计算每级父元素有滚动条的情况，最后还要同getBoundingClientRect方法一样加上页面滚动值（这里scrollLeft和scrollTop）。现在先来累计计算元素每上级元素的滚动条情况，首先判断元素本身是不是设置了position为fixed：</p>
+<ul>
+    <li>1.设置了则不用计算每上级元素的滚动条情况，但需要对Opera和其他浏览器做区分，Opera浏览器减去scrollLeft和scrollTop
+    <pre>
+xy[0] -= scrollLeft;xy[1] -= scrollTop;</pre>
+    <p>，其他情况是加上scrollLeft和scrollTop。</p>
+    <pre>
+xy[0] += scrollLeft;xy[1] += scrollTop;</pre>
+    </li>
+    <li>2.未设置时就需要累计计算元素每上级元素的滚动条，通过一个循环里累加：
+    <pre>
+while ((node = node.parentNode) &amp;&amp; node.tagName) {
+  scrollTop = node.scrollTop;
+  scrollLeft = node.scrllLeft;
+  if (scrollTop || scrollLeft) {
+    xy[0] -= scrollLeft;
+    xy[1] -= scrollTop;
+  }
+}</pre>
+    <p>最后机上页面滚动值</p>
+    <pre>
+xy[0] += scrollLeft;xy[1] += scrollTop;</pre>
+    </li>
+</ul>
+<p>这样最后就可以在不支持getBoundingClientRect方法的浏览器下获取元素的X/Y坐标了。</p>
+<p>最后总结一下，如果浏览器支持getBoundingClientRect方法，通过该方法再加上页面滚动条的偏移就能获取元素的X/Y了（不同浏览器需要微调），如果不支持getBoundingClientRect方法，则需要通过循环该元素的每级offsetParent属性来累计偏移量，再通过每个父级元素的滚动条来调整，最后再加上页面滚动条的偏移来获取元素的X/Y坐标。获取X/Y坐标的方式还有很多，可能不尽相同，我这里主要是基于YUI里面的思想和方法。不全之处望大家指正～</p>
+<p>原文地址: <a href="http://ued.koubei.com/?p=948">获取Dom元素的X/Y坐标</a></p>
+				</div>
+				<footer>
+					<p class="tagList">Tags: <a href="/Tag/?Article/DOM">DOM</a> , <a href="/Tag/?Article/getBoundingClientRect">getBoundingClientRect</a> , <a href="/Tag/?Article/offsetParent">offsetParent</a> </p>
+					<ul>
+						<li>上篇文章: <a href="/Html/Article/javascript/javascript-bom-dom.html">JavsScript中的BOM与DOM对象</a></li>
+						<li>下篇文章: <a href="/Html/Article/javascript/functions-get-dom-element-axis.html">获得DOM元素X/Y坐标的几个函数</a></li>
+					</ul>
+					<p>可能感兴趣的文章:</p>
+					<ul class="rndArtList"><li><a href="/Html/Article/system/diference-get-post-http.html" title="HTTP中Get与Post的区别">HTTP中Get与Post的区别</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-3.html" title="canvas JavaScript API学习（三）">canvas JavaScript API学习（三）</a></li><li><a href="/Html/Article/nginx/close-nginx-version-display.html" title="关闭Nginx版本显示信息">关闭Nginx版本显示信息</a></li><li><a href="/Html/Article/javascript/js-sbc-dbc-convert.html" title="JavaScript 全半角转换">JavaScript 全半角转换</a></li><li><a href="/Html/Article/b1og/fix-Chinese-tag-utf8.html" title="修正访问utf-8页面中中文Tag时出错的问题">修正访问utf-8页面中中文Tag时出错的问题</a></li></ul>
+				</footer>
+			</article>
+		</div>
+	</div>
+	<footer id="footer"><p>&copy; 2010-2011 XeonWell. 以上文摘,&nbsp;仅供个人收藏和参考&nbsp;<a href="http://www.miibeian.gov.cn">粤ICP备10095269号-1</a>&nbsp;</p>
+<p><a title="Valid XHTML 1.0 Strict" href="http://validator.w3.org/">HTML5</a> | <a title="Valid CSS" href="http://jigsaw.w3.org/css-validator/">Valid CSS 1/2/3</a> | <a title="508 Standards, Section" href="http://www.contentquality.com/mynewtester/cynthia.exe?url1=http%3A%2F%2Fwww.xw.hb.cn%2F">508</a> | <a title="WAI" href="http://www.contentquality.com/mynewtester/cynthia.exe?rptmode=2&amp;url1=http%3A%2F%2Fwww.xw.hb.cn%2F">WAI</a>&nbsp;| <a href="/rss/">RSS</a> | <a href="/rss/?type=atom">Atom</a> | <a href="/google-site.xml">SiteMap</a></p></footer>
+	<div id="jsDiv">
+		<script type="text/javascript" src="/Js/jquery.js"></script>
+		<script type="text/javascript" src="/Js/common.js"></script>
+		<!--[if lte IE 6]><script type="text/javascript" src="/Js/ie-fix.js"></script><![endif]-->
+		<script type="text/javascript" src="/js/article.js"></script>
+	</div>
+	<div class="nd"><p><a href="/">XeonWell Studio</a></p><script type="text/javascript" src="/Js/stat.js"></script></div>
+</div>
+</body>
+</html>

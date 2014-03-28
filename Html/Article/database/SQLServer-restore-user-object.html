@@ -1,0 +1,170 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SQL Server 数据库使用备份还原造成的孤立用户和对象名‘xxx’无效的错误的解决办法--XeonWell Studio</title>
+<meta name="Keywords" content="sql server,数据库,移动应用技术分享,iphone,ios,ipad,android" />
+<meta name="Description" content="SQL Server 数据库使用备份还原造成的孤立用户和对象名‘xxx’无效的错误的解决办法,移动应用技术分享，探讨移动应用技术发展趋势" />
+<meta name="Author" content="XeonWell, email:admin_xw_hb_cn" />
+<meta name="language" content="Chinese" />
+<meta name="Robots" content="index,follow" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="icon" href="/i/xiong.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/i/xiong.ico" type="image/x-icon" />
+<link href="/css/fw.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if lte IE 8]><link href="/css/ie-fix.css" rel="stylesheet" type="text/css" media="all" />
+<script src="/js/ie-html5.js" type="text/javascript" /></script><![endif]-->
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shThemeDefault.css"/>
+</head>
+
+<body>
+<div id="bodyWrapper">
+	<header id="header" class="clearfix">
+		<h1><a href="/" title="XeonWell Studio">XeonWell Studio</a></h1>
+		<ul id="menu" class="resetList"><li><a href="/" title="XeonWell Studio">Home</a></li><li><a href="/Html/Article/Mobile/" title="Mobile" accesskey="1"><strong>Mobile</strong></a></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS" accesskey="2"><strong>(X)Html/CSS</strong></a></li><li><a href="/Html/Article/javascript/" title="Javascript" accesskey="3"><strong>Javascript</strong></a></li><li><a href="/Html/Article/asp/" title="ASP" accesskey="4"><strong>ASP</strong></a></li><li><a href="/Html/Article/cs/" title="C#" accesskey="5"><strong>C#</strong></a></li><li><a href="/Html/Article/system/" title="System" accesskey="6"><strong>System</strong></a></li><li><a href="/Html/Article/b1og/" title="Blog" accesskey="7"><strong>Blog</strong></a></li></ul>
+	</header>
+	<div id="content" class="clearfix">
+		<div id="leftWrapper">
+			<div id="artCategory" class="listDiv roundedCorners">
+				<h3 class="listTitle">文章分类</h3>
+				<ul class="uList"><li><a href="/Html/Article/Mobile/" title="Mobile">Mobile</a><ul><li><a href="/Html/Article/iPhone/" title="iPhone">iPhone</a></li></ul></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS">(X)Html/CSS</a></li><li><a href="/Html/Article/javascript/" title="Javascript">Javascript</a><ul><li><a href="/Html/Article/jquery/" title="jQuery">jQuery</a></li></ul></li><li><a href="/Html/Article/asp/" title="ASP">ASP</a></li><li><a href="/Html/Article/cs/" title="C#">C#</a></li><li><a href="/Html/Article/system/" title="System">System</a><ul><li><a href="/Html/Article/nginx/" title="Nginx">Nginx</a></li><li><a href="/Html/Article/IIS/" title="IIS">IIS</a></li><li><a href="/Html/Article/database/" title="Database">Database</a></li><li><a href="/Html/Article/mail/" title="Mail">Mail</a></li></ul></li><li><a href="/Html/Article/b1og/" title="Blog">Blog</a></li></ul>
+			</div>
+			<div id="hotList" class="listDiv roundedCorners">
+				<h3 class="listTitle">热门文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/asp/ASP-isblank.html" title="ASP判断是否为空">ASP判断是否为空</a></li><li><a href="/Html/Article/b1og/editplus-stx-html5-css3-js-jquery.html" title="EditPlus的js(含jquery),HTML5,CSS3语法高亮文件">EditPlus的js(含jquery),HTML5,CSS3语法高亮文件</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/UIScrollView-Reference.html" title="UIScrollView参考">UIScrollView参考</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/iPhone/iPhone-scale-image.html" title="iPhone中缩放图片">iPhone中缩放图片</a></li><li><a href="/Html/Article/html-css/html5-table-template.html" title="HTML5 Table Template">HTML5 Table Template</a></li><li><a href="/Html/Article/b1og/js-jquery-stx-editplus.html" title="EditPlus的Javascript语法文件(包含jQuery语法高亮)">EditPlus的Javascript语法文件(包含jQuery语法高亮)</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners">
+				<h3 class="listTitle">随机推荐</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/b1og/192.html" title="重开网站">重开网站</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-1.html" title="canvas JavaScript API学习（一）">canvas JavaScript API学习（一）</a></li><li><a href="/Html/Article/system/session-principle-1.html" title="session机制详解">session机制详解</a></li><li><a href="/Html/Article/IIS/iis-apache-wap-config.html" title="在IIS和APACHE上搭建WAP网站">在IIS和APACHE上搭建WAP网站</a></li><li><a href="/Html/Article/asp/asp-download-file.html" title="asp下载文件">asp下载文件</a></li><li><a href="/Html/Article/database/oracle-sqlplus-command.html" title="SQLPLUS命令的使用大全-oracle">SQLPLUS命令的使用大全-oracle</a></li><li><a href="/Html/Article/html-css/xhtml-doctype-diference.html" title="XHTML1.0的几种DocType的区别">XHTML1.0的几种DocType的区别</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/b1og/html5test-browser-scores.html" title="html5test.com测试你的浏览器支持多少html5特性">html5test.com测试你的浏览器支持多少html5特性</a></li><li><a href="/Html/Article/html-css/xhtml-strict-nested-rules.html" title="(X)Html Strict嵌套规则">(X)Html Strict嵌套规则</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">参考手册</h3>
+				<ul class="uList ellipsis"><li><a href="http://i.xw.hb.cn/works/css20/Index.html" title="CSS2.0中文参考手册">CSS2.0中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/DHTMLref/Index.html" title="DHTML中文参考手册">DHTML中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/css3/Index.html" title="CSS3.0中文参考手册">CSS3.0中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/Vbscript/Index.html" title="VBScript 语言参考">VBScript 语言参考</a></li><li><a href="http://i.xw.hb.cn/works/ado/index.html" title="ADO中文参考手册">ADO中文参考手册</a></li><li><a href="http://www.junchenwu.com/WAI/wai-pageauth.html" title="Web内容可访问性指南 1.0">Web内容可访问性指南 1.0</a></li><li><a href="http://www.w3school.com.cn/html5/index.asp" title="HTML 5 参考手册">HTML 5 参考手册</a></li><li><a href="http://i.xw.hb.cn/works/Ext_3.0_cn/index.html" title="Ext 3.0 中文参考手册">Ext 3.0 中文参考手册</a></li><li><a href="http://www.findmebyip.com/litmus" title="HTML5和CSS3兼容性参考">HTML5和CSS3兼容性参考</a></li><li><a href="http://www.cocos2d-iphone.org/api-ref/" title="cocos2d for iPhone API Reference">cocos2d for iPhone API Reference</a></li><li><a href="http://i.xw.hb.cn/ref/GNUstep_Reference" title="GNUstep Reference">GNUstep Reference</a></li><li><a href="http://i.xw.hb.cn/ref/zh-google-cpp-styleguide/index.html" title="Google C++ 编程规范">Google C++ 编程规范</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">实用工具</h3>
+				<ul class="uList ellipsis"><li><a href="http://i.xw.hb.cn/WebTools/wannianli/" title="万年历查询">万年历</a></li><li><a href="http://css3please.com/" title="cross browser css3 rule generator">CSS3规则生成器</a></li><li><a href="http://centricle.com/ref/css/filters/" title="CSS Hack表">CSS Hack表</a></li><li><a href="http://tools.chinaz.com/" title="站长工具">站长工具</a></li><li><a href="http://www.useragentstring.com/" title="User Agent Strings">User Agent Strings</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">友情链接</h3>
+				<ul class="uList ellipsis"><li><a href="http://www.xw.hb.cn/" title="XeonWell Studio">XeonWell Studio</a></li><li><a href="http://www.5dmail.net" title="国内最大的邮件技术资讯基地">邮件技术资讯网</a></li></ul>
+			</div>
+		</div>
+		<div id="rightWrapper">
+			<div id="oriList" class="listDiv roundedCorners">
+				<h3 class="listTitle">原创文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/iPhone/adjust-iphone-brightness.html" title="调节iphone屏幕亮度">调节iphone屏幕亮度</a></li><li><a href="/Html/Article/iPhone/hide-system-volume-view-on-ios.html" title="隐藏ios系统的音量变化显示界面">隐藏ios系统的音量变化显示界面</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/apple-touch-icon.html" title="在apple设备上显示网站图标">在apple设备上显示网站图标</a></li><li><a href="/Html/Article/iPhone/iPhone-iPad-check.html" title="判断用户的是iPhone还是iPad">判断用户的是iPhone还是iPad</a></li><li><a href="/Html/Article/iPhone/iPhone-vibrate.html" title="代码实现iPhone震动">代码实现iPhone震动</a></li><li><a href="/Html/Article/iPhone/cocos2d-for-iPhone-guide.html" title="cocos2d for iPhone教程">cocos2d for iPhone教程</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/iPhone-DebugLog.html" title="控制Log的输出">控制Log的输出</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/iPhone/iPhone-SDK-Version-Check-1.html" title="iPhone版本判断">iPhone版本判断</a></li><li><a href="/Html/Article/system/VMware-custom-start.html" title="VMware的自定义启动">VMware的自定义启动</a></li><li><a href="/Html/Article/iPhone/backup-XCode-Key-Bindings.html" title="备份XCode键盘快捷键和颜色文字">备份XCode键盘快捷键和颜色文字</a></li><li><a href="/Html/Article/iPhone/error-communicating-with-the-iTunes-Store.html" title="error communicating with the iTunes Store">error communicating with the iTunes Store</a></li><li><a href="/Html/Article/b1og/liquid-particles.html" title="HTML5 canvas效果Liquid Particles">HTML5 canvas效果Liquid Particles</a></li><li><a href="/Html/Article/b1og/apple-html5-showcase.html" title="apple的html5 Showcase">apple的html5 Showcase</a></li><li><a href="/Html/Article/b1og/html5test-browser-scores.html" title="html5test.com测试你的浏览器支持多少html5特性">html5test.com测试你的浏览器支持多少html5特性</a></li><li><a href="/Html/Article/b1og/netbalancer-hanzify.html" title="网络限速软件NetBalancer">网络限速软件NetBalancer</a></li><li><a href="/Html/Article/html-css/first-letter-in-browsers.html" title="first-letter在各浏览器中的表现">first-letter在各浏览器中的表现</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li></ul>
+			</div>
+		</div>
+		<div id="centerWrapper" class="roundedCorners clearfix">
+			<nav class="nav"><a href="/" title="XeonWell Studio">Home</a>  &nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="/Html/Article/system/" title="System">System</a> &nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="/Html/Article/database/" title="Database">Database</a></nav>
+			<article class="article">
+				<header><h1 class="artTitle hei">SQL Server 数据库使用备份还原造成的孤立用户和对象名‘xxx’无效的错误的解决办法</h1></header>
+				<div class="artContent">
+					<p>在使用数据库的过程中，经常会遇到数据库迁移或者数据迁移的问题，或者有突然的数据库损坏，这时需要从数据库的备份中直接恢复。但是，此时会出现问题，这里说明几种常见问题的解决方法。 一、孤立用户的问题<br />
+比如，以前的数据库的很多表是用户test建立的，但是当我们恢复数据库后，test用户此时就成了孤立用户，没有与之对应的登陆用户名，哪怕你建立了一个test登录用户名，而且是以前的用户密码，用该用户登录后同样没办法操作以前属于test的用户表。<br />
+这个问题有两种办法解决。<br />
+先说解决的前提条件。<br />
+首先，要用备份文件还原数据库，我们这里的数据库名为testdb，里面有属于用户test的用户表。这个很容易了操作了，不多讲了，在企业管理器中很方便可以恢复。恢复后，就产生了孤立用户test。<br />
+然后，用sa用户或者具有DBA权限的用户登录，创建一个test数据库登录用户，密码随便设置了，也可以和以前的保持一致。我们用它来对应孤立的test用户。<br />
+下面就有两种操作方法了，第一种就是改变对象的属主，第二种就是使登录用户和数据库的孤立用户对应起来。先说第一种方法。<br />
+1、修改对象属主<br />
+就是将原本属于数据库用户test的用户表，修改为属于dbo的用户表；然后修改test登录用户的数据库为testdb,就可以直接使用test登录用户登录后对该数据库进行操作了。<br />
+使用的存储过程<br />
+sp_changeobjectowner [ @objname = ] 'object' , [ @newowner = ] 'owner'<br />
+参数说明<br />
+[ @objname = ] 'object'<br />
+当前数据库中现有表、视图、用户定义函数或存储过程的名称。object 是 nvarchar(776)，没有默认值。如果架构及其所有者具有相同的名称，则 object 可由现有对象所有者限定，格式为 existing_owner.object。 <br />
+[ @newowner=] 'owner '<br />
+将成为对象的新所有者的安全帐户的名称。owner 的数据类型为 sysname，没有默认值。owner 必须是可访问当前数据库的有效数据库用户、服务器角色、Microsoft Windows 登录名或 Windows 组。如果新所有者是没有对应数据库级主体的 Windows 用户或 Windows 组，则将创建数据库用户。<br />
+实例：<br />
+以下示例将 authors 表的所有者更改为 dbo。<br />
+EXEC sp_changeobjectowner 'authors', 'dbo'; <br />
+GO<br />
+这个方法有个最大的缺点就是，当表的数量非常多，而且还有存储过程或者触发器之类的修改起来会非常麻烦，需要一个一个修改，所以，不提倡使用。现在网上有一个批量修改的存储过程，大家可以找一下，这里就不说了，而是教大家一个更简单的。<br />
+2、使登录用户和数据库的孤立用户对应起来<br />
+其实我们建立了同样名称的数据库登录用户后，数据库中的表我们照样不能使用时因为sid的不同，就是系统登录表和数据库用户表中的用户名相同，单是sid字段，数据库中的还是以前旧系统的sid值，所以我们就要把它对应成我们新建的，数据库靠sid来识别用户。<br />
+这里可以使用存储过程sp_change_users_login。它有三种动作，分别是report，update_one和auto_fix。<br />
+运行sp_change_users_login 'report'，系统会列出当前数据库的孤立用户数。<br />
+我们只需要选择当前数据库为testdb，然后运行<br />
+sp_change_users_login 'update_one','test','test'<br />
+系统就会提示修复了一个孤立用户。<br />
+如果没有建立test的登录用户，还可以用<br />
+sp_change_users_login 'Auto_Fix', 'test', NULL, 'testpassword'<br />
+来创建一个登录用户名为test，密码为testpassword的用户与之对应。<br />
+<br />
+好了，到这里通常情况下，数据库对象得到访问问题已经解决了。如果有多个数据库中有同一个用户的数据表，只需要选择不同的数据库，执行update_one的那个就行了。<br />
+<br />
+二、对象名 &lsquo;xxxx&rsquo; 无效的问题<br />
+<br />
+这里可能会有人遇到对象名 &lsquo;xxxx&rsquo;无效的问题。系统表却不会产生这个问题，而用户表还要加上用户名，然后是表明才能访问，比如select * from author,会说对象名 author 无效，而用select * from test.author就可以访问，这个是用户首选身份的问题。<br />
+<br />
+解决很简单，就是察看test登录用户是否具有dba的权限或者系统管理的权限，有的话去掉就行了。<br />
+因为如果用户有dba身份，那么它登陆后的默认表空间是dbo的系统表空间，所以去掉了之后，就会以正常的test表空间访问数据表了。<br />
+在使用数据库的过程中，经常会遇到数据库迁移或者数据迁移的问题，或者有突然的数据库损坏，这时需要从数据库的备份中直接恢复。但是，此时会出现问题，这里说明几种常见问题的解决方法。 一、孤立用户的问题<br />
+比如，以前的数据库的很多表是用户test建立的，但是当我们恢复数据库后，test用户此时就成了孤立用户，没有与之对应的登陆用户名，哪怕你建立了一个test登录用户名，而且是以前的用户密码，用该用户登录后同样没办法操作以前属于test的用户表。<br />
+这个问题有两种办法解决。<br />
+先说解决的前提条件。<br />
+首先，要用备份文件还原数据库，我们这里的数据库名为testdb，里面有属于用户test的用户表。这个很容易了操作了，不多讲了，在企业管理器中很方便可以恢复。恢复后，就产生了孤立用户test。<br />
+然后，用sa用户或者具有DBA权限的用户登录，创建一个test数据库登录用户，密码随便设置了，也可以和以前的保持一致。我们用它来对应孤立的test用户。<br />
+下面就有两种操作方法了，第一种就是改变对象的属主，第二种就是使登录用户和数据库的孤立用户对应起来。先说第一种方法。<br />
+1、修改对象属主<br />
+就是将原本属于数据库用户test的用户表，修改为属于dbo的用户表；然后修改test登录用户的数据库为testdb,就可以直接使用test登录用户登录后对该数据库进行操作了。<br />
+使用的存储过程<br />
+sp_changeobjectowner [ @objname = ] 'object' , [ @newowner = ] 'owner'<br />
+参数说明<br />
+[ @objname = ] 'object'<br />
+当前数据库中现有表、视图、用户定义函数或存储过程的名称。object 是 nvarchar(776)，没有默认值。如果架构及其所有者具有相同的名称，则 object 可由现有对象所有者限定，格式为 existing_owner.object。 <br />
+[ @newowner=] 'owner '<br />
+将成为对象的新所有者的安全帐户的名称。owner 的数据类型为 sysname，没有默认值。owner 必须是可访问当前数据库的有效数据库用户、服务器角色、Microsoft Windows 登录名或 Windows 组。如果新所有者是没有对应数据库级主体的 Windows 用户或 Windows 组，则将创建数据库用户。<br />
+实例：<br />
+以下示例将 authors 表的所有者更改为 dbo。<br />
+EXEC sp_changeobjectowner 'authors', 'dbo'; <br />
+GO<br />
+这个方法有个最大的缺点就是，当表的数量非常多，而且还有存储过程或者触发器之类的修改起来会非常麻烦，需要一个一个修改，所以，不提倡使用。现在网上有一个批量修改的存储过程，大家可以找一下，这里就不说了，而是教大家一个更简单的。<br />
+2、使登录用户和数据库的孤立用户对应起来<br />
+其实我们建立了同样名称的数据库登录用户后，数据库中的表我们照样不能使用时因为sid的不同，就是系统登录表和数据库用户表中的用户名相同，单是sid字段，数据库中的还是以前旧系统的sid值，所以我们就要把它对应成我们新建的，数据库靠sid来识别用户。<br />
+这里可以使用存储过程sp_change_users_login。它有三种动作，分别是report，update_one和auto_fix。<br />
+运行sp_change_users_login 'report'，系统会列出当前数据库的孤立用户数。<br />
+我们只需要选择当前数据库为testdb，然后运行<br />
+sp_change_users_login 'update_one','test','test'<br />
+系统就会提示修复了一个孤立用户。<br />
+如果没有建立test的登录用户，还可以用<br />
+sp_change_users_login 'Auto_Fix', 'test', NULL, 'testpassword'<br />
+来创建一个登录用户名为test，密码为testpassword的用户与之对应。<br />
+<br />
+好了，到这里通常情况下，数据库对象得到访问问题已经解决了。如果有多个数据库中有同一个用户的数据表，只需要选择不同的数据库，执行update_one的那个就行了。<br />
+<br />
+二、对象名 &lsquo;xxxx&rsquo; 无效的问题<br />
+<br />
+这里可能会有人遇到对象名 &lsquo;xxxx&rsquo;无效的问题。系统表却不会产生这个问题，而用户表还要加上用户名，然后是表明才能访问，比如select * from author,会说对象名 author 无效，而用select * from test.author就可以访问，这个是用户首选身份的问题。<br />
+<br />
+解决很简单，就是察看test登录用户是否具有dba的权限或者系统管理的权限，有的话去掉就行了。<br />
+因为如果用户有dba身份，那么它登陆后的默认表空间是dbo的系统表空间，所以去掉了之后，就会以正常的test表空间访问数据表了。</p>
+				</div>
+				<footer>
+					<p class="tagList">Tags: </p>
+					<ul>
+						<li>上篇文章: <a href="javascript:void 0;">没有了</a></li>
+						<li>下篇文章: <a href="/works/oracle/Orcl_installation_Guide.html">Oracle10g For Windows安装手册</a></li>
+					</ul>
+					<p>可能感兴趣的文章:</p>
+					<ul class="rndArtList"><li><a href="/Html/Article/html-css/ClearFix-float.html" title="Clear Fix浮动问题修复">Clear Fix浮动问题修复</a></li><li><a href="/Html/Article/asp/ASP-isblank.html" title="ASP判断是否为空">ASP判断是否为空</a></li><li><a href="/Html/Article/html-css/apple-touch-icon.html" title="在apple设备上显示网站图标">在apple设备上显示网站图标</a></li><li><a href="/Html/Article/javascript/js-clear-file-input.html" title="使用JavaScript清空上传控件input type=&quot;file&quot;">使用JavaScript清空上传控件input type=&quot;file&quot;</a></li><li><a href="/Html/Article/html-css/html5-canvas-study-3.html" title="canvas JavaScript API学习（三）">canvas JavaScript API学习（三）</a></li></ul>
+				</footer>
+			</article>
+		</div>
+	</div>
+	<footer id="footer"><p>&copy; 2010-2011 XeonWell. 以上文摘,&nbsp;仅供个人收藏和参考&nbsp;<a href="http://www.miibeian.gov.cn">粤ICP备10095269号-1</a>&nbsp;</p>
+<p><a title="Valid XHTML 1.0 Strict" href="http://validator.w3.org/">HTML5</a> | <a title="Valid CSS" href="http://jigsaw.w3.org/css-validator/">Valid CSS 1/2/3</a> | <a title="508 Standards, Section" href="http://www.contentquality.com/mynewtester/cynthia.exe?url1=http%3A%2F%2Fwww.xw.hb.cn%2F">508</a> | <a title="WAI" href="http://www.contentquality.com/mynewtester/cynthia.exe?rptmode=2&amp;url1=http%3A%2F%2Fwww.xw.hb.cn%2F">WAI</a>&nbsp;| <a href="/rss/">RSS</a> | <a href="/rss/?type=atom">Atom</a> | <a href="/google-site.xml">SiteMap</a></p></footer>
+	<div id="jsDiv">
+		<script type="text/javascript" src="/Js/jquery.js"></script>
+		<script type="text/javascript" src="/Js/common.js"></script>
+		<!--[if lte IE 6]><script type="text/javascript" src="/Js/ie-fix.js"></script><![endif]-->
+		<script type="text/javascript" src="/js/article.js"></script>
+	</div>
+	<div class="nd"><p><a href="/">XeonWell Studio</a></p><script type="text/javascript" src="/Js/stat.js"></script></div>
+</div>
+</body>
+</html>

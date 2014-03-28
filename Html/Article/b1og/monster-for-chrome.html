@@ -1,0 +1,131 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>淘宝UED团队推Monster分析网站代码--XeonWell Studio</title>
+<meta name="Keywords" content="Monster,css,js,html,移动应用技术分享,iphone,ios,ipad,android" />
+<meta name="Description" content="Monster是Alipay UED推出的网站代码分析、质量检测及评分的浏览器扩展，它能智能分析CSS、JS、HTML内容并生动形象展示网页得分情况(类似YSlow),移动应用技术分享，探讨移动应用技术发展趋势" />
+<meta name="Author" content="XeonWell, email:admin_xw_hb_cn" />
+<meta name="language" content="Chinese" />
+<meta name="Robots" content="index,follow" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="icon" href="/i/xiong.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/i/xiong.ico" type="image/x-icon" />
+<link href="/css/fw.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if lte IE 8]><link href="/css/ie-fix.css" rel="stylesheet" type="text/css" media="all" />
+<script src="/js/ie-html5.js" type="text/javascript" /></script><![endif]-->
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="/js/syntaxhighlighter/shThemeDefault.css"/>
+</head>
+
+<body>
+<div id="bodyWrapper">
+	<header id="header" class="clearfix">
+		<h1><a href="/" title="XeonWell Studio">XeonWell Studio</a></h1>
+		<ul id="menu" class="resetList"><li><a href="/" title="XeonWell Studio">Home</a></li><li><a href="/Html/Article/Mobile/" title="Mobile" accesskey="1"><strong>Mobile</strong></a></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS" accesskey="2"><strong>(X)Html/CSS</strong></a></li><li><a href="/Html/Article/javascript/" title="Javascript" accesskey="3"><strong>Javascript</strong></a></li><li><a href="/Html/Article/asp/" title="ASP" accesskey="4"><strong>ASP</strong></a></li><li><a href="/Html/Article/cs/" title="C#" accesskey="5"><strong>C#</strong></a></li><li><a href="/Html/Article/system/" title="System" accesskey="6"><strong>System</strong></a></li><li><a href="/Html/Article/b1og/" title="Blog" accesskey="7" id="curNav"><strong>Blog</strong></a></li></ul>
+	</header>
+	<div id="content" class="clearfix">
+		<div id="leftWrapper">
+			<div id="artCategory" class="listDiv roundedCorners">
+				<h3 class="listTitle">文章分类</h3>
+				<ul class="uList"><li><a href="/Html/Article/Mobile/" title="Mobile">Mobile</a><ul><li><a href="/Html/Article/iPhone/" title="iPhone">iPhone</a></li></ul></li><li><a href="/Html/Article/html-css/" title="(X)Html/CSS">(X)Html/CSS</a></li><li><a href="/Html/Article/javascript/" title="Javascript">Javascript</a><ul><li><a href="/Html/Article/jquery/" title="jQuery">jQuery</a></li></ul></li><li><a href="/Html/Article/asp/" title="ASP">ASP</a></li><li><a href="/Html/Article/cs/" title="C#">C#</a></li><li><a href="/Html/Article/system/" title="System">System</a><ul><li><a href="/Html/Article/nginx/" title="Nginx">Nginx</a></li><li><a href="/Html/Article/IIS/" title="IIS">IIS</a></li><li><a href="/Html/Article/database/" title="Database">Database</a></li><li><a href="/Html/Article/mail/" title="Mail">Mail</a></li></ul></li><li><a href="/Html/Article/b1og/" title="Blog">Blog</a></li></ul>
+			</div>
+			<div id="hotList" class="listDiv roundedCorners">
+				<h3 class="listTitle">热门文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/asp/ASP-isblank.html" title="ASP判断是否为空">ASP判断是否为空</a></li><li><a href="/Html/Article/b1og/editplus-stx-html5-css3-js-jquery.html" title="EditPlus的js(含jquery),HTML5,CSS3语法高亮文件">EditPlus的js(含jquery),HTML5,CSS3语法高亮文件</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/UIScrollView-Reference.html" title="UIScrollView参考">UIScrollView参考</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/iPhone/iPhone-scale-image.html" title="iPhone中缩放图片">iPhone中缩放图片</a></li><li><a href="/Html/Article/html-css/html5-table-template.html" title="HTML5 Table Template">HTML5 Table Template</a></li><li><a href="/Html/Article/b1og/js-jquery-stx-editplus.html" title="EditPlus的Javascript语法文件(包含jQuery语法高亮)">EditPlus的Javascript语法文件(包含jQuery语法高亮)</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners">
+				<h3 class="listTitle">随机推荐</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/system/VMware-custom-start.html" title="VMware的自定义启动">VMware的自定义启动</a></li><li><a href="/Html/Article/javascript/30-practices-boost-web-applications.html" title="30个提高Web程序执行效率的好经验">30个提高Web程序执行效率的好经验</a></li><li><a href="/Html/Article/system/session-principle-1.html" title="session机制详解">session机制详解</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/b1og/html5-css3-Modernizr-test.html" title="测试浏览器支持多少html5和CSS3属性">测试浏览器支持多少html5和CSS3属性</a></li><li><a href="/Html/Article/iPhone/iPhone-iPad-check.html" title="判断用户的是iPhone还是iPad">判断用户的是iPhone还是iPad</a></li><li><a href="/Html/Article/system/dns-cache.html" title="DNS缓存相关知识">DNS缓存相关知识</a></li><li><a href="/Html/Article/iPhone/XCode-multiple-Targets.html" title="在XCode内建立多个Target">在XCode内建立多个Target</a></li><li><a href="/Html/Article/Mobile/basic-knowledge-OPhone-development.html" title="OPhone开发的基础知识">OPhone开发的基础知识</a></li><li><a href="/Html/Article/html-css/html5-table-template.html" title="HTML5 Table Template">HTML5 Table Template</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">参考手册</h3>
+				<ul class="uList ellipsis"><li><a href="http://i.xw.hb.cn/works/css20/Index.html" title="CSS2.0中文参考手册">CSS2.0中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/DHTMLref/Index.html" title="DHTML中文参考手册">DHTML中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/css3/Index.html" title="CSS3.0中文参考手册">CSS3.0中文参考手册</a></li><li><a href="http://i.xw.hb.cn/works/Vbscript/Index.html" title="VBScript 语言参考">VBScript 语言参考</a></li><li><a href="http://i.xw.hb.cn/works/ado/index.html" title="ADO中文参考手册">ADO中文参考手册</a></li><li><a href="http://www.junchenwu.com/WAI/wai-pageauth.html" title="Web内容可访问性指南 1.0">Web内容可访问性指南 1.0</a></li><li><a href="http://www.w3school.com.cn/html5/index.asp" title="HTML 5 参考手册">HTML 5 参考手册</a></li><li><a href="http://i.xw.hb.cn/works/Ext_3.0_cn/index.html" title="Ext 3.0 中文参考手册">Ext 3.0 中文参考手册</a></li><li><a href="http://www.findmebyip.com/litmus" title="HTML5和CSS3兼容性参考">HTML5和CSS3兼容性参考</a></li><li><a href="http://www.cocos2d-iphone.org/api-ref/" title="cocos2d for iPhone API Reference">cocos2d for iPhone API Reference</a></li><li><a href="http://i.xw.hb.cn/ref/GNUstep_Reference" title="GNUstep Reference">GNUstep Reference</a></li><li><a href="http://i.xw.hb.cn/ref/zh-google-cpp-styleguide/index.html" title="Google C++ 编程规范">Google C++ 编程规范</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">实用工具</h3>
+				<ul class="uList ellipsis"><li><a href="http://i.xw.hb.cn/WebTools/wannianli/" title="万年历查询">万年历</a></li><li><a href="http://css3please.com/" title="cross browser css3 rule generator">CSS3规则生成器</a></li><li><a href="http://centricle.com/ref/css/filters/" title="CSS Hack表">CSS Hack表</a></li><li><a href="http://tools.chinaz.com/" title="站长工具">站长工具</a></li><li><a href="http://www.useragentstring.com/" title="User Agent Strings">User Agent Strings</a></li></ul>
+			</div>
+			<div class="listDiv roundedCorners links">
+				<h3 class="listTitle">友情链接</h3>
+				<ul class="uList ellipsis"><li><a href="http://www.xw.hb.cn/" title="XeonWell Studio">XeonWell Studio</a></li><li><a href="http://www.5dmail.net" title="国内最大的邮件技术资讯基地">邮件技术资讯网</a></li></ul>
+			</div>
+		</div>
+		<div id="rightWrapper">
+			<div id="oriList" class="listDiv roundedCorners">
+				<h3 class="listTitle">原创文章</h3>
+				<ul class="uList ellipsis"><li><a href="/Html/Article/iPhone/adjust-iphone-brightness.html" title="调节iphone屏幕亮度">调节iphone屏幕亮度</a></li><li><a href="/Html/Article/iPhone/hide-system-volume-view-on-ios.html" title="隐藏ios系统的音量变化显示界面">隐藏ios系统的音量变化显示界面</a></li><li><a href="/Html/Article/system/how-to-change-the-browsers-user-agent.html" title="修改浏览器的user-agent字符串,模拟移动设备访问站点">修改浏览器的user-agent字符串,模拟移动设备访问站点</a></li><li><a href="/Html/Article/html-css/apple-touch-icon.html" title="在apple设备上显示网站图标">在apple设备上显示网站图标</a></li><li><a href="/Html/Article/iPhone/iPhone-iPad-check.html" title="判断用户的是iPhone还是iPad">判断用户的是iPhone还是iPad</a></li><li><a href="/Html/Article/iPhone/iPhone-vibrate.html" title="代码实现iPhone震动">代码实现iPhone震动</a></li><li><a href="/Html/Article/iPhone/cocos2d-for-iPhone-guide.html" title="cocos2d for iPhone教程">cocos2d for iPhone教程</a></li><li><a href="/Html/Article/iPhone/set-UITableView-background-image.html" title="UITableView的cell设置背景图">UITableView的cell设置背景图</a></li><li><a href="/Html/Article/iPhone/iPhone-DebugLog.html" title="控制Log的输出">控制Log的输出</a></li><li><a href="/Html/Article/iPhone/XCode-HeaderDoc-Generation.html" title="XCode文档注释">XCode文档注释</a></li><li><a href="/Html/Article/iPhone/iPhone-SDK-Version-Check-1.html" title="iPhone版本判断">iPhone版本判断</a></li><li><a href="/Html/Article/system/VMware-custom-start.html" title="VMware的自定义启动">VMware的自定义启动</a></li><li><a href="/Html/Article/iPhone/backup-XCode-Key-Bindings.html" title="备份XCode键盘快捷键和颜色文字">备份XCode键盘快捷键和颜色文字</a></li><li><a href="/Html/Article/iPhone/error-communicating-with-the-iTunes-Store.html" title="error communicating with the iTunes Store">error communicating with the iTunes Store</a></li><li><a href="/Html/Article/b1og/liquid-particles.html" title="HTML5 canvas效果Liquid Particles">HTML5 canvas效果Liquid Particles</a></li><li><a href="/Html/Article/b1og/apple-html5-showcase.html" title="apple的html5 Showcase">apple的html5 Showcase</a></li><li><a href="/Html/Article/b1og/html5test-browser-scores.html" title="html5test.com测试你的浏览器支持多少html5特性">html5test.com测试你的浏览器支持多少html5特性</a></li><li><a href="/Html/Article/b1og/netbalancer-hanzify.html" title="网络限速软件NetBalancer">网络限速软件NetBalancer</a></li><li><a href="/Html/Article/html-css/first-letter-in-browsers.html" title="first-letter在各浏览器中的表现">first-letter在各浏览器中的表现</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li></ul>
+			</div>
+		</div>
+		<div id="centerWrapper" class="roundedCorners clearfix">
+			<nav class="nav"><a href="/" title="XeonWell Studio">Home</a>  &nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="/Html/Article/b1og/" title="Blog">Blog</a></nav>
+			<article class="article">
+				<header><h1 class="artTitle hei">淘宝UED团队推Monster分析网站代码</h1></header>
+				<div class="artContent">
+					<p>原文地址: <a href="http://ued.alipay.com/2010/05/monster-for-chrome/">http://ued.alipay.com/2010/05/monster-for-chrome/</a>&nbsp;</p>
+<p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</p>
+<p style="text-align: left; padding-bottom: 0px; line-height: 19px; margin: 1.12em 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">Monster是Alipay UED推出的网站代码分析、质量检测及评分的浏览器扩展，它能智能分析CSS、JS、HTML内容并生动形象展示网页得分情况(类似YSlow)。它是一个开源项目，您可以在GoogleCode中心检出<a href="https://code.google.com/p/monsterforchrome/">MonsterForChrome</a>项目源代码。不久会推出Firefox版扩展。</p>
+<p>&nbsp;</p>
+<p style="text-align: left; padding-bottom: 0px; line-height: 19px; margin: 1.12em 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">&nbsp;</p>
+<p style="text-align: left; padding-bottom: 0px; line-height: 19px; margin: 1.12em 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">&nbsp;</p>
+<h3 style="padding-bottom: 0px; margin: 0.83em 0px; padding-left: 0px; padding-right: 0px; color: rgb(0,0,0); font-size: 1.17em; font-weight: bolder; padding-top: 0px">Monster主要检测规则：</h3>
+<ol style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测是否有重复ID的标签；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测是否使用内联标签嵌套块级标签，如a嵌套div；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测https协议页面，是否使用了http协议的图片、JS、CSS等；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测compatMode、doctype是否出错；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测是否使用了HTML5不再支持的标记，如font,s,u等；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测标签是否正确关闭；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测CSS、JS、background-image文件是否为404；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测CSS、JS文件是否重复调用；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测是否引用过多外部JS、CSS文件；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测CSS、JS、HTML是否压缩；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测CSS样式表是否使用了CSS expression；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测Cookie是否超过30KB；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测是否有form标签嵌套form标签；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测是否直接在标签里定义JS事件，如&lt;a href=&rdquo;#&rdquo; onclick=&rdquo;&hellip;&rdquo;&gt;link&lt;/a&gt;；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测&lt;meta charset=&rdquo;utf-8&Prime; /&gt;是否为&lt;head&gt;第一个子标签；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测一个&lt;form&gt;标签内部是否出现二个input[type=submit]标签；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测是否在&lt;form&gt;标签中使用了 id=&rdquo;submit&rdquo; 的标签；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测是否将&lt;style&gt;块放置在&lt;/head&gt;前面；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测是否将&lt;script&gt;块放置在&lt;/body&gt;前面；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测&lt;img&gt;标签是否指定alt属性；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测是否为input[text]指定label；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测网页编码是否为gbk或utf-8；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">检测是否使用了@import导入样式表；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">如果CSS、JS指定 类似于&ldquo;?t=20100405&rdquo;时间戳，则自动输出最后修改时间，方便对比；</li>
+    <li style="list-style-position: inside; padding-bottom: 0px; list-style-type: decimal; margin: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">如果background-image超过6个，则提示所有背景图片及大小，超过30KB，标红显示；</li>
+</ol>
+<h3 style="padding-bottom: 0px; margin: 0.83em 0px; padding-left: 0px; padding-right: 0px; color: rgb(0,0,0); font-size: 1.17em; font-weight: bolder; padding-top: 0px">Monster评分规则：</h3>
+<p style="text-align: left; padding-bottom: 0px; line-height: 19px; margin: 1.12em 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">Monster是根据问题解决难易程度、性能提升程度、可用性提升程度以及维护性提升程度来综合评分的。具体，请下载<span class="Apple-converted-space">&nbsp;</span><a href="http://code.google.com/p/monsterforchrome/source/browse/trunk/Monster%E8%AF%84%E5%88%86%E7%AE%97%E6%B3%95.xls">Monster评分算法.xls</a></p>
+<p style="text-align: left; padding-bottom: 0px; line-height: 19px; margin: 1.12em 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px">这是Monster的第一版，欢迎抓虫，如果您有更好的改进建议，请反馈给我们。</p>
+<p>&nbsp;</p>
+				</div>
+				<footer>
+					<p class="tagList">Tags: <a href="/Tag/?Article/Monster">Monster</a> , <a href="/Tag/?Article/UED">UED</a> , <a href="/Tag/?Article/淘宝">淘宝</a> </p>
+					<ul>
+						<li>上篇文章: <a href="/Html/Article/b1og/css3-rule-generator-css3please.html">CSS3代码生成器-css3please.com</a></li>
+						<li>下篇文章: <a href="/Html/Article/b1og/87.html">完成rss和tag的功能</a></li>
+					</ul>
+					<p>可能感兴趣的文章:</p>
+					<ul class="rndArtList"><li><a href="/Html/Article/b1og/monster-for-chrome.html" title="淘宝UED团队推Monster分析网站代码">淘宝UED团队推Monster分析网站代码</a></li><li><a href="/Html/Article/database/SQL-MSSQL-CODE.html" title="SQL-MSSQL-CODE大全">SQL-MSSQL-CODE大全</a></li><li><a href="/Html/Article/html-css/css-wrapping-content.html" title="兼容各浏览器的CSS实现超出部分自动换行">兼容各浏览器的CSS实现超出部分自动换行</a></li><li><a href="/Html/Article/iPhone/App-Store-Review-Guidelines-CN.html" title="苹果App Store程序提交审核指南中文版">苹果App Store程序提交审核指南中文版</a></li><li><a href="/Html/Article/system/vss-user-rights-settings.html" title="VSS中为建立的用户设置权限">VSS中为建立的用户设置权限</a></li></ul>
+				</footer>
+			</article>
+		</div>
+	</div>
+	<footer id="footer"><p>&copy; 2010-2011 XeonWell. 以上文摘,&nbsp;仅供个人收藏和参考&nbsp;<a href="http://www.miibeian.gov.cn">粤ICP备10095269号-1</a>&nbsp;</p>
+<p><a title="Valid XHTML 1.0 Strict" href="http://validator.w3.org/">HTML5</a> | <a title="Valid CSS" href="http://jigsaw.w3.org/css-validator/">Valid CSS 1/2/3</a> | <a title="508 Standards, Section" href="http://www.contentquality.com/mynewtester/cynthia.exe?url1=http%3A%2F%2Fwww.xw.hb.cn%2F">508</a> | <a title="WAI" href="http://www.contentquality.com/mynewtester/cynthia.exe?rptmode=2&amp;url1=http%3A%2F%2Fwww.xw.hb.cn%2F">WAI</a>&nbsp;| <a href="/rss/">RSS</a> | <a href="/rss/?type=atom">Atom</a> | <a href="/google-site.xml">SiteMap</a></p></footer>
+	<div id="jsDiv">
+		<script type="text/javascript" src="/Js/jquery.js"></script>
+		<script type="text/javascript" src="/Js/common.js"></script>
+		<!--[if lte IE 6]><script type="text/javascript" src="/Js/ie-fix.js"></script><![endif]-->
+		<script type="text/javascript" src="/js/article.js"></script>
+	</div>
+	<div class="nd"><p><a href="/">XeonWell Studio</a></p><script type="text/javascript" src="/Js/stat.js"></script></div>
+</div>
+</body>
+</html>
