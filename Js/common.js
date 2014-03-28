@@ -53,23 +53,10 @@
 		ft.find("a").add(cw.find("div.artContent a:not(:has(img))")).add(lw.find(">div.links a")).each(function(){
 			if (this.href.indexOf(exlink) !== 0) this.target="_blank";
 		}).end().filter(function(){return this.href.indexOf(exlink) !== 0;}).addClass("extenalLink");
-//		$.each($.easing, function(name){
-//            if (name !== "def" && typeof this === "function")
-//                options.push(name);
-//		});
-//		$("<select/>")
-//			.append("<option>" + options.join("</option><option>") + "</option>")
-//			.prependTo("#changeDiv")
-//			.change(function(){
-//				def = $(this).val();
-//			});
+
 		lw.find("h3").click(function(){
 			$(this).next().slideToggle({duration:t,easing:def});
 		});
-		$("#searchForm").submit(function(){
-			return $("#searchStr").val()!="" || !!(alert("\u641c\u7d22\u5b57\u7b26\u4e32\u4e0d\u80fd\u4e3a\u7a7a!") & $("#searchStr").focus() & 0);
-		});
-		$("#searchDiv input.search").focus(function(){this.blur();}); // remove dash border when click
 
 		$("#hideAbs").click(function(){toggleAbs.call(this, false);});
 		$("#showAbs").click(function(){toggleAbs.call(this, true);});
@@ -79,9 +66,5 @@
 			cw.find("li>div.artContent").slideToggle({duration:t,easing:def});
 		};
 
-		if ($.browser.webkit)
-			$.getScript("/Js/harmony.js",function(){
-				$("<div/>").css("height","666px").css("text-align","center").append("<p>&nbsp;</p><p>&#x7559;&#x4E2A;&#x4F4D;&#x7F6E;&#x597D;&#x753B;&#x753B;, ESC&#x952E;&#x91CD;&#x65B0;&#x5F00;&#x59CB; </p>").appendTo(document.body);
-			});
 	});
 })();

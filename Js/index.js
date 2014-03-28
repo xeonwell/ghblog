@@ -1,5 +1,5 @@
 /**
- * Author: admin@xw81.com
+ * Author: admin@xw.hb.cn
  */
 $(function(){
 	if($.getCookie("xw_d") !== "true")
