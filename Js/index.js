@@ -4,8 +4,8 @@
 $(function(){
 	if($.getCookie("xw_d") !== "true")
 		setTimeout(function(){
-			$.getScript("/Js/syntaxhighlighter/shCore.js",function(){
-				var syntaxHL = ["/Js/syntaxhighlighter/shBrush.js","/Js/syntaxhighlighter/shCore.css","/Js/syntaxhighlighter/shThemeDefault.css"];
+			$.getScript("/js/syntaxhighlighter/shCore.js",function(){
+				var syntaxHL = ["/js/syntaxhighlighter/shBrush.js","/js/syntaxhighlighter/shCore.css","/js/syntaxhighlighter/shThemeDefault.css"];
 				while(syntaxHL.length >0)
 					$.get(syntaxHL.shift());
 				$.setCookie("xw_d","true",30);
