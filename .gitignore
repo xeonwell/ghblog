@@ -1,3 +1,4 @@
+/.svn
 _notes
 *.asp
 *.aspx
@@ -5,13 +6,13 @@ _notes
 /!xw_admin
 /aspnet_client
 /ref
-/Data%2f1c16e150cc4df077
+/Data*
 /UploadFile
 /Include
 /WebTools
 /works
 /XWeditor
-/cert/
+/cert
 /Cls
 /Themes
 /Templates
