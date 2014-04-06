@@ -7,7 +7,66 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
+ * 
+ * @copyright
+ * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
+ * @license
+ * Dual licensed under the MIT and GPL licenses.
+ */
+;(function()
+{
+	// CommonJS
+	typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
+
+	function Brush()
+	{
+		// Created by Peter Atoria @ http://iAtoria.com
+	
+		var inits 	 =  'class interface function package';
+	
+		var keywords =	'-Infinity ...rest Array as AS3 Boolean break case catch const continue Date decodeURI ' + 
+						'decodeURIComponent default delete do dynamic each else encodeURI encodeURIComponent escape ' + 
+						'extends false final finally flash_proxy for get if implements import in include Infinity ' + 
+						'instanceof int internal is isFinite isNaN isXMLName label namespace NaN native new null ' + 
+						'Null Number Object object_proxy override parseFloat parseInt private protected public ' + 
+						'return set static String super switch this throw true try typeof uint undefined unescape ' + 
+						'use void while with'
+						;
+	
+		this.regexList = [
+			{ regex: SyntaxHighlighter.regexLib.singleLineCComments,	css: 'comments' },		// one line comments
+			{ regex: SyntaxHighlighter.regexLib.multiLineCComments,		css: 'comments' },		// multiline comments
+			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },		// double quoted strings
+			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,		css: 'string' },		// single quoted strings
+			{ regex: /\b([\d]+(\.[\d]+)?|0x[a-f0-9]+)\b/gi,				css: 'value' },			// numbers
+			{ regex: new RegExp(this.getKeywords(inits), 'gm'),			css: 'color3' },		// initializations
+			{ regex: new RegExp(this.getKeywords(keywords), 'gm'),		css: 'keyword' },		// keywords
+			{ regex: new RegExp('var', 'gm'),							css: 'variable' },		// variable
+			{ regex: new RegExp('trace', 'gm'),							css: 'color1' }			// trace
+			];
+	
+		this.forHtmlScript(SyntaxHighlighter.regexLib.scriptScriptTags);
+	};
+
+	Brush.prototype	= new SyntaxHighlighter.Highlighter();
+	Brush.aliases	= ['actionscript3', 'as3'];
+
+	SyntaxHighlighter.brushes.AS3 = Brush;
+
+	// CommonJS
+	typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
+})();
+/**
+ * SyntaxHighlighter
+ * http://alexgorbatchev.com/SyntaxHighlighter
+ *
+ * SyntaxHighlighter is donationware. If you are using it, please donate.
+ * http://alexgorbatchev.com/SyntaxHighlighter/donate.html
+ *
+ * @version
+ * 3.0.83 (July 02 2010)
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -82,66 +141,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
- * @copyright
- * Copyright (C) 2004-2010 Alex Gorbatchev.
- *
- * @license
- * Dual licensed under the MIT and GPL licenses.
- */
-;(function()
-{
-	// CommonJS
-	typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
-
-	function Brush()
-	{
-		// Created by Peter Atoria @ http://iAtoria.com
-
-		var inits 	 =  'class interface function package';
-
-		var keywords =	'-Infinity ...rest Array as AS3 Boolean break case catch const continue Date decodeURI ' +
-						'decodeURIComponent default delete do dynamic each else encodeURI encodeURIComponent escape ' +
-						'extends false final finally flash_proxy for get if implements import in include Infinity ' +
-						'instanceof int internal is isFinite isNaN isXMLName label namespace NaN native new null ' +
-						'Null Number Object object_proxy override parseFloat parseInt private protected public ' +
-						'return set static String super switch this throw true try typeof uint undefined unescape ' +
-						'use void while with'
-						;
-
-		this.regexList = [
-			{ regex: SyntaxHighlighter.regexLib.singleLineCComments,	css: 'comments' },		// one line comments
-			{ regex: SyntaxHighlighter.regexLib.multiLineCComments,		css: 'comments' },		// multiline comments
-			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },		// double quoted strings
-			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,		css: 'string' },		// single quoted strings
-			{ regex: /\b([\d]+(\.[\d]+)?|0x[a-f0-9]+)\b/gi,				css: 'value' },			// numbers
-			{ regex: new RegExp(this.getKeywords(inits), 'gm'),			css: 'color3' },		// initializations
-			{ regex: new RegExp(this.getKeywords(keywords), 'gm'),		css: 'keyword' },		// keywords
-			{ regex: new RegExp('var', 'gm'),							css: 'variable' },		// variable
-			{ regex: new RegExp('trace', 'gm'),							css: 'color1' }			// trace
-			];
-
-		this.forHtmlScript(SyntaxHighlighter.regexLib.scriptScriptTags);
-	};
-
-	Brush.prototype	= new SyntaxHighlighter.Highlighter();
-	Brush.aliases	= ['actionscript3', 'as3'];
-
-	SyntaxHighlighter.brushes.AS3 = Brush;
-
-	// CommonJS
-	typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
-})();
-/**
- * SyntaxHighlighter
- * http://alexgorbatchev.com/SyntaxHighlighter
- *
- * SyntaxHighlighter is donationware. If you are using it, please donate.
- * http://alexgorbatchev.com/SyntaxHighlighter/donate.html
- *
- * @version
- * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -200,7 +200,72 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
+ * 
+ * @copyright
+ * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
+ * @license
+ * Dual licensed under the MIT and GPL licenses.
+ */
+;(function()
+{
+	// CommonJS
+	typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
+
+	function Brush()
+	{
+		var keywords =	'abstract as base bool break byte case catch char checked class const ' +
+						'continue decimal default delegate do double else enum event explicit ' +
+						'extern false finally fixed float for foreach get goto if implicit in int ' +
+						'interface internal is lock long namespace new null object operator out ' +
+						'override params private protected public readonly ref return sbyte sealed set ' +
+						'short sizeof stackalloc static string struct switch this throw true try ' +
+						'typeof uint ulong unchecked unsafe ushort using virtual void while';
+
+		function fixComments(match, regexInfo)
+		{
+			var css = (match[0].indexOf("///") == 0)
+				? 'color1'
+				: 'comments'
+				;
+			
+			return [new SyntaxHighlighter.Match(match[0], match.index, css)];
+		}
+
+		this.regexList = [
+			{ regex: SyntaxHighlighter.regexLib.singleLineCComments,	func : fixComments },		// one line comments
+			{ regex: SyntaxHighlighter.regexLib.multiLineCComments,		css: 'comments' },			// multiline comments
+			{ regex: /@"(?:[^"]|"")*"/g,								css: 'string' },			// @-quoted strings
+			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },			// strings
+			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,		css: 'string' },			// strings
+			{ regex: /^\s*#.*/gm,										css: 'preprocessor' },		// preprocessor tags like #region and #endregion
+			{ regex: new RegExp(this.getKeywords(keywords), 'gm'),		css: 'keyword' },			// c# keyword
+			{ regex: /\bpartial(?=\s+(?:class|interface|struct)\b)/g,	css: 'keyword' },			// contextual keyword: 'partial'
+			{ regex: /\byield(?=\s+(?:return|break)\b)/g,				css: 'keyword' }			// contextual keyword: 'yield'
+			];
+		
+		this.forHtmlScript(SyntaxHighlighter.regexLib.aspScriptTags);
+	};
+
+	Brush.prototype	= new SyntaxHighlighter.Highlighter();
+	Brush.aliases	= ['c#', 'c-sharp', 'csharp'];
+
+	SyntaxHighlighter.brushes.CSharp = Brush;
+
+	// CommonJS
+	typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
+})();
+
+/**
+ * SyntaxHighlighter
+ * http://alexgorbatchev.com/SyntaxHighlighter
+ *
+ * SyntaxHighlighter is donationware. If you are using it, please donate.
+ * http://alexgorbatchev.com/SyntaxHighlighter/donate.html
+ *
+ * @version
+ * 3.0.83 (July 02 2010)
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -216,58 +281,58 @@
 	{
 		// Contributed by Jen
 		// http://www.jensbits.com/2009/05/14/coldfusion-brush-for-syntaxhighlighter-plus
-
-		var funcs	=	'Abs ACos AddSOAPRequestHeader AddSOAPResponseHeader AjaxLink AjaxOnLoad ArrayAppend ArrayAvg ArrayClear ArrayDeleteAt ' +
-						'ArrayInsertAt ArrayIsDefined ArrayIsEmpty ArrayLen ArrayMax ArrayMin ArraySet ArraySort ArraySum ArraySwap ArrayToList ' +
-						'Asc ASin Atn BinaryDecode BinaryEncode BitAnd BitMaskClear BitMaskRead BitMaskSet BitNot BitOr BitSHLN BitSHRN BitXor ' +
-						'Ceiling CharsetDecode CharsetEncode Chr CJustify Compare CompareNoCase Cos CreateDate CreateDateTime CreateObject ' +
-						'CreateODBCDate CreateODBCDateTime CreateODBCTime CreateTime CreateTimeSpan CreateUUID DateAdd DateCompare DateConvert ' +
-						'DateDiff DateFormat DatePart Day DayOfWeek DayOfWeekAsString DayOfYear DaysInMonth DaysInYear DE DecimalFormat DecrementValue ' +
-						'Decrypt DecryptBinary DeleteClientVariable DeserializeJSON DirectoryExists DollarFormat DotNetToCFType Duplicate Encrypt ' +
-						'EncryptBinary Evaluate Exp ExpandPath FileClose FileCopy FileDelete FileExists FileIsEOF FileMove FileOpen FileRead ' +
-						'FileReadBinary FileReadLine FileSetAccessMode FileSetAttribute FileSetLastModified FileWrite Find FindNoCase FindOneOf ' +
-						'FirstDayOfMonth Fix FormatBaseN GenerateSecretKey GetAuthUser GetBaseTagData GetBaseTagList GetBaseTemplatePath ' +
-						'GetClientVariablesList GetComponentMetaData GetContextRoot GetCurrentTemplatePath GetDirectoryFromPath GetEncoding ' +
-						'GetException GetFileFromPath GetFileInfo GetFunctionList GetGatewayHelper GetHttpRequestData GetHttpTimeString ' +
-						'GetK2ServerDocCount GetK2ServerDocCountLimit GetLocale GetLocaleDisplayName GetLocalHostIP GetMetaData GetMetricData ' +
-						'GetPageContext GetPrinterInfo GetProfileSections GetProfileString GetReadableImageFormats GetSOAPRequest GetSOAPRequestHeader ' +
-						'GetSOAPResponse GetSOAPResponseHeader GetTempDirectory GetTempFile GetTemplatePath GetTickCount GetTimeZoneInfo GetToken ' +
-						'GetUserRoles GetWriteableImageFormats Hash Hour HTMLCodeFormat HTMLEditFormat IIf ImageAddBorder ImageBlur ImageClearRect ' +
-						'ImageCopy ImageCrop ImageDrawArc ImageDrawBeveledRect ImageDrawCubicCurve ImageDrawLine ImageDrawLines ImageDrawOval ' +
-						'ImageDrawPoint ImageDrawQuadraticCurve ImageDrawRect ImageDrawRoundRect ImageDrawText ImageFlip ImageGetBlob ImageGetBufferedImage ' +
-						'ImageGetEXIFTag ImageGetHeight ImageGetIPTCTag ImageGetWidth ImageGrayscale ImageInfo ImageNegative ImageNew ImageOverlay ImagePaste ' +
-						'ImageRead ImageReadBase64 ImageResize ImageRotate ImageRotateDrawingAxis ImageScaleToFit ImageSetAntialiasing ImageSetBackgroundColor ' +
-						'ImageSetDrawingColor ImageSetDrawingStroke ImageSetDrawingTransparency ImageSharpen ImageShear ImageShearDrawingAxis ImageTranslate ' +
-						'ImageTranslateDrawingAxis ImageWrite ImageWriteBase64 ImageXORDrawingMode IncrementValue InputBaseN Insert Int IsArray IsBinary ' +
-						'IsBoolean IsCustomFunction IsDate IsDDX IsDebugMode IsDefined IsImage IsImageFile IsInstanceOf IsJSON IsLeapYear IsLocalHost ' +
-						'IsNumeric IsNumericDate IsObject IsPDFFile IsPDFObject IsQuery IsSimpleValue IsSOAPRequest IsStruct IsUserInAnyRole IsUserInRole ' +
-						'IsUserLoggedIn IsValid IsWDDX IsXML IsXmlAttribute IsXmlDoc IsXmlElem IsXmlNode IsXmlRoot JavaCast JSStringFormat LCase Left Len ' +
-						'ListAppend ListChangeDelims ListContains ListContainsNoCase ListDeleteAt ListFind ListFindNoCase ListFirst ListGetAt ListInsertAt ' +
-						'ListLast ListLen ListPrepend ListQualify ListRest ListSetAt ListSort ListToArray ListValueCount ListValueCountNoCase LJustify Log ' +
-						'Log10 LSCurrencyFormat LSDateFormat LSEuroCurrencyFormat LSIsCurrency LSIsDate LSIsNumeric LSNumberFormat LSParseCurrency LSParseDateTime ' +
-						'LSParseEuroCurrency LSParseNumber LSTimeFormat LTrim Max Mid Min Minute Month MonthAsString Now NumberFormat ParagraphFormat ParseDateTime ' +
-						'Pi PrecisionEvaluate PreserveSingleQuotes Quarter QueryAddColumn QueryAddRow QueryConvertForGrid QueryNew QuerySetCell QuotedValueList Rand ' +
-						'Randomize RandRange REFind REFindNoCase ReleaseComObject REMatch REMatchNoCase RemoveChars RepeatString Replace ReplaceList ReplaceNoCase ' +
-						'REReplace REReplaceNoCase Reverse Right RJustify Round RTrim Second SendGatewayMessage SerializeJSON SetEncoding SetLocale SetProfileString ' +
-						'SetVariable Sgn Sin Sleep SpanExcluding SpanIncluding Sqr StripCR StructAppend StructClear StructCopy StructCount StructDelete StructFind ' +
-						'StructFindKey StructFindValue StructGet StructInsert StructIsEmpty StructKeyArray StructKeyExists StructKeyList StructKeyList StructNew ' +
-						'StructSort StructUpdate Tan TimeFormat ToBase64 ToBinary ToScript ToString Trim UCase URLDecode URLEncodedFormat URLSessionFormat Val ' +
-						'ValueList VerifyClient Week Wrap Wrap WriteOutput XmlChildPos XmlElemNew XmlFormat XmlGetNodeType XmlNew XmlParse XmlSearch XmlTransform ' +
+	
+		var funcs	=	'Abs ACos AddSOAPRequestHeader AddSOAPResponseHeader AjaxLink AjaxOnLoad ArrayAppend ArrayAvg ArrayClear ArrayDeleteAt ' + 
+						'ArrayInsertAt ArrayIsDefined ArrayIsEmpty ArrayLen ArrayMax ArrayMin ArraySet ArraySort ArraySum ArraySwap ArrayToList ' + 
+						'Asc ASin Atn BinaryDecode BinaryEncode BitAnd BitMaskClear BitMaskRead BitMaskSet BitNot BitOr BitSHLN BitSHRN BitXor ' + 
+						'Ceiling CharsetDecode CharsetEncode Chr CJustify Compare CompareNoCase Cos CreateDate CreateDateTime CreateObject ' + 
+						'CreateODBCDate CreateODBCDateTime CreateODBCTime CreateTime CreateTimeSpan CreateUUID DateAdd DateCompare DateConvert ' + 
+						'DateDiff DateFormat DatePart Day DayOfWeek DayOfWeekAsString DayOfYear DaysInMonth DaysInYear DE DecimalFormat DecrementValue ' + 
+						'Decrypt DecryptBinary DeleteClientVariable DeserializeJSON DirectoryExists DollarFormat DotNetToCFType Duplicate Encrypt ' + 
+						'EncryptBinary Evaluate Exp ExpandPath FileClose FileCopy FileDelete FileExists FileIsEOF FileMove FileOpen FileRead ' + 
+						'FileReadBinary FileReadLine FileSetAccessMode FileSetAttribute FileSetLastModified FileWrite Find FindNoCase FindOneOf ' + 
+						'FirstDayOfMonth Fix FormatBaseN GenerateSecretKey GetAuthUser GetBaseTagData GetBaseTagList GetBaseTemplatePath ' + 
+						'GetClientVariablesList GetComponentMetaData GetContextRoot GetCurrentTemplatePath GetDirectoryFromPath GetEncoding ' + 
+						'GetException GetFileFromPath GetFileInfo GetFunctionList GetGatewayHelper GetHttpRequestData GetHttpTimeString ' + 
+						'GetK2ServerDocCount GetK2ServerDocCountLimit GetLocale GetLocaleDisplayName GetLocalHostIP GetMetaData GetMetricData ' + 
+						'GetPageContext GetPrinterInfo GetProfileSections GetProfileString GetReadableImageFormats GetSOAPRequest GetSOAPRequestHeader ' + 
+						'GetSOAPResponse GetSOAPResponseHeader GetTempDirectory GetTempFile GetTemplatePath GetTickCount GetTimeZoneInfo GetToken ' + 
+						'GetUserRoles GetWriteableImageFormats Hash Hour HTMLCodeFormat HTMLEditFormat IIf ImageAddBorder ImageBlur ImageClearRect ' + 
+						'ImageCopy ImageCrop ImageDrawArc ImageDrawBeveledRect ImageDrawCubicCurve ImageDrawLine ImageDrawLines ImageDrawOval ' + 
+						'ImageDrawPoint ImageDrawQuadraticCurve ImageDrawRect ImageDrawRoundRect ImageDrawText ImageFlip ImageGetBlob ImageGetBufferedImage ' + 
+						'ImageGetEXIFTag ImageGetHeight ImageGetIPTCTag ImageGetWidth ImageGrayscale ImageInfo ImageNegative ImageNew ImageOverlay ImagePaste ' + 
+						'ImageRead ImageReadBase64 ImageResize ImageRotate ImageRotateDrawingAxis ImageScaleToFit ImageSetAntialiasing ImageSetBackgroundColor ' + 
+						'ImageSetDrawingColor ImageSetDrawingStroke ImageSetDrawingTransparency ImageSharpen ImageShear ImageShearDrawingAxis ImageTranslate ' + 
+						'ImageTranslateDrawingAxis ImageWrite ImageWriteBase64 ImageXORDrawingMode IncrementValue InputBaseN Insert Int IsArray IsBinary ' + 
+						'IsBoolean IsCustomFunction IsDate IsDDX IsDebugMode IsDefined IsImage IsImageFile IsInstanceOf IsJSON IsLeapYear IsLocalHost ' + 
+						'IsNumeric IsNumericDate IsObject IsPDFFile IsPDFObject IsQuery IsSimpleValue IsSOAPRequest IsStruct IsUserInAnyRole IsUserInRole ' + 
+						'IsUserLoggedIn IsValid IsWDDX IsXML IsXmlAttribute IsXmlDoc IsXmlElem IsXmlNode IsXmlRoot JavaCast JSStringFormat LCase Left Len ' + 
+						'ListAppend ListChangeDelims ListContains ListContainsNoCase ListDeleteAt ListFind ListFindNoCase ListFirst ListGetAt ListInsertAt ' + 
+						'ListLast ListLen ListPrepend ListQualify ListRest ListSetAt ListSort ListToArray ListValueCount ListValueCountNoCase LJustify Log ' + 
+						'Log10 LSCurrencyFormat LSDateFormat LSEuroCurrencyFormat LSIsCurrency LSIsDate LSIsNumeric LSNumberFormat LSParseCurrency LSParseDateTime ' + 
+						'LSParseEuroCurrency LSParseNumber LSTimeFormat LTrim Max Mid Min Minute Month MonthAsString Now NumberFormat ParagraphFormat ParseDateTime ' + 
+						'Pi PrecisionEvaluate PreserveSingleQuotes Quarter QueryAddColumn QueryAddRow QueryConvertForGrid QueryNew QuerySetCell QuotedValueList Rand ' + 
+						'Randomize RandRange REFind REFindNoCase ReleaseComObject REMatch REMatchNoCase RemoveChars RepeatString Replace ReplaceList ReplaceNoCase ' + 
+						'REReplace REReplaceNoCase Reverse Right RJustify Round RTrim Second SendGatewayMessage SerializeJSON SetEncoding SetLocale SetProfileString ' + 
+						'SetVariable Sgn Sin Sleep SpanExcluding SpanIncluding Sqr StripCR StructAppend StructClear StructCopy StructCount StructDelete StructFind ' + 
+						'StructFindKey StructFindValue StructGet StructInsert StructIsEmpty StructKeyArray StructKeyExists StructKeyList StructKeyList StructNew ' + 
+						'StructSort StructUpdate Tan TimeFormat ToBase64 ToBinary ToScript ToString Trim UCase URLDecode URLEncodedFormat URLSessionFormat Val ' + 
+						'ValueList VerifyClient Week Wrap Wrap WriteOutput XmlChildPos XmlElemNew XmlFormat XmlGetNodeType XmlNew XmlParse XmlSearch XmlTransform ' + 
 						'XmlValidate Year YesNoFormat';
 
-		var keywords =	'cfabort cfajaximport cfajaxproxy cfapplet cfapplication cfargument cfassociate cfbreak cfcache cfcalendar ' +
-						'cfcase cfcatch cfchart cfchartdata cfchartseries cfcol cfcollection cfcomponent cfcontent cfcookie cfdbinfo ' +
-						'cfdefaultcase cfdirectory cfdiv cfdocument cfdocumentitem cfdocumentsection cfdump cfelse cfelseif cferror ' +
-						'cfexchangecalendar cfexchangeconnection cfexchangecontact cfexchangefilter cfexchangemail cfexchangetask ' +
-						'cfexecute cfexit cffeed cffile cfflush cfform cfformgroup cfformitem cfftp cffunction cfgrid cfgridcolumn ' +
-						'cfgridrow cfgridupdate cfheader cfhtmlhead cfhttp cfhttpparam cfif cfimage cfimport cfinclude cfindex ' +
-						'cfinput cfinsert cfinterface cfinvoke cfinvokeargument cflayout cflayoutarea cfldap cflocation cflock cflog ' +
-						'cflogin cfloginuser cflogout cfloop cfmail cfmailparam cfmailpart cfmenu cfmenuitem cfmodule cfNTauthenticate ' +
-						'cfobject cfobjectcache cfoutput cfparam cfpdf cfpdfform cfpdfformparam cfpdfparam cfpdfsubform cfpod cfpop ' +
-						'cfpresentation cfpresentationslide cfpresenter cfprint cfprocessingdirective cfprocparam cfprocresult ' +
-						'cfproperty cfquery cfqueryparam cfregistry cfreport cfreportparam cfrethrow cfreturn cfsavecontent cfschedule ' +
-						'cfscript cfsearch cfselect cfset cfsetting cfsilent cfslider cfsprydataset cfstoredproc cfswitch cftable ' +
-						'cftextarea cfthread cfthrow cftimer cftooltip cftrace cftransaction cftree cftreeitem cftry cfupdate cfwddx ' +
+		var keywords =	'cfabort cfajaximport cfajaxproxy cfapplet cfapplication cfargument cfassociate cfbreak cfcache cfcalendar ' + 
+						'cfcase cfcatch cfchart cfchartdata cfchartseries cfcol cfcollection cfcomponent cfcontent cfcookie cfdbinfo ' + 
+						'cfdefaultcase cfdirectory cfdiv cfdocument cfdocumentitem cfdocumentsection cfdump cfelse cfelseif cferror ' + 
+						'cfexchangecalendar cfexchangeconnection cfexchangecontact cfexchangefilter cfexchangemail cfexchangetask ' + 
+						'cfexecute cfexit cffeed cffile cfflush cfform cfformgroup cfformitem cfftp cffunction cfgrid cfgridcolumn ' + 
+						'cfgridrow cfgridupdate cfheader cfhtmlhead cfhttp cfhttpparam cfif cfimage cfimport cfinclude cfindex ' + 
+						'cfinput cfinsert cfinterface cfinvoke cfinvokeargument cflayout cflayoutarea cfldap cflocation cflock cflog ' + 
+						'cflogin cfloginuser cflogout cfloop cfmail cfmailparam cfmailpart cfmenu cfmenuitem cfmodule cfNTauthenticate ' + 
+						'cfobject cfobjectcache cfoutput cfparam cfpdf cfpdfform cfpdfformparam cfpdfparam cfpdfsubform cfpod cfpop ' + 
+						'cfpresentation cfpresentationslide cfpresenter cfprint cfprocessingdirective cfprocparam cfprocresult ' + 
+						'cfproperty cfquery cfqueryparam cfregistry cfreport cfreportparam cfrethrow cfreturn cfsavecontent cfschedule ' + 
+						'cfscript cfsearch cfselect cfset cfsetting cfsilent cfslider cfsprydataset cfstoredproc cfswitch cftable ' + 
+						'cftextarea cfthread cfthrow cftimer cftooltip cftrace cftransaction cftree cftreeitem cftry cfupdate cfwddx ' + 
 						'cfwindow cfxml cfzip cfzipparam';
 
 		var operators =	'all and any between cross in join like not null or outer some';
@@ -285,7 +350,7 @@
 
 	Brush.prototype	= new SyntaxHighlighter.Highlighter();
 	Brush.aliases	= ['coldfusion','cf'];
-
+	
 	SyntaxHighlighter.brushes.ColdFusion = Brush;
 
 	// CommonJS
@@ -300,7 +365,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -315,7 +380,7 @@
 	function Brush()
 	{
 		// Copyright 2006 Shin, YoungJin
-
+	
 		var datatypes =	'ATOM BOOL BOOLEAN BYTE CHAR COLORREF DWORD DWORDLONG DWORD_PTR ' +
 						'DWORD32 DWORD64 FLOAT HACCEL HALF_PTR HANDLE HBITMAP HBRUSH ' +
 						'HCOLORSPACE HCONV HCONVLIST HCURSOR HDC HDDEDATA HDESK HDROP HDWP ' +
@@ -350,7 +415,7 @@
 						'sizeof static static_cast struct switch template this ' +
 						'thread throw true false try typedef typeid typename union ' +
 						'using uuid virtual void volatile whcar_t while';
-
+					
 		var functions =	'assert isalnum isalpha iscntrl isdigit isgraph islower isprint' +
 						'ispunct isspace isupper isxdigit tolower toupper errno localeconv ' +
 						'setlocale acos asin atan atan2 ceil cos cosh exp fabs floor fmod ' +
@@ -397,72 +462,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
- * @copyright
- * Copyright (C) 2004-2010 Alex Gorbatchev.
- *
- * @license
- * Dual licensed under the MIT and GPL licenses.
- */
-;(function()
-{
-	// CommonJS
-	typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
-
-	function Brush()
-	{
-		var keywords =	'abstract as base bool break byte case catch char checked class const ' +
-						'continue decimal default delegate do double else enum event explicit ' +
-						'extern false finally fixed float for foreach get goto if implicit in int ' +
-						'interface internal is lock long namespace new null object operator out ' +
-						'override params private protected public readonly ref return sbyte sealed set ' +
-						'short sizeof stackalloc static string struct switch this throw true try ' +
-						'typeof uint ulong unchecked unsafe ushort using virtual void while';
-
-		function fixComments(match, regexInfo)
-		{
-			var css = (match[0].indexOf("///") == 0)
-				? 'color1'
-				: 'comments'
-				;
-
-			return [new SyntaxHighlighter.Match(match[0], match.index, css)];
-		}
-
-		this.regexList = [
-			{ regex: SyntaxHighlighter.regexLib.singleLineCComments,	func : fixComments },		// one line comments
-			{ regex: SyntaxHighlighter.regexLib.multiLineCComments,		css: 'comments' },			// multiline comments
-			{ regex: /@"(?:[^"]|"")*"/g,								css: 'string' },			// @-quoted strings
-			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },			// strings
-			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,		css: 'string' },			// strings
-			{ regex: /^\s*#.*/gm,										css: 'preprocessor' },		// preprocessor tags like #region and #endregion
-			{ regex: new RegExp(this.getKeywords(keywords), 'gm'),		css: 'keyword' },			// c# keyword
-			{ regex: /\bpartial(?=\s+(?:class|interface|struct)\b)/g,	css: 'keyword' },			// contextual keyword: 'partial'
-			{ regex: /\byield(?=\s+(?:return|break)\b)/g,				css: 'keyword' }			// contextual keyword: 'yield'
-			];
-
-		this.forHtmlScript(SyntaxHighlighter.regexLib.aspScriptTags);
-	};
-
-	Brush.prototype	= new SyntaxHighlighter.Highlighter();
-	Brush.aliases	= ['c#', 'c-sharp', 'csharp'];
-
-	SyntaxHighlighter.brushes.CSharp = Brush;
-
-	// CommonJS
-	typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
-})();
-
-/**
- * SyntaxHighlighter
- * http://alexgorbatchev.com/SyntaxHighlighter
- *
- * SyntaxHighlighter is donationware. If you are using it, please donate.
- * http://alexgorbatchev.com/SyntaxHighlighter/donate.html
- *
- * @version
- * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -480,7 +480,7 @@
 		{
 			return '\\b([a-z_]|)' + str.replace(/ /g, '(?=:)\\b|\\b([a-z_\\*]|\\*|)') + '(?=:)\\b';
 		};
-
+	
 		function getValuesCSS(str)
 		{
 			return '\\b' + str.replace(/ /g, '(?!-)(?!:)\\b|\\b()') + '\:\\b';
@@ -517,7 +517,7 @@
 						'upper-roman url visible wait white wider w-resize x-fast x-high x-large x-loud x-low x-slow x-small x-soft xx-large xx-small yellow';
 
 		var fonts =		'[mM]onospace [tT]ahoma [vV]erdana [aA]rial [hH]elvetica [sS]ans-serif [sS]erif [cC]ourier mono sans serif';
-
+	
 		this.regexList = [
 			{ regex: SyntaxHighlighter.regexLib.multiLineCComments,		css: 'comments' },	// multiline comments
 			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },	// double quoted strings
@@ -530,9 +530,9 @@
 			{ regex: new RegExp(this.getKeywords(fonts), 'g'),			css: 'color1' }		// fonts
 			];
 
-		this.forHtmlScript({
-			left: /(&lt;|<)\s*style.*?(&gt;|>)/gi,
-			right: /(&lt;|<)\/\s*style\s*(&gt;|>)/gi
+		this.forHtmlScript({ 
+			left: /(&lt;|<)\s*style.*?(&gt;|>)/gi, 
+			right: /(&lt;|<)\/\s*style\s*(&gt;|>)/gi 
 			});
 	};
 
@@ -553,7 +553,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -608,7 +608,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -649,7 +649,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -664,7 +664,7 @@
 	function Brush()
 	{
 		// Contributed by Jean-Lou Dupont
-		// http://jldupont.blogspot.com/2009/06/erlang-syntax-highlighter.html
+		// http://jldupont.blogspot.com/2009/06/erlang-syntax-highlighter.html  
 
 		// According to: http://erlang.org/doc/reference_manual/introduction.html#1.5
 		var keywords = 'after and andalso band begin bnot bor bsl bsr bxor '+
@@ -701,7 +701,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -768,7 +768,59 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
+ * 
+ * @copyright
+ * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
+ * @license
+ * Dual licensed under the MIT and GPL licenses.
+ */
+;(function()
+{
+	// CommonJS
+	typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
+
+	function Brush()
+	{
+		var keywords =	'break case catch continue ' +
+						'default delete do else false  ' +
+						'for function if in instanceof ' +
+						'new null return super switch ' +
+						'this throw true try typeof var while with'
+						;
+
+		var r = SyntaxHighlighter.regexLib;
+		
+		this.regexList = [
+			{ regex: r.multiLineDoubleQuotedString,					css: 'string' },			// double quoted strings
+			{ regex: r.multiLineSingleQuotedString,					css: 'string' },			// single quoted strings
+			{ regex: r.singleLineCComments,							css: 'comments' },			// one line comments
+			{ regex: r.multiLineCComments,							css: 'comments' },			// multiline comments
+			{ regex: /\s*#.*/gm,									css: 'preprocessor' },		// preprocessor tags like #region and #endregion
+			{ regex: new RegExp(this.getKeywords(keywords), 'gm'),	css: 'keyword' }			// keywords
+			];
+	
+		this.forHtmlScript(r.scriptScriptTags);
+	};
+
+	Brush.prototype	= new SyntaxHighlighter.Highlighter();
+	Brush.aliases	= ['js', 'jscript', 'javascript'];
+
+	SyntaxHighlighter.brushes.JScript = Brush;
+
+	// CommonJS
+	typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
+})();
+/**
+ * SyntaxHighlighter
+ * http://alexgorbatchev.com/SyntaxHighlighter
+ *
+ * SyntaxHighlighter is donationware. If you are using it, please donate.
+ * http://alexgorbatchev.com/SyntaxHighlighter/donate.html
+ *
+ * @version
+ * 3.0.83 (July 02 2010)
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -803,8 +855,8 @@
 			];
 
 		this.forHtmlScript({
-			left	: /(&lt;|<)%[@!=]?/g,
-			right	: /%(&gt;|>)/g
+			left	: /(&lt;|<)%[@!=]?/g, 
+			right	: /%(&gt;|>)/g 
 		});
 	};
 
@@ -825,7 +877,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -875,58 +927,87 @@
 	typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
 })();
 /**
- * SyntaxHighlighter
- * http://alexgorbatchev.com/SyntaxHighlighter
+ * Wordpress SyntaxHighlighter brush for Objective-C
+ * By Matej Bukovinski, www.bukovinski.com
  *
- * SyntaxHighlighter is donationware. If you are using it, please donate.
- * http://alexgorbatchev.com/SyntaxHighlighter/donate.html
- *
- * @version
- * 3.0.83 (July 02 2010)
- *
- * @copyright
- * Copyright (C) 2004-2010 Alex Gorbatchev.
- *
- * @license
- * Dual licensed under the MIT and GPL licenses.
+ * Copyright (C) 2009 Matej Bukovinski
+ * 
+ * Adapted from:
+ * SyntaxHighlighter - Objective-C Brush, version 1.0.0
+ * http://codepirate.seaandco.com/
+ * Copyright (C) 2009 Geoffrey Byers.
+ * 
+ * Licensed under a GNU Lesser General Public License.
+ * http://creativecommons.org/licenses/LGPL/2.1/
+ * 
  */
-;(function()
-{
-	// CommonJS
+;(function() {
+
 	typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
+    
+    function Brush()	{
 
-	function Brush()
-	{
-		var keywords =	'break case catch continue ' +
-						'default delete do else false  ' +
-						'for function if in instanceof ' +
-						'new null return super switch ' +
-						'this throw true try typeof var while with'
-						;
+        var datatypes = 'ATOM BOOL BOOLEAN BYTE CHAR COLORREF DWORD DWORDLONG DWORD_PTR ' +
+						'DWORD32 DWORD64 FLOAT HACCEL HALF_PTR HANDLE HBITMAP HBRUSH ' +
+						'HCOLORSPACE HCONV HCONVLIST HCURSOR HDC HDDEDATA HDESK HDROP HDWP ' +
+						'HENHMETAFILE HFILE HFONT HGDIOBJ HGLOBAL HHOOK HICON HINSTANCE HKEY ' +
+						'HKL HLOCAL HMENU HMETAFILE HMODULE HMONITOR HPALETTE HPEN HRESULT ' +
+						'HRGN HRSRC HSZ HWINSTA HWND INT INT_PTR INT32 INT64 LANGID LCID LCTYPE ' +
+						'LGRPID LONG LONGLONG LONG_PTR LONG32 LONG64 LPARAM LPBOOL LPBYTE LPCOLORREF ' +
+						'LPCSTR LPCTSTR LPCVOID LPCWSTR LPDWORD LPHANDLE LPINT LPLONG LPSTR LPTSTR ' +
+						'LPVOID LPWORD LPWSTR LRESULT PBOOL PBOOLEAN PBYTE PCHAR PCSTR PCTSTR PCWSTR ' +
+						'PDWORDLONG PDWORD_PTR PDWORD32 PDWORD64 PFLOAT PHALF_PTR PHANDLE PHKEY PINT ' +
+						'PINT_PTR PINT32 PINT64 PLCID PLONG PLONGLONG PLONG_PTR PLONG32 PLONG64 POINTER_32 ' +
+						'POINTER_64 PSHORT PSIZE_T PSSIZE_T PSTR PTBYTE PTCHAR PTSTR PUCHAR PUHALF_PTR ' +
+						'PUINT PUINT_PTR PUINT32 PUINT64 PULONG PULONGLONG PULONG_PTR PULONG32 PULONG64 ' +
+						'PUSHORT PVOID PWCHAR PWORD PWSTR SC_HANDLE SC_LOCK SERVICE_STATUS_HANDLE SHORT ' +
+						'SIZE_T SSIZE_T TBYTE TCHAR UCHAR UHALF_PTR UINT UINT_PTR UINT32 UINT64 ULONG ' +
+						'ULONGLONG ULONG_PTR ULONG32 ULONG64 USHORT USN VOID WCHAR WORD WPARAM WPARAM WPARAM ' +
+						'char bool short int __int32 __int64 __int8 __int16 long float double __wchar_t ' +
+						'clock_t _complex _dev_t _diskfree_t div_t ldiv_t _exception _EXCEPTION_POINTERS ' +
+						'FILE _finddata_t _finddatai64_t _wfinddata_t _wfinddatai64_t __finddata64_t ' +
+						'__wfinddata64_t _FPIEEE_RECORD fpos_t _HEAPINFO _HFILE lconv intptr_t id ' +
+						'jmp_buf mbstate_t _off_t _onexit_t _PNH ptrdiff_t _purecall_handler ' +
+						'sig_atomic_t size_t _stat __stat64 _stati64 terminate_function ' +
+						'time_t __time64_t _timeb __timeb64 tm uintptr_t _utimbuf ' +
+						'va_list wchar_t wctrans_t wctype_t wint_t signed';
+        
+        var keywords = 'break case catch class copy const __finally __exception __try ' +
+						'const_cast continue private public protected __declspec ' +
+						'default delete deprecated dllexport dllimport do dynamic_cast ' +
+						'else enum explicit extern if for friend getter goto inline ' +
+						'mutable naked namespace new nil NO noinline nonatomic noreturn nothrow NULL ' +
+						'readonly readwrite register reinterpret_cast retain strong return SEL selectany self ' +
+						'setter sizeof static static_cast struct super switch template ' +
+						'thread throw true false try typedef typeid typename union ' +
+						'using uuid virtual void volatile whcar_t while YES in';
+                
+        this.regexList = [
+                { regex: new RegExp(this.getKeywords(datatypes), 'gm'), css: 'xcode1' },        // primitive data types
+                { regex: new RegExp(this.getKeywords(keywords), 'gm'),  css: 'xcode1' },        // keywords
+                { regex: new RegExp('@\\w+\\b', 'g'),                   css: 'xcode1' },        // @-keywords
+                { regex: new RegExp('[: ]nil', 'g'),                    css: 'xcode1' },        // nil-workaround
+                { regex: new RegExp('\\.\\w+', 'g'),                    css: 'xcodeconstants' }, // accessors
+                { regex: new RegExp(' \\w+(?=[:\\]])', 'g'),            css: 'xcodevariable' },      // messages
+                { regex: SyntaxHighlighter.regexLib.singleLineCComments,css: 'xcodecomments' }, // comments
+                { regex: SyntaxHighlighter.regexLib.multiLineCComments, css: 'xcodecomments' }, // comments
+                { regex: new RegExp('@"[^"]*"', 'gm'),                  css: 'xcodestring' },   // strings
+                { regex: new RegExp('\\d', 'gm'),                       css: 'xcodenumber' },   // numeric values
+                { regex: new RegExp('^ *#.*', 'gm'),                    css: 'xcodepreprocessor' },  // preprocessor
+                { regex: new RegExp('\\w+(?= \\*)', 'g'),               css: 'xcodekeywords' },     // object types - variable declaration
+                { regex: new RegExp('\\b(NS|UI|CG|CA|Custom|Segmented)\\w+\\b', 'g'),   css: 'xcodekeywords'},
+                { regex: new RegExp('\\bk[A-Z]\\w+\\b', 'g'),           css: 'xcodepreprocessor' }
+              /*{ regex: new RegExp('\\b[A-Z]\\w+\\b(?=[ ,;])', 'gm'),  css: 'xcodekeyword' },*/ // object types - protocol
+        ];
+    };
+    Brush.prototype	= new SyntaxHighlighter.Highlighter();
+	Brush.aliases	= ['oc','objc','obj-c'];
 
-		var r = SyntaxHighlighter.regexLib;
+	SyntaxHighlighter.brushes.ObjC = Brush;
 
-		this.regexList = [
-			{ regex: r.multiLineDoubleQuotedString,					css: 'string' },			// double quoted strings
-			{ regex: r.multiLineSingleQuotedString,					css: 'string' },			// single quoted strings
-			{ regex: r.singleLineCComments,							css: 'comments' },			// one line comments
-			{ regex: r.multiLineCComments,							css: 'comments' },			// multiline comments
-			{ regex: /\s*#.*/gm,									css: 'preprocessor' },		// preprocessor tags like #region and #endregion
-			{ regex: new RegExp(this.getKeywords(keywords), 'gm'),	css: 'keyword' }			// keywords
-			];
-
-		this.forHtmlScript(r.scriptScriptTags);
-	};
-
-	Brush.prototype	= new SyntaxHighlighter.Highlighter();
-	Brush.aliases	= ['js', 'jscript', 'javascript'];
-
-	SyntaxHighlighter.brushes.JScript = Brush;
-
-	// CommonJS
 	typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
-})();
-/**
+
+})();/**
  * SyntaxHighlighter
  * http://alexgorbatchev.com/SyntaxHighlighter
  *
@@ -935,7 +1016,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -950,33 +1031,33 @@
 	function Brush()
 	{
 		// Contributed by David Simmons-Duffin and Marty Kube
-
-		var funcs =
-			'abs accept alarm atan2 bind binmode chdir chmod chomp chop chown chr ' +
-			'chroot close closedir connect cos crypt defined delete each endgrent ' +
-			'endhostent endnetent endprotoent endpwent endservent eof exec exists ' +
-			'exp fcntl fileno flock fork format formline getc getgrent getgrgid ' +
-			'getgrnam gethostbyaddr gethostbyname gethostent getlogin getnetbyaddr ' +
-			'getnetbyname getnetent getpeername getpgrp getppid getpriority ' +
-			'getprotobyname getprotobynumber getprotoent getpwent getpwnam getpwuid ' +
-			'getservbyname getservbyport getservent getsockname getsockopt glob ' +
-			'gmtime grep hex index int ioctl join keys kill lc lcfirst length link ' +
-			'listen localtime lock log lstat map mkdir msgctl msgget msgrcv msgsnd ' +
-			'oct open opendir ord pack pipe pop pos print printf prototype push ' +
-			'quotemeta rand read readdir readline readlink readpipe recv rename ' +
-			'reset reverse rewinddir rindex rmdir scalar seek seekdir select semctl ' +
-			'semget semop send setgrent sethostent setnetent setpgrp setpriority ' +
-			'setprotoent setpwent setservent setsockopt shift shmctl shmget shmread ' +
-			'shmwrite shutdown sin sleep socket socketpair sort splice split sprintf ' +
-			'sqrt srand stat study substr symlink syscall sysopen sysread sysseek ' +
-			'system syswrite tell telldir time times tr truncate uc ucfirst umask ' +
+	
+		var funcs = 
+			'abs accept alarm atan2 bind binmode chdir chmod chomp chop chown chr ' + 
+			'chroot close closedir connect cos crypt defined delete each endgrent ' + 
+			'endhostent endnetent endprotoent endpwent endservent eof exec exists ' + 
+			'exp fcntl fileno flock fork format formline getc getgrent getgrgid ' + 
+			'getgrnam gethostbyaddr gethostbyname gethostent getlogin getnetbyaddr ' + 
+			'getnetbyname getnetent getpeername getpgrp getppid getpriority ' + 
+			'getprotobyname getprotobynumber getprotoent getpwent getpwnam getpwuid ' + 
+			'getservbyname getservbyport getservent getsockname getsockopt glob ' + 
+			'gmtime grep hex index int ioctl join keys kill lc lcfirst length link ' + 
+			'listen localtime lock log lstat map mkdir msgctl msgget msgrcv msgsnd ' + 
+			'oct open opendir ord pack pipe pop pos print printf prototype push ' + 
+			'quotemeta rand read readdir readline readlink readpipe recv rename ' + 
+			'reset reverse rewinddir rindex rmdir scalar seek seekdir select semctl ' + 
+			'semget semop send setgrent sethostent setnetent setpgrp setpriority ' + 
+			'setprotoent setpwent setservent setsockopt shift shmctl shmget shmread ' + 
+			'shmwrite shutdown sin sleep socket socketpair sort splice split sprintf ' + 
+			'sqrt srand stat study substr symlink syscall sysopen sysread sysseek ' + 
+			'system syswrite tell telldir time times tr truncate uc ucfirst umask ' + 
 			'undef unlink unpack unshift utime values vec wait waitpid warn write';
-
-		var keywords =
+    
+		var keywords =  
 			'bless caller continue dbmclose dbmopen die do dump else elsif eval exit ' +
-			'for foreach goto if import last local my next no our package redo ref ' +
+			'for foreach goto if import last local my next no our package redo ref ' + 
 			'require return sub tie tied unless untie until use wantarray while';
-
+    
 		this.regexList = [
 			{ regex: new RegExp('#[^!].*$', 'gm'),					css: 'comments' },
 			{ regex: new RegExp('^\\s*#!.*$', 'gm'),				css: 'preprocessor' }, // shebang
@@ -1007,7 +1088,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -1061,7 +1142,7 @@
 						'function include include_once global goto if implements interface instanceof namespace new ' +
 						'old_function or private protected public return require require_once static switch ' +
 						'throw try use var while xor ';
-
+		
 		var constants	= '__FILE__ __LINE__ __METHOD__ __FUNCTION__ __CLASS__';
 
 		this.regexList = [
@@ -1095,7 +1176,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -1128,7 +1209,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -1202,7 +1283,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -1217,7 +1298,7 @@
 	function Brush()
 	{
 		// Contributed by Gheorghe Milas and Ahmad Sherif
-
+	
 		var keywords =  'and assert break class continue def del elif else ' +
 						'except exec finally for from global if import in is ' +
 						'lambda not or pass print raise return try yield while';
@@ -1245,7 +1326,7 @@
 				{ regex: new RegExp(this.getKeywords(keywords), 'gm'), 		css: 'keyword' },
 				{ regex: new RegExp(this.getKeywords(special), 'gm'), 		css: 'color1' }
 				];
-
+			
 		this.forHtmlScript(SyntaxHighlighter.regexLib.aspScriptTags);
 	};
 
@@ -1266,7 +1347,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -1281,7 +1362,7 @@
 	function Brush()
 	{
 		// Contributed by Erik Peterson.
-
+	
 		var keywords =	'alias and BEGIN begin break case class def define_method defined do each else elsif ' +
 						'END end ensure false for if in module new next nil not or raise redo rescue retry return ' +
 						'self super then throw true undef unless until when while yield';
@@ -1321,7 +1402,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -1339,7 +1420,7 @@
 		{
 			return '\\b([a-z_]|)' + str.replace(/ /g, '(?=:)\\b|\\b([a-z_\\*]|\\*|)') + '(?=:)\\b';
 		};
-
+	
 		function getValuesCSS(str)
 		{
 			return '\\b' + str.replace(/ /g, '(?!-)(?!:)\\b|\\b()') + '\:\\b';
@@ -1359,7 +1440,7 @@
 						'quotes right richness size slope src speak-header speak-numeral speak-punctuation speak speech-rate stemh stemv stress ' +
 						'table-layout text-align top text-decoration text-indent text-shadow text-transform unicode-bidi unicode-range units-per-em ' +
 						'vertical-align visibility voice-family volume white-space widows width widths word-spacing x-height z-index';
-
+		
 		var values =	'above absolute all always aqua armenian attr aural auto avoid baseline behind below bidi-override black blink block blue bold bolder '+
 						'both bottom braille capitalize caption center center-left center-right circle close-quote code collapse compact condensed '+
 						'continuous counter counters crop cross crosshair cursive dashed decimal decimal-leading-zero digits disc dotted double '+
@@ -1374,14 +1455,14 @@
 						'table-caption table-cell table-column table-column-group table-footer-group table-header-group table-row table-row-group teal '+
 						'text-bottom text-top thick thin top transparent tty tv ultra-condensed ultra-expanded underline upper-alpha uppercase upper-latin '+
 						'upper-roman url visible wait white wider w-resize x-fast x-high x-large x-loud x-low x-slow x-small x-soft xx-large xx-small yellow';
-
+		
 		var fonts =		'[mM]onospace [tT]ahoma [vV]erdana [aA]rial [hH]elvetica [sS]ans-serif [sS]erif [cC]ourier mono sans serif';
-
+		
 		var statements		= '!important !default';
 		var preprocessor	= '@import @extend @debug @warn @if @for @while @mixin @include';
-
+		
 		var r = SyntaxHighlighter.regexLib;
-
+		
 		this.regexList = [
 			{ regex: r.multiLineCComments,								css: 'comments' },		// multiline comments
 			{ regex: r.singleLineCComments,								css: 'comments' },		// singleline comments
@@ -1415,7 +1496,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -1430,7 +1511,7 @@
 	function Brush()
 	{
 		// Contributed by Yegor Jbanov and David Bernard.
-
+	
 		var keywords =	'val sealed case def true trait implicit forSome import match object null finally super ' +
 						'override try lazy for var catch throw type extends class while with new final yield abstract ' +
 						'else do if return protected private this package false';
@@ -1466,7 +1547,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -1532,7 +1613,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -1588,7 +1669,7 @@
  *
  * @version
  * 3.0.83 (July 02 2010)
- *
+ * 
  * @copyright
  * Copyright (C) 2004-2010 Alex Gorbatchev.
  *
@@ -1609,8 +1690,8 @@
 				tag = new XRegExp('(&lt;|<)[\\s\\/\\?]*(?<name>[:\\w-\\.]+)', 'xg').exec(code),
 				result = []
 				;
-
-			if (match.attributes != null)
+		
+			if (match.attributes != null) 
 			{
 				var attributes,
 					regex = new XRegExp('(?<name> [\\w:\\-\\.]+)' +
@@ -1618,7 +1699,7 @@
 										'(?<value> ".*?"|\'.*?\'|\\w+)',
 										'xg');
 
-				while ((attributes = regex.exec(code)) != null)
+				while ((attributes = regex.exec(code)) != null) 
 				{
 					result.push(new constructor(attributes.name, match.index + attributes.index, 'color1'));
 					result.push(new constructor(attributes.value, match.index + attributes.index + attributes[0].indexOf(attributes.value), 'string'));
@@ -1632,7 +1713,7 @@
 
 			return result;
 		}
-
+	
 		this.regexList = [
 			{ regex: new XRegExp('(\\&lt;|<)\\!\\[[\\w\\s]*?\\[(.|\\s)*?\\]\\](\\&gt;|>)', 'gm'),			css: 'color2' },	// <![ ... [ ... ]]>
 			{ regex: SyntaxHighlighter.regexLib.xmlComments,												css: 'comments' },	// <!-- ... -->
